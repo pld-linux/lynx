@@ -1,0 +1,13 @@
+--- lynx2-8-3/po/makefile.inn.wiget	Tue Sep 14 04:07:17 1999
++++ lynx2-8-3/po/makefile.inn	Mon Dec  6 23:00:09 1999
+@@ -119,8 +119,8 @@
+ 	for cat in $$catalogs; do \
+ 	  cat=`basename $$cat`; \
+ 	  case "$$cat" in \
+-	    *.gmo) destdir=$(gnulocaledir);; \
+-	    *)     destdir=$(localedir);; \
++	    *.gmo) destdir=$(DESTDIR)$(gnulocaledir);; \
++	    *)     destdir=$(DESTDIR)$(localedir);; \
+ 	  esac; \
+ 	  lang=`echo $$cat | sed 's/\$(CATOBJEXT)$$//'`; \
+ 	  dir=$$destdir/$$lang/LC_MESSAGES; \

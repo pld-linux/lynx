@@ -5,7 +5,7 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.4dev.14
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
@@ -18,6 +18,7 @@ Patch3:		%{name}-po_DESTDIR.patch
 Patch4:		%{name}-config.hin.patch
 Patch5:		%{name}-autoconf.patch
 Patch6:		%{name}-config.patch
+Patch7:		%{name}-SA_LEN.patch
 URL:		http://lynx.browser.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
@@ -60,11 +61,12 @@ formlar ve tablolar için desteði vardýr.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 autoconf
-LDFLAGS="-lcrypto -lssl %{!?debug:-s}"
-CFLAGS="-I/usr/include/openssl -DUSE_SSL %{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}"
+LDFLAGS="-lcrypto -lssl %{rpmldflags}"
+CFLAGS="-I/usr/include/openssl -DUSE_SSL %{rpmcflags}"
 %configure \
 	--with-screen=slang \
 	--without-included-gettext \

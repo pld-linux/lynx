@@ -4,7 +4,7 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.2dev.16
+Version:	2.8.2dev.17
 Release:	1d
 Copyright:	GPL
 URL:		http://lynx.browser.org
@@ -56,7 +56,7 @@ CFLAGS="-w -D_USE_PLD" LDFLAGS=-s \
     ./configure \
 	--prefix=/usr \
 	--libdir=/etc \
-	--with-screen=slang \
+	--with-screen=ncurses \
 	--enable-warnings \
 	--enable-default-colors \
 	--enable-externs \

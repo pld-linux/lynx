@@ -7,7 +7,7 @@ diff -ru lynx2-8-2.old/lynx.cfg lynx2-8-2/lynx.cfg
  # site:
 -STARTFILE:http://lynx.browser.org/
 +#STARTFILE:http://lynx.browser.org/
-+STARTFILE:file://localhost/usr/doc/HTML/index.html
++STARTFILE:file://localhost/usr/share/doc/HTML/index.html
  #
  # As an alternative, you may want to use a local URL.  A good choice for this is
  # the user's home directory:

@@ -62,7 +62,7 @@ formlar ve tablolar için desteði vardýr.
 %build
 autoconf
 LDFLAGS="-lcrypto -lssl %{!?debug:-s}"
-CFLAGS="-I/usr/include/openssl -DUSE_SSL %{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}"
+CFLAGS="-I/usr/include/openssl -DUSE_SSL %{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}"
 %configure \
 	--with-screen=slang \
 	--without-included-gettext \

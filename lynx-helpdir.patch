@@ -1,0 +1,11 @@
+diff -ru lynx2-8-3/makefile.in lynx2-8-3.wiget/makefile.in
+--- lynx2-8-3/makefile.in	Thu Aug 26 13:31:19 1999
++++ lynx2-8-3.wiget/makefile.in	Thu Sep  9 02:28:10 1999
+@@ -331,7 +331,6 @@
+ #FIX_SED = cat
+ 
+ install-help : $(HELPDIR)
+-	(cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's@/lynx_help$$@@'` && test $$WD != $$HEAD && rm -rf *)
+ 	@echo Constructing sed-script
+ 	@ECHO_CC@sed	-e '/^#/d' -e '/^$$/d' \
+ 		-e 's%\(.*\)=\(.*\@.*\)$$%s=@\1@=\2=g%' \

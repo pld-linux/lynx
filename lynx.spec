@@ -24,15 +24,15 @@ Patch5:		%{name}-config.patch
 Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
 URL:		http://lynx.browser.org/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-BuildRequires:	zlib-devel
-BuildRequires:	slang-devel
-BuildRequires:	gettext-devel
 BuildRequires:	autoconf
+BuildRequires:	gettext-devel
 BuildRequires:	openssl-devel >= 0.9.6b
+BuildRequires:	slang-devel
 #BuildRequires:	socks5-devel
+BuildRequires:	zlib-devel
 Provides:	webclient
 Obsoletes:	lynx-ssl
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This a terminal based WWW browser. While it does not make any attempt
@@ -136,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc C[HO]* PROBLEMS README samples test docs/README*
+%doc CHANGES COPYHEADERS PROBLEMS README samples test docs/README*
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lynx.cfg
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/lynx

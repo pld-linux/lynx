@@ -19,7 +19,7 @@ URL:		http://lynx.browser.org/
 BuildPrereq:	zlib-devel
 BuildPrereq:	ncurses-devel
 Requires:	indexhtml
-Buildroot:	/tmp/%{name}-%{version}-%{release}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 This a terminal based WWW browser. While it does not make any attempt

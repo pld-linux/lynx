@@ -87,7 +87,7 @@ formlar ve tablolar için desteði vardýr.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
+#%patch8 -p1
 
 %build
 %{__autoconf}

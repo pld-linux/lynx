@@ -14,7 +14,7 @@ Source1:	lynx.wmconfig
 Patch0:		lynx-pld.patch
 Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
-Patch4:		lynx.cfg.patch
+Patch3:		lynx.cfg.patch
 URL:		http://lynx.browser.org/
 BuildPrereq:	zlib-devel
 BuildPrereq:	ncurses-devel
@@ -48,7 +48,7 @@ tablolar için desteði vardýr.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch4 -p1
+%patch3 -p1
 
 %build
 CFLAGS="-w" LDFLAGS="-s" \

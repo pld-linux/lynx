@@ -11,8 +11,6 @@ Version:	2.8.5dev.3
 Release:	2
 License:	GPL
 Group:		Applications/Networking
-Group(de):	Applikationen/Netzwerkwesen
-Group(pl):	Aplikacje/Sieciowe
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
 Source1:	%{name}.desktop
 Source2:	%{name}.png

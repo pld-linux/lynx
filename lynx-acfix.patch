@@ -30,7 +30,7 @@
  };
 --- lynx2-8-5/config.hin.orig	2004-01-18 21:21:27.860909328 +0100
 +++ lynx2-8-5/config.hin	2004-01-18 21:30:37.920287592 +0100
-@@ -2,278 +2,278 @@
+@@ -2,280 +2,280 @@
  #ifndef LYNX_CFG_H
  #define LYNX_CFG_H 1
  
@@ -58,7 +58,7 @@
 +#undef COLOR_CURSES
 +#undef COMPRESS_PATH
 +#undef COPY_PATH
-+#undef CURS_PERFORMANCE	
++#undef CURS_PERFORMANCE
 +#undef DEBUG
  #undef DECL_ERRNO
  #undef DECL_GETGRGID
@@ -84,6 +84,7 @@
 -#undef EXP_CHARTRANS_AUTOSWITCH	/* CF_ARG_ENABLE(font-switch) */
 -#undef EXP_JUSTIFY_ELTS		/* CF_ARG_ENABLE(justify-elts) */
 -#undef EXP_KEYBOARD_LAYOUT	/* CF_ARG_ENABLE(kbd-layout) */
+-#undef EXP_LOCALE_CHARSET	/* CF_ARG_ENABLE(locale-charset) */
 -#undef EXP_LIBJS		/* CF_ARG_ENABLE(libjs) */
 -#undef EXP_NESTED_TABLES	/* CF_ARG_ENABLE(nested-tables) */
 -#undef FANCY_CURSES		/* CF_FANCY_CURSES */
@@ -114,6 +115,7 @@
 +#undef EXP_CHARTRANS_AUTOSWITCH
 +#undef EXP_JUSTIFY_ELTS
 +#undef EXP_KEYBOARD_LAYOUT
++#undef EXP_LOCALE_CHARSET
 +#undef EXP_LIBJS
 +#undef EXP_NESTED_TABLES
 +#undef FANCY_CURSES
@@ -165,12 +167,14 @@
 +#undef HAVE_INET_ATON
  #undef HAVE_JCURSES_H
  #undef HAVE_KEYPAD
+-#undef HAVE_LANGINFO_CODESET	/* AM_LANGINFO_CODESET */
 -#undef HAVE_LC_MESSAGES		/* locale messages */
 -#undef HAVE_LIBDBMALLOC		/* --with-dbmalloc */
 -#undef HAVE_LIBDMALLOC		/* --with-dmalloc */
 -#undef HAVE_LIBGETTEXT_H	/* defined if you want to use bundled gettext */
 -#undef HAVE_LIBINTL_H		/* AM_GNU_GETTEXT, or cleanup from that */
 -#undef HAVE_LIBUTF8_H		/* may be needed for libncursesw */
++#undef HAVE_LANGINFO_CODESET
 +#undef HAVE_LC_MESSAGES
 +#undef HAVE_LIBDBMALLOC
 +#undef HAVE_LIBDMALLOC
@@ -509,7 +513,7 @@
  #endif
  
  /* 'const' may be defined externally by the compiler-wrapper, as in 'unproto'
-@@ -310,7 +310,7 @@
+@@ -312,7 +312,7 @@
  #endif
  
  #ifdef HAVE_SYSLOG_H

@@ -4,17 +4,20 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.2dev.15
-Release:	2d
+Version:	2.8.2dev.16
+Release:	1d
 Copyright:	GPL
 URL:		http://lynx.browser.org
 Group:		Networking
 Group(pl):	Sieciowe
-Source0:	ftp://www.slcc.edu/pub/lynx/current/%{name}%{version}.tar.bz2
+Source0:	http://sol.slcc.edu/lynx/current/%{name}%{version}.tar.bz2
 Source1:	%{name}.wmconfig
 Patch0:		%{name}-pld.patch
 Patch1:		%{name}-overflow.patch
 Patch2:		%{name}-config.patch
+Patch3:		%{name}-not_for_root.patch
+Patch4:		%{name}.cfg.patch
+Patch5:		%{name}-TEMP_SPACE.patch
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -44,9 +47,12 @@ tablolar için desteði vardýr.
 %patch0 -p1 
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p0
 
 %build
-CFLAGS="-w" LDFLAGS=-s \
+CFLAGS="-w -D_USE_PLD" LDFLAGS=-s \
     ./configure \
 	--prefix=/usr \
 	--libdir=/etc \
@@ -64,23 +70,28 @@ make
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/etc/X11/wmconfig
+install -d $RPM_BUILD_ROOT/usr/share/lynx/{lynx_help/keystrokes,test}
 
 make install prefix=$RPM_BUILD_ROOT/usr libdir=$RPM_BUILD_ROOT/etc
+
+for i in `find lynx_help test -type f `; do
+	install $i $RPM_BUILD_ROOT/usr/share/lynx/$i
+done
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
 
 strip $RPM_BUILD_ROOT/usr/bin/lynx
 
 gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/*
-bzip2 -9 docs/* README lynx.hlp 
+gzip -9fn docs/* README lynx.hlp 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/* README.bz2 
-%doc test lynx.hlp.bz2 lynx_help
+%doc docs/* README.gz
+%doc lynx.hlp.gz
 
 %config %verify(not size mtime md5) /etc/lynx.cfg
 %config(missingok) /etc/X11/wmconfig/lynx
@@ -88,7 +99,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/*
 %attr(644,root, man) /usr/man/man1/*
 
+/usr/share/lynx
+
 %changelog
+* Tue Feb 16 1999 Artur Frysiak <wiget@usa.net>
+  [2.8.2dev.16-1d]
+- moved help and test files to /usr/share/lynx
+- added not_for_root patch (this is bugi software, run from root account
+  is dangerus)
+- changed default color scheme
+- added TEMP_SPACE patch ( now lynx save temp file in ~/tmp )
+
 * Fri Feb 05 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
   [2.8.2dev15-2d]
 - changed group,

@@ -1,17 +1,18 @@
---- lynx2-8-1/userdefs.h.redhat	Mon Sep  7 06:02:16 1998
-+++ lynx2-8-1/userdefs.h	Thu Sep 10 12:05:46 1998
-@@ -88,7 +88,7 @@
+diff -ru lynx2-8-2.old/userdefs.h lynx2-8-2/userdefs.h
+--- lynx2-8-2.old/userdefs.h	Tue May 11 22:20:02 1999
++++ lynx2-8-2/userdefs.h	Tue May 11 22:25:46 1999
+@@ -93,7 +93,7 @@
   * mailcap files (see the examples in the samples directory).
   */
  #ifndef LYNX_CFG_FILE
 -#define LYNX_CFG_FILE "Lynx_Dir:lynx.cfg"
-+#define LYNX_CFG_FILE "/etc/lynx.cfg"
++#define LYNX_CFG_FILE "/usr/share/lynx/lynx.cfg"
  #endif /* LYNX_CFG_FILE */
  
  /**************************
-@@ -97,8 +97,8 @@
-  * These global and personal files override anything in
-  * lynx.cfg or src/HTInit.c
+@@ -103,8 +103,8 @@
+  * Mappings in these global and personal files override any SUFFIX
+  * definitions in lynx.cfg and built-in defaults from src/HTInit.c.
   */
 -#define GLOBAL_EXTENSION_MAP "Lynx_Dir:mime.types"
 -#define PERSONAL_EXTENSION_MAP "mime.types"
@@ -20,43 +21,52 @@
  
  /**************************
   * The MAILCAP file allows you to map file MIME types to
-@@ -106,7 +106,7 @@
-  * These global and personal files override anything in
-  * lynx.cfg or src/HTInit.c
+@@ -113,7 +113,7 @@
+  * Mappings in these global and personal files override any VIEWER
+  * definitions in lynx.cfg and built-in defaults from src/HTInit.c.
   */
 -#define GLOBAL_MAILCAP "Lynx_Dir:mailcap"
 +#define GLOBAL_MAILCAP "/etc/mailcap"
  #define PERSONAL_MAILCAP ".mailcap"
  
  /**************************
-@@ -269,7 +269,7 @@
+@@ -276,7 +276,7 @@
  #ifdef DOSPATH
  #define LYNX_CFG_FILE "./lynx.cfg"
  #else
 -#define LYNX_CFG_FILE "/usr/local/lib/lynx.cfg"
-+#define LYNX_CFG_FILE "/etc/lynx.cfg"
++#define LYNX_CFG_FILE "/usr/share/lynx/lynx.cfg"
  #endif /* DOSPATH */
  #endif /* LYNX_CFG_FILE */
  #endif /* HAVE_CONFIG_H */
-@@ -280,7 +280,7 @@
-  * These global and personal files override anything in
-  * lynx.cfg or src/HTInit.c
+@@ -288,7 +288,7 @@
+  * Mappings in these global and personal files override any SUFFIX
+  * definitions in lynx.cfg and built-in defaults from src/HTInit.c.
   */
 -#define GLOBAL_EXTENSION_MAP "/usr/local/lib/mosaic/mime.types"
 +#define GLOBAL_EXTENSION_MAP "/etc/mime.types"
  #define PERSONAL_EXTENSION_MAP ".mime.types"
  
  /**************************
-@@ -289,7 +289,7 @@
-  * These global and personal files override anything in
-  * lynx.cfg or src/HTInit.c
+@@ -298,7 +298,7 @@
+  * Mappings in these global and personal files override any VIEWER
+  * definitions in lynx.cfg and built-in defaults from src/HTInit.c.
   */
 -#define GLOBAL_MAILCAP "/usr/local/lib/mosaic/mailcap"
 +#define GLOBAL_MAILCAP "/etc/mailcap"
  #define PERSONAL_MAILCAP ".mailcap"
  
  /**************************
-@@ -1012,7 +1012,7 @@
+@@ -410,7 +410,7 @@
+  * -lss command line switch will override these definitions.
+  */
+ #ifndef LYNX_LSS_FILE
+-#define LYNX_LSS_FILE "/usr/local/lib/lynx.lss"
++#define LYNX_LSS_FILE "/usr/share/lynx/lynx.lss"
+ #endif /* LYNX_LSS_FILE */
+ 
+ #endif /* VMS OR UNIX */
+@@ -1030,7 +1030,7 @@
   * lynxcgi:advice  as a G)oto URL for more information and links to the
   * OSU server distribution.
   */
@@ -64,4 +74,4 @@
 +#define LYNXCGI_LINKS
  
  #if defined(EXEC_LINKS) || defined(EXEC_SCRIPTS)
-
+ 

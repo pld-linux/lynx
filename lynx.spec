@@ -82,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 - URL in HELPFILE in /etc/lynx.cfh changed to localhost,
 - removed INSTALLATION from %doc,
 - added pl translation (Wojtek Slusarczyk <wojtek@SHADOW.EU.ORG>),
-- added %attr and %defattr macros in %files (allow build package from
+- added %attr and %defattr macros in %files (allows build package from
   non-root account).
 
 * Fri May 08 1998 Prospector System <bugs@redhat.com>

@@ -8,7 +8,7 @@ Summary(pt_BR):	Navegador web modo texto
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.5dev.3
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
@@ -136,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz samples test docs/*.gz
+%doc C[HO]* PROBLEMS README samples test docs/README*
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lynx.cfg
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/lynx

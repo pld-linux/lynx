@@ -7,16 +7,16 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(pt_BR):	Navegador web modo texto
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.5dev.16
-Release:	2
+Version:	2.8.5pre.1
+Release:	1
 License:	GPL
 Group:		Applications/Networking
-# Source0-md5:	d5c50ea7334ee3256a82722be2f0d9a3
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
+# Source0-md5:	5310bcd92f5d811514322d4f5b5fbef7
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-# Source3-md5:	b5e02f86a8ee7bce4d8b97e4b6491714
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
+# Source3-md5:	b5e02f86a8ee7bce4d8b97e4b6491714
 Patch0:		%{name}-pld.patch
 Patch1:		%{name}.cfg.patch
 Patch2:		%{name}-po_DESTDIR.patch

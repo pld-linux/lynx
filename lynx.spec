@@ -96,6 +96,9 @@ formlar ve tablolar için desteği vardır.
 	--without-included-gettext \
 	--with-zlib \
 	--with-ssl \
+	--enable-justify-elts \
+	--enable-nested-tables \
+	--enable-read-eta \
 	--enable-kbd-layout \
 	--enable-addrlist-page \
 	--enable-cgi-links \

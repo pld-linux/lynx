@@ -16,7 +16,6 @@ Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
 Patch4:		lynx.cfg.patch
 Patch5:		lynx-noroot.patch
-Patch6:		lynx-fhs.patch
 URL:		http://lynx.browser.org/
 BuildPrereq:	zlib-devel
 BuildPrereq:	ncurses-devel
@@ -52,13 +51,13 @@ tablolar için desteði vardýr.
 %patch2 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %build
 CFLAGS="-w" LDFLAGS="-s" \
     ./configure \
 	--prefix=%{_prefix} \
 	--libdir=%{_datadir}/lynx \
+	--mandir=%{_mandir} \
 	--with-screen=ncurses \
 	--enable-nls \
 	--without-included-gettext \
@@ -90,10 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/etc/X11/wmconfig \
 	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes 
 
-make	prefix=$RPM_BUILD_ROOT/usr \
-	libdir=$RPM_BUILD_ROOT%{_datadir}/lynx \
-	mandir=$RPM_BUILD_ROOT%{_mandir}/man1 \
-	helpdir=$RPM_BUILD_ROOT%{_datadir}/lynx/help \
+make	DESTDIR=$RPM_BUILD_ROOT \
 	install install-help
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx

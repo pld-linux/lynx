@@ -8,6 +8,7 @@ Version:     2.8
 Release:     5
 Copyright:   GPL
 Group:       Applications/Networking
+Group(pl):   Aplikacje/Sieæ
 Source0:     ftp://www.slcc.edu/pub/lynx/fote/lynx2.8rel.3.tar.gz
 Source1:     lynx.wmconfig
 Patch0:      lynx-2.8-redhat.patch
@@ -76,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 - changed Buildroot to /tmp/%%{name}-%%{version}-root,
 - URL in HELPFILE in /etc/lynx.cfh changed to localhost,
 - removed INSTALLATION from %doc,
-- added pl translation (Wojtek ¦lusarczyk <wojtek@shadow.eu.org>),
+- added pl translation (Wojtek Slusarczyk <wojtek@SHADOW.EU.ORG>),
 - added %attr and %defattr macros in %files (allow build package from
   non-root account).
 

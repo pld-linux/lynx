@@ -8,7 +8,7 @@ Summary(pt_BR):	Navegador web modo texto
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.5rel.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
@@ -26,6 +26,7 @@ Patch5:		%{name}-config.patch
 Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
+Patch9:		%{name}-fixcrash.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -94,6 +95,7 @@ formlar ve tablolar için desteði vardýr.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9	-p1
 
 %build
 cp /usr/share/automake/config.sub .

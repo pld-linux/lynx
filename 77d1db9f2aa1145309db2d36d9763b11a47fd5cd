@@ -1,0 +1,13 @@
+- added using CVS keywords in %changelog (for automating them).
+
+* Fri May 28 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+  [2.8.2pre.8-1]
+- update to 2.8.2pre.8,
+- some fixes for correct build,
+- removed %config from %%{_datadir}/lynx/lynx.*.
+
+* Tue May 18 1999 Artur Frysiak <wiget@pld.org.pl>
+  [2.8.2pre.4-1]
+- based on Red Hat lynx 2.8-4 (but many changes)
+- pl translation by Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+- de, fr and tr translations by Prospector System <bugs@redhat.com>

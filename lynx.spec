@@ -90,7 +90,9 @@ install -d $RPM_BUILD_ROOT/etc/X11/wmconfig \
 	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes 
 
 make	DESTDIR=$RPM_BUILD_ROOT \
-	install install-help
+	helpdir=%{_datadir}/%{name}/help \
+	install \
+	install-help
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
 

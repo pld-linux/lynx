@@ -7,16 +7,16 @@ Name:		lynx
 Version:	2.8.2dev.20
 Release:	1
 Copyright:	GPL
-URL:		http://lynx.browser.org
 Group:		Networking
 Group(pl):	Sieciowe
 Source0:	http://sol.slcc.edu/lynx/current/%{name}%{version}.tar.bz2
-Source1:	%{name}.wmconfig
+Source1:	lynx.wmconfig
 Patch0:		lynx-pld.patch
 Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
 Patch4:		lynx.cfg.patch
 Patch6:		lynx-dev.19.patch
+URL:		http://lynx.browser.org/
 Requires:	indexhtml
 Requires:	zlib >= 1.1.3-5
 Requires:	ncurses >= 4.2-12
@@ -75,20 +75,19 @@ make
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/etc/X11/wmconfig
-install -d $RPM_BUILD_ROOT/usr/share/lynx/help/keystrokes
+install -d $RPM_BUILD_ROOT/etc/X11/wmconfig \
+	$RPM_BUILD_ROOT/usr/share/lynx/help/keystrokes
 
 make	prefix=$RPM_BUILD_ROOT/usr \
 	libdir=$RPM_BUILD_ROOT/etc \
 	helpdir=$RPM_BUILD_ROOT/usr/share/lynx/help \
 	install \
 	install-help
-	
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
 
-gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/*
-gzip -9fn C[HO]* PROBLEMS README samples/* test/* docs/README*
+gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/* \
+	C[HO]* PROBLEMS README samples/* test/* docs/README*
 
 %clean
 rm -rf $RPM_BUILD_ROOT

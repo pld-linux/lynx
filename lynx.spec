@@ -28,6 +28,7 @@ Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel >= 0.9.7c
@@ -94,6 +95,7 @@ formlar ve tablolar için desteði vardýr.
 %patch8 -p1
 
 %build
+cp /usr/share/automake/config.sub .
 %{__autoconf}
 %configure \
 	--with-screen=ncurses \

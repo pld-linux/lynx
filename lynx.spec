@@ -5,7 +5,7 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.2dev.15
-Release:	1d
+Release:	2d
 Copyright:	GPL
 URL:		http://lynx.browser.org
 Group:		Networking
@@ -14,6 +14,7 @@ Source0:	ftp://www.slcc.edu/pub/lynx/current/%{name}%{version}.tar.bz2
 Source1:	%{name}.wmconfig
 Patch0:		%{name}-pld.patch
 Patch1:		%{name}-overflow.patch
+Patch2:		%{name}-config.patch
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -42,6 +43,7 @@ tablolar için desteði vardýr.
 %setup  -q -n %{name}2-8-2
 %patch0 -p1 
 %patch1 -p1
+%patch2 -p1
 
 %build
 CFLAGS="-w" LDFLAGS=-s \
@@ -78,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc docs/* README.bz2 
-%doc test lynx.hlp lynx_help
+%doc test lynx.hlp.bz2 lynx_help
 
 %config %verify(not size mtime md5) /etc/lynx.cfg
 %config(missingok) /etc/X11/wmconfig/lynx

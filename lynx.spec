@@ -18,7 +18,6 @@ Patch3:		lynx.cfg.patch
 URL:		http://lynx.browser.org/
 BuildPrereq:	zlib-devel
 BuildPrereq:	ncurses-devel
-#Requires:	indexhtml
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -52,7 +51,7 @@ tablolar için desteði vardýr.
 
 %build
 CFLAGS="-w" LDFLAGS="-s" \
-    ./configure \
+./configure %{_target_platform} \
 	--prefix=%{_prefix} \
 	--libdir=%{_datadir}/lynx \
 	--mandir=%{_mandir} \
@@ -77,20 +76,17 @@ CFLAGS="-w" LDFLAGS="-s" \
 	--with-zlib \
 	--without-socks \
 	--without-socks5 \
-	--without-ssl \
-	%{_target_platform}
+	--without-ssl
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT/etc/X11/wmconfig \
 	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes 
 
-make	DESTDIR=$RPM_BUILD_ROOT \
-	helpdir=%{_datadir}/%{name}/help \
-	install \
-	install-help
+make install install-help\
+	DESTDIR=$RPM_BUILD_ROOT \
+	helpdir=%{_datadir}/%{name}/help
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
 
@@ -111,20 +107,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 
 %{_mandir}/man1/*
-
-%dir %{_datadir}/lynx
-%{_datadir}/lynx/help
-
-%{_datadir}/lynx/lynx.lss
-%{_datadir}/lynx/lynx.cfg
+%{_datadir}/lynx
 
 %changelog
 * Fri May 28 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
   [2.8.2pre.8-1]
 - update to 2.8.2pre.8,
 - some fixes for correct build,
-- antiroot patch,
-- removed %config from %{_datadir}/lynx/lynx.*,
+- removed %config from %%{_datadir}/lynx/lynx.*.
 
 * Tue May 18 1999 Artur Frysiak <wiget@pld.org.pl>
   [2.8.2pre.4-1]

@@ -54,7 +54,7 @@ tablolar için desteði vardýr.
 
 %build
 CFLAGS="-w" LDFLAGS="-s" \
-./configure \
+./configure %{_target} \
 	--prefix=/usr \
 	--libdir=/etc \
 	--with-screen=ncurses \

@@ -4,7 +4,7 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.3dev.12
+Version:	2.8.3dev.16
 Release:	1
 Copyright:	GPL
 Group:		Applications/Networking
@@ -16,6 +16,7 @@ Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
 Patch3:		lynx.cfg.patch
 Patch4:		lynx-helpdir.patch
+Patch5:		lynx-DESTDIR.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel >= 5.0
@@ -47,11 +48,12 @@ tablolar için desteði vardýr.
 
 %prep
 %setup  -q -n %{name}2-8-3
-%patch0 -p1
+%patch0 -p1 
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 CFLAGS="-w"; export CFLAGS

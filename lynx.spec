@@ -30,7 +30,7 @@ URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	gettext-devel
 BuildRequires:	ncurses-devel
-BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	openssl-devel >= 0.9.7c
 #BuildRequires:	socks5-devel
 BuildRequires:	zlib-devel
 Provides:	webclient

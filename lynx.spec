@@ -87,7 +87,7 @@ install -d $RPM_BUILD_ROOT/etc/X11/wmconfig \
 
 make	prefix=$RPM_BUILD_ROOT/usr \
 	libdir=$RPM_BUILD_ROOT/usr/share/lynx \
-	mandir=$RPM_BUILD_ROOT/usr/share/man/man1 \
+	mandir=$RPM_BUILD_ROOT%{_mandir}/man1 \
 	helpdir=$RPM_BUILD_ROOT/usr/share/lynx/help \
 	install \
 	install-help
@@ -95,7 +95,7 @@ make	prefix=$RPM_BUILD_ROOT/usr \
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
 #install samples/lynx.lss $RPM_BUILD_ROOT/usr/share/lynx/lynx.lss
 
-gzip -9fn $RPM_BUILD_ROOT/usr/share/man/man1/* \
+gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	C[HO]* PROBLEMS README samples/* test/* docs/README*
 
 %clean
@@ -109,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %attr(755,root,root) /usr/bin/*
 
-/usr/share/man/man1/*
+%{_mandir}/man1/*
 %dir /usr/share/lynx
 /usr/share/lynx/help
 %config %verify(not mtime size md5) /usr/share/lynx/lynx.lss

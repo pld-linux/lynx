@@ -1,6 +1,7 @@
 Summary:     Text based browser for the world wide web
 Summary(de): Text-Browser für das WWW 
 Summary(fr): Navigateur en mode texte pour le world wide web
+Summary(pl): Przegl±darka WWW w trybie tekstowym
 Summary(tr): Metin ekranda WWW tarayýcý
 Name:        lynx
 Version:     2.8
@@ -27,6 +28,10 @@ Support für HTML-Textformatierung, Formulare und Tabellen.
 %description -l fr
 Navigateur WWW en mode texte. Bien qu'il n'affiche aucun graphique, il
 sait bien gérer le formatage HTML du texte, les formulaires et les tableaux.
+
+%description -l pl
+Lynx jest przegl±dark± WWW w trybie tekstowym. Dobrze formatuje HTML
+w³±cznie z formami i tabelami ale nie pozwala na wy¶wietlanie grafiki.
 
 %description -l tr
 Metin ekranda çalýþan bir WWW tarayýcýdýr. Þekil gösteremese de, formlar ve
@@ -71,6 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 - changed Buildroot to /tmp/%%{name}-%%{version}-root,
 - URL in HELPFILE in /etc/lynx.cfh changed to localhost,
 - removed INSTALLATION from %doc,
+- added pl translation (Wojtek ¦lusarczyk <wojtek@shadow.eu.org>),
 - added %attr and %defattr macros in %files (allow build package from
   non-root account).
 

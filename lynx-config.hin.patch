@@ -1,0 +1,11 @@
+--- lynx2-8-4.ori/config.hin	Thu Aug  3 19:19:52 2000
++++ lynx2-8-4/config.hin	Fri Aug  4 14:37:37 2000
+@@ -274,4 +274,8 @@
+ extern char * strstr ();
+ #endif
+ 
++#ifdef ENABLE_IPV6
++#define INET6
++#endif
++
+ #endif /* LYNX_CFG_H */

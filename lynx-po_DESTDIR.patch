@@ -1,0 +1,18 @@
+Binary files lynx2-8-4.orig/po/.makefile.inn.swp and lynx2-8-4/po/.makefile.inn.swp differ
+diff -Nru lynx2-8-4.orig/po/makefile.inn lynx2-8-4/po/makefile.inn
+--- lynx2-8-4.orig/po/makefile.inn	Mon Jun  5 14:28:58 2000
++++ lynx2-8-4/po/makefile.inn	Mon Jun  5 14:30:59 2000
+@@ -20,10 +20,10 @@
+ 
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+-datadir = @NLS_DATADIR@
++datadir = $(DESTDIR)@NLS_DATADIR@
+ localedir = $(datadir)/locale
+-gnulocaledir = $(prefix)/share/locale
+-gettextsrcdir = $(prefix)/share/gettext/po
++gnulocaledir = $(DESTDIR)$(prefix)/share/locale
++gettextsrcdir = $(DESTDIR)$(prefix)/share/gettext/po
+ subdir = po
+ 
+ INSTALL = @INSTALL@

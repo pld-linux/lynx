@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Lynx
-Commnet=Lynx - text based WWW browser
-Commnet[es]=Lector WWW modo texto
-Commnet[pl]=Lynx - tekstowa przegl±darka WWW
-Commnet[pt]=Lector WWW modo texto
+Comment=Lynx - text based WWW browser
+Comment[es]=Lector WWW modo texto
+Comment[pl]=Lynx - tekstowa przegl±darka WWW
+Comment[pt]=Lector WWW modo texto
 Exec=lynx
 Terminal=1
 Type=Application

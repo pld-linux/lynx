@@ -1,92 +1,7 @@
---- lynx2-8-5/configure.in.orig	Mon Dec  2 03:07:38 2002
-+++ lynx2-8-5/configure.in	Mon Jan 13 16:39:12 2003
-@@ -16,7 +16,6 @@
- # run to the next, as well as with tests that are order-dependent.
- rm -f config.cache
- 
--AC_PREREQ(2.13.20020210)
- AC_INIT(userdefs.h)
- 
- # autoconf 2.5x defaults to no cache file; we need the cache file's information
-@@ -71,9 +70,6 @@
- dnl Debug/development/test
- dnl --------------------------------------------------------------------------
- 
--CF_HELP_MESSAGE(
--Development Options:)
--
- CF_DISABLE_ECHO
- 
- # special case for WWW/*
-@@ -311,9 +307,6 @@
- dnl --------------------------------------------------------------------------
- dnl --------------------------------------------------------------------------
- 
--CF_HELP_MESSAGE(
--Basic Configuration Options:)
--
- dnl internationalization macros
- CF_BUNDLED_INTL(makefile,disable)
- 
-@@ -599,9 +592,6 @@
- dnl Experimental options that don't need to test system features
- dnl --------------------------------------------------------------------------
- 
--CF_HELP_MESSAGE(
--Experimental Options:)
--
- AC_MSG_CHECKING(if bibp: URLs should be supported)
- CF_ARG_DISABLE(bibp-urls,
- [  --disable-bibp-urls     disable support for bibp: URLs],
-@@ -801,9 +791,6 @@
- dnl Miscellaneous options that don't need to test system features
- dnl --------------------------------------------------------------------------
- 
--CF_HELP_MESSAGE(
--Miscellaneous Options:)
--
- AC_MSG_CHECKING(if alternative line-edit bindings should be used)
- CF_ARG_ENABLE(alt-bindings,
- [  --disable-alt-bindings  disable alternative line-edit bindings],
-@@ -836,7 +823,7 @@
- AC_MSG_RESULT($use_externs)
- if test $use_externs != "no" ; then
- 	AC_DEFINE(USE_EXTERNALS)
--	LIBOBJS="$LIBOBJS LYExtern.o"
-+	AC_LIBOBJ([LYExtern])
- fi
- 
- AC_MSG_CHECKING(if you want to use setfont support)
-@@ -991,9 +978,6 @@
- dnl DirEd (directory-editor) options
- dnl --------------------------------------------------------------------------
- 
--CF_HELP_MESSAGE(
--Directory Editor Options:)
--
- # All DirEd functions that were enabled on compilation can be disabled
- # or modified at run time via DIRED_MENU symbols in lynx.cfg.
- AC_MSG_CHECKING(if directory-editor code should be used)
-@@ -1004,7 +988,7 @@
- AC_MSG_RESULT($use_dired)
- 
- if test ".$use_dired" != ".no" ; then
--	LIBOBJS="$LIBOBJS LYLocal.o"
-+	AC_LIBOBJ([LYLocal])
- 	AC_DEFINE(DIRED_SUPPORT)
- 
- 	AC_MSG_CHECKING(if you wish to allow extracting from archives via DirEd)
-@@ -1113,7 +1097,6 @@
- AC_SUBST(COMPRESS_EXT)
- 
- if test $cf_cv_screen = pdcurses ; then
--	CF_HELP_MESSAGE(Special Libraries for PDCurses X11:)
- 	CF_PDCURSES_X11
- else
- 	CF_TERMIO_AND_CURSES(LYCurses.h)
---- lynx2-8-5/aclocal.m4.orig	2004-01-08 03:03:09.000000000 +0100
-+++ lynx2-8-5/aclocal.m4	2004-01-18 21:41:08.791380608 +0100
-@@ -2215,9 +2215,7 @@
+diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
+--- lynx2-8-5.orig/aclocal.m4	2004-02-14 22:10:58.336429456 +0100
++++ lynx2-8-5/aclocal.m4	2004-02-14 22:14:16.154356560 +0100
+@@ -2226,9 +2226,7 @@
  dnl CF_HELP_MESSAGE version: 3 updated: 1998/01/14 10:56:23
  dnl ---------------
  dnl Insert text into the help-message, for readability, from AC_ARG_WITH.
@@ -97,3 +12,90 @@
  dnl ---------------------------------------------------------------------------
  dnl CF_INET_ADDR version: 4 updated: 1999/03/30 12:24:31
  dnl ------------
+diff -burN lynx2-8-5.orig/configure.in lynx2-8-5/configure.in
+--- lynx2-8-5.orig/configure.in	2004-02-14 22:10:58.364425200 +0100
++++ lynx2-8-5/configure.in	2004-02-14 22:13:35.179585672 +0100
+@@ -16,7 +16,6 @@
+ # run to the next, as well as with tests that are order-dependent.
+ rm -f config.cache
+ 
+-AC_PREREQ(2.13.20020210)
+ AC_INIT(userdefs.h)
+ 
+ # autoconf 2.5x defaults to no cache file; we need the cache file's information
+@@ -75,9 +74,6 @@
+ dnl Debug/development/test
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Development Options:)
+-
+ CF_DISABLE_ECHO
+ 
+ # special case for WWW/*
+@@ -308,9 +304,6 @@
+ dnl --------------------------------------------------------------------------
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Basic Configuration Options:)
+-
+ dnl internationalization macros
+ CF_BUNDLED_INTL(makefile,disable)
+ 
+@@ -609,9 +602,6 @@
+ dnl Experimental options that don't need to test system features
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Experimental Options:)
+-
+ AC_MSG_CHECKING(if bibp: URLs should be supported)
+ CF_ARG_DISABLE(bibp-urls,
+ [  --disable-bibp-urls     disable support for bibp: URLs],
+@@ -787,9 +777,6 @@
+ dnl Miscellaneous options that don't need to test system features
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Miscellaneous Options:)
+-
+ AC_MSG_CHECKING(if alternative line-edit bindings should be used)
+ CF_ARG_ENABLE(alt-bindings,
+ [  --disable-alt-bindings  disable alternative line-edit bindings],
+@@ -862,7 +849,7 @@
+ AC_MSG_RESULT($use_externs)
+ if test $use_externs != "no" ; then
+ 	AC_DEFINE(USE_EXTERNALS)
+-	LIBOBJS="$LIBOBJS LYExtern\$o"
++	AC_LIBOBJ([LYExtern])
+ fi
+ 
+ AC_MSG_CHECKING(if you want to use setfont support)
+@@ -1008,9 +995,6 @@
+ dnl DirEd (directory-editor) options
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Directory Editor Options:)
+-
+ # All DirEd functions that were enabled on compilation can be disabled
+ # or modified at run time via DIRED_MENU symbols in lynx.cfg.
+ AC_MSG_CHECKING(if directory-editor code should be used)
+@@ -1021,7 +1005,7 @@
+ AC_MSG_RESULT($use_dired)
+ 
+ if test ".$use_dired" != ".no" ; then
+-	LIBOBJS="$LIBOBJS LYLocal\$o"
++	AC_LIBOBJ([LYLocal])
+ 	AC_DEFINE(DIRED_SUPPORT)
+ 
+ 	AC_MSG_CHECKING(if you wish to allow extracting from archives via DirEd)
+@@ -1131,7 +1115,6 @@
+ AC_SUBST(COMPRESS_EXT)
+ 
+ if test $cf_cv_screen = pdcurses ; then
+-	CF_HELP_MESSAGE(Special Libraries for PDCurses X11:)
+ 	CF_PDCURSES_X11
+ else
+ 	CF_TERMIO_AND_CURSES(LYCurses.h)

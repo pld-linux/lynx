@@ -1,35 +1,26 @@
---- lynx2-8-5/makefile.in.orig	Mon Oct  1 22:32:44 2001
-+++ lynx2-8-5/makefile.in	Mon Oct  1 22:32:02 2001
-@@ -419,7 +419,7 @@
- 	@echo
- 	@echo '**********************************************'
- 
--cfg_defs.h : $(srcdir)/cfg_defs.sh $(srcdir)/cfg_edit.sh config.cache lynx_cfg.h
-+cfg_defs.h : $(srcdir)/cfg_defs.sh $(srcdir)/cfg_edit.sh config.log lynx_cfg.h
- 	@rm -f $@
- 	$(SHELL) -c '$(srcdir)/cfg_defs.sh $(srcdir)'
- 
---- lynx2-8-5/cfg_defs.sh.orig	Thu Nov 18 05:08:08 1999
-+++ lynx2-8-5/cfg_defs.sh	Mon Oct  1 22:43:01 2001
-@@ -16,11 +16,14 @@
+diff -burN lynx2-8-5.orig/cfg_defs.sh lynx2-8-5/cfg_defs.sh
+--- lynx2-8-5.orig/cfg_defs.sh	2004-02-14 22:10:58.372423984 +0100
++++ lynx2-8-5/cfg_defs.sh	2004-02-14 22:16:58.206720856 +0100
+@@ -19,11 +19,14 @@
  EOF
  
  sed \
 -	-e '/^#/d'     \
-+	-e '/^$/d' \
-+	-e '/^[^acgn]/d'     \
-+	-e '/^.[^cfmst]/d'     \
-+	-e '/^..[^s_]/d'     \
++	-e '/^$/d'     \
++	-e '/^[^acgn]/d' \
++	-e '/^.[^cfmst]/d' \
++	-e '/^..[^s_]/d' \
  	-e 's/^.[^=]*_cv_//' \
  	-e 's/=\${.*=/=/'  \
  	-e 's/}$//'          \
--	config.cache | /bin/sh $TOP/cfg_edit.sh >>$OUT
-+	config.log | /bin/sh $TOP/cfg_edit.sh >>$OUT
+-	config.cache | $SHELL $TOP/cfg_edit.sh >>$OUT
++	config.log | $SHELL $TOP/cfg_edit.sh >>$OUT
  
  cat >>$OUT <<EOF
  };
---- lynx2-8-5/config.hin.orig	2004-01-29 23:54:28.865423112 +0100
-+++ lynx2-8-5/config.hin	2004-01-30 00:00:05.886188168 +0100
+diff -burN lynx2-8-5.orig/config.hin lynx2-8-5/config.hin
+--- lynx2-8-5.orig/config.hin	2004-02-14 22:10:58.373423832 +0100
++++ lynx2-8-5/config.hin	2004-02-14 22:22:52.560850840 +0100
 @@ -2,284 +2,284 @@
  #ifndef LYNX_CFG_H
  #define LYNX_CFG_H 1
@@ -47,19 +38,19 @@
 -#undef COPY_PATH		/* CF_PATH_PROG(cp) */
 -#undef CURS_PERFORMANCE		/* CF_CURS_PERFORMANCE */
 -#undef DEBUG			/* configure --enable-debug */
-+#undef ALL_CHARSETS
-+#undef ALT_CHAR_SET
++#undef ALL_CHARSETS		
++#undef ALT_CHAR_SET	
 +#undef ANSI_VARARGS
-+#undef ARCHIVE_ONLY
++#undef ARCHIVE_ONLY	
 +#undef BZIP2_PATH
 +#undef CAN_SET_ERRNO
 +#undef CHMOD_PATH
-+#undef CJK_EX
++#undef CJK_EX	
 +#undef COLOR_CURSES
 +#undef COMPRESS_PATH
 +#undef COPY_PATH
-+#undef CURS_PERFORMANCE	
-+#undef DEBUG
++#undef CURS_PERFORMANCE
++#undef DEBUG	
  #undef DECL_ERRNO
  #undef DECL_GETGRGID
  #undef DECL_GETGRNAM
@@ -104,19 +95,19 @@
 +#undef DISABLE_NEWS
 +#undef DISP_PARTIAL
 +#undef DONT_TRACK_INTERNAL_LINKS
-+#undef ENABLE_IPV6
-+#undef ENABLE_NLS
++#undef ENABLE_IPV6	
++#undef ENABLE_NLS	
 +#undef ENABLE_OPTS_CHANGE_EXEC
-+#undef EXEC_LINKS
++#undef EXEC_LINKS	
 +#undef EXEC_SCRIPTS
-+#undef EXP_ADDRLIST_PAGE
++#undef EXP_ADDRLIST_PAG
 +#undef EXP_ALT_BINDINGS
 +#undef EXP_CHARSET_CHOICE
-+#undef EXP_CHARTRANS_AUTOSWITCH
-+#undef EXP_JUSTIFY_ELTS
++#undef EXP_CHARTRANS_AUTOSWITCH	
++#undef EXP_JUSTIFY_ELTS	
 +#undef EXP_KEYBOARD_LAYOUT
 +#undef EXP_LOCALE_CHARSET
-+#undef EXP_LIBJS
++#undef EXP_LIBJS	
 +#undef EXP_NESTED_TABLES
 +#undef FANCY_CURSES
 +#undef GCC_NORETURN
@@ -126,14 +117,14 @@
 +#undef GZIP_PATH
 +#undef HAVE_ALLOCA
 +#undef HAVE_ALLOCA_H
-+#undef HAVE_ARGZ_H
++#undef HAVE_ARGZ_H	
  #undef HAVE_ARPA_INET_H
 -#undef HAVE_ASSUME_DEFAULT_COLORS /* ncurses extension */
 -#undef HAVE_BSD_TOUCHLINE	/* CF_CURS_TOUCHLINE */
 -#undef HAVE_CATGETS		/* defined if you want to use non-GNU catgets */
 +#undef HAVE_ASSUME_DEFAULT_COLORS
-+#undef HAVE_BSD_TOUCHLINE
-+#undef HAVE_CATGETS
++#undef HAVE_BSD_TOUCHLINE	
++#undef HAVE_CATGETS	
  #undef HAVE_CBREAK
  #undef HAVE_CURSESX_H
  #undef HAVE_CUSERID
@@ -145,7 +136,7 @@
 -#undef HAVE_FCNTL_H		/* have <fcntl.h> */
 +#undef HAVE_DELSCREEN
 +#undef HAVE_DIRENT_H
-+#undef HAVE_FCNTL_H
++#undef HAVE_FCNTL_H	
  #undef HAVE_FTIME
 -#undef HAVE_GAI_STRERROR	/* CF_CHECK_IPV6 */
 -#undef HAVE_GETADDRINFO		/* CF_CHECK_IPV6 */
@@ -175,7 +166,7 @@
 -#undef HAVE_LIBINTL_H		/* AM_GNU_GETTEXT, or cleanup from that */
 -#undef HAVE_LIBUTF8_H		/* may be needed for libncursesw */
 +#undef HAVE_LANGINFO_CODESET
-+#undef HAVE_LC_MESSAGES
++#undef HAVE_LC_MESSAGES	
 +#undef HAVE_LIBDBMALLOC
 +#undef HAVE_LIBDMALLOC
 +#undef HAVE_LIBGETTEXT_H
@@ -203,13 +194,13 @@
 -#undef HAVE_NCURSES_TERM_H	/* have <ncurses/term.h> */
 +#undef HAVE_NCURSESW_NCURSES_H
 +#undef HAVE_NCURSESW_TERM_H
-+#undef HAVE_NCURSES_H
++#undef HAVE_NCURSES_H	
 +#undef HAVE_NCURSES_NCURSES_H
 +#undef HAVE_NCURSES_TERM_H
  #undef HAVE_NEWPAD
  #undef HAVE_NEWTERM
 -#undef HAVE_NL_TYPES_H		/* AM_GNU_GETTEXT */
-+#undef HAVE_NL_TYPES_H
++#undef HAVE_NL_TYPES_H	
  #undef HAVE_PNOUTREFRESH
  #undef HAVE_POPEN
  #undef HAVE_PUTENV
@@ -223,7 +214,7 @@
 -#undef HAVE_SIGACTION		/* CF_FUNC_SIGACTION */
 -#undef HAVE_SIZECHANGE		/* CF_SIZECHANGE */
 -#undef HAVE_STDARG_H		/* CF_VARARGS */
-+#undef HAVE_SIGACTION
++#undef HAVE_SIGACTION	
 +#undef HAVE_SIZECHANGE
 +#undef HAVE_STDARG_H
  #undef HAVE_STDLIB_H
@@ -249,7 +240,7 @@
 -#undef HAVE_TERMIO_H		/* have <termio.h> */
 -#undef HAVE_TERM_H		/* have <term.h> */
 +#undef HAVE_SYSV_TOUCHLINE
-+#undef HAVE_SYS_DIR_H
++#undef HAVE_SYS_DIR_H	
 +#undef HAVE_SYS_FCNTL_H
 +#undef HAVE_SYS_FILIO_H
 +#undef HAVE_SYS_IOCTL_H
@@ -268,7 +259,7 @@
 -#undef HAVE_TYPE_UNIONWAIT	/* CF_UNION_WAIT */
 -#undef HAVE_UNISTD_H		/* have <unistd.h> */
 +#undef HAVE_TYPE_UNIONWAIT
-+#undef HAVE_UNISTD_H
++#undef HAVE_UNISTD_H	
  #undef HAVE_UNSETENV
 -#undef HAVE_USE_DEFAULT_COLORS	/* ncurses extension */
 -#undef HAVE_UTMP		/* CF_UTMP */
@@ -279,12 +270,12 @@
 -#undef HAVE_VALUES_H		/* AM_GNU_GETTEXT */
 -#undef HAVE_VARARGS_H		/* CF_VARARGS */
 +#undef HAVE_USE_DEFAULT_COLORS
-+#undef HAVE_UTMP
++#undef HAVE_UTMP	
 +#undef HAVE_UTMP_UT_HOST
 +#undef HAVE_UTMP_UT_SESSION
 +#undef HAVE_UTMP_UT_XSTATUS
 +#undef HAVE_UTMP_UT_XTIME
-+#undef HAVE_VALUES_H
++#undef HAVE_VALUES_H	
 +#undef HAVE_VARARGS_H
  #undef HAVE_VASPRINTF
 -#undef HAVE_VFORK_H		/* have <vfork.h> */
@@ -329,15 +320,15 @@
 -#undef NSL_FORK			/* CF_ARG_ENABLE(nsl-fork) */
 +#undef HAVE_XCURSES
 +#undef HAVE___ARGZ_COUNT
-+#undef HAVE___ARGZ_NEXT
-+#undef HAVE___ARGZ_STRINGIFY
-+#undef IGNORE_CTRL_C
++#undef HAVE___ARGZ_NEXT	
++#undef HAVE___ARGZ_STRINGIFY	
++#undef IGNORE_CTRL_C	
 +#undef INCLUDE_PROTOTYPES
-+#undef INSTALL_ARGS
++#undef INSTALL_ARGS	
 +#undef INSTALL_PATH
-+#undef LINUX
++#undef LINUX	
 +#undef LOCALE
-+#undef LONG_LIST
++#undef LONG_LIST	
 +#undef LYNXCGI_LINKS
 +#undef LYNX_CFG_FILE
 +#undef LYNX_LSS_FILE
@@ -345,21 +336,21 @@
 +#undef LY_FIND_LEAKS
 +#undef LY_TRACELINE
 +#undef MKDIR_PATH
-+#undef MV_PATH
++#undef MV_PATH	
 +#undef NCURSES
 +#undef NCURSES_BROKEN
 +#undef NEED_PTEM_H
 +#undef NEED_REMOVE
 +#undef NEED_WCHAR_H
-+#undef NGROUPS
++#undef NGROUPS	
 +#undef NO_CHANGE_EXECUTE_PERMS
-+#undef NO_CONFIG_INFO
++#undef NO_CONFIG_INFO	
 +#undef NO_EXTENDED_HTMLDTD
-+#undef NO_LYNX_TRACE
++#undef NO_LYNX_TRACE	
 +#undef NO_OPTION_FORMS
 +#undef NO_OPTION_MENU
 +#undef NO_PARENT_DIR_REFERENCE
-+#undef NSL_FORK
++#undef NSL_FORK		
  #undef OK_INSTALL
 -#undef OK_OVERRIDE		/* CF_ARG_DISABLE(dired-override) */
 -#undef OK_PERMIT		/* CF_ARG_DISABLE(dired-permit) */
@@ -371,7 +362,7 @@
 +#undef OK_PERMIT
 +#undef REAL_UNIX_SYSTEM
 +#undef RLOGIN_PATH
-+#undef RM_PATH
++#undef RM_PATH	
 +#undef SOCKS
  #undef STDC_HEADERS
 -#undef SYSTEM_MAIL		/* CF_DEFINE_PROG */
@@ -390,20 +381,20 @@
 -#undef ULTRIX			/* config.sub */
 -#undef UNCOMPRESS_PATH		/* CF_PATH_PROG(gunzip) */
 -#undef UNDERLINE_LINKS		/* CF_ARG_ENABLE(underlines) */
-+#undef SYSTEM_MAIL
++#undef SYSTEM_MAIL	
 +#undef SYSTEM_MAIL_FLAGS
 +#undef SYSTEM_NAME
-+#undef TAR_DOWN_OPTIONS
++#undef TAR_DOWN_OPTIONS	
 +#undef TAR_FILE_OPTIONS
-+#undef TAR_PATH
-+#undef TAR_PIPE_OPTIONS
++#undef TAR_PATH	
++#undef TAR_PIPE_OPTIONS	
 +#undef TAR_UP_OPTIONS
 +#undef TELNET_PATH
 +#undef TERMIO_AND_CURSES
 +#undef TERMIO_AND_TERMIOS
-+#undef TN3270_PATH
++#undef TN3270_PATH	
 +#undef TOUCH_PATH
-+#undef ULTRIX
++#undef ULTRIX	
 +#undef UNCOMPRESS_PATH
 +#undef UNDERLINE_LINKS
  #undef UNIX
@@ -453,44 +444,44 @@
 +#undef USE_BZLIB
 +#undef USE_COLOR_STYLE
 +#undef USE_DEFAULT_COLORS
-+#undef USE_EXECVP
++#undef USE_EXECVP	
 +#undef USE_EXTERNALS
 +#undef USE_FCNTL
-+#undef USE_FILE_UPLOAD
++#undef USE_FILE_UPLOAD	
 +#undef USE_GNUTLS_INCL
 +#undef USE_OPENSSL_INCL
-+#undef USE_PERSISTENT_COOKIES
-+#undef USE_PRETTYSRC
++#undef USE_PERSISTENT_COOKIES	
++#undef USE_PRETTYSRC	
 +#undef USE_READPROGRESS
 +#undef USE_SCROLLBAR
 +#undef USE_SLANG
 +#undef USE_SOCKS4_PREFIX
 +#undef USE_SOCKS5
 +#undef USE_SOURCE_CACHE
-+#undef USE_SSL
-+#undef USE_SYSV_UTMP
++#undef USE_SSL	
++#undef USE_SYSV_UTMP	
 +#undef USE_X509_SUPPORT
-+#undef USE_ZLIB
++#undef USE_ZLIB	
 +#undef UTF8
 +#undef UTMPX_FOR_UTMP
 +#undef UUDECODE_PATH
 +#undef WAITPID_USES_UNION
-+#undef WAIT_USES_UNION
++#undef WAIT_USES_UNION	
 +#undef WIDEC_CURSES
-+#undef XCURSES
++#undef XCURSES	
 +#undef ZCAT_PATH
-+#undef ZIP_PATH
-+#undef _ALL_SOURCE
-+#undef inline
++#undef ZIP_PATH	
++#undef _ALL_SOURCE		
++#undef inline		
 +#undef lynx_rand
 +#undef lynx_srand
-+#undef mode_t
++#undef mode_t	
 +#undef off_t
 +#undef pid_t
 +#undef uid_t
-+#undef ut_name
++#undef ut_name	
 +#undef ut_xstatus
-+#undef ut_xtime
++#undef ut_xtime	
  
  #ifdef GZIP_PATH
 -#undef OK_GZIP			/* CF_ARG_DISABLE(dired-gzip) */
@@ -509,7 +500,7 @@
  
  #ifdef ZIP_PATH
 -#undef OK_ZIP			/* CF_ARG_DISABLE(dired-zip) */
-+#undef OK_ZIP
++#undef OK_ZIP	
  #endif
  
  /*
@@ -530,3 +521,15 @@
  #endif
  
  #ifndef HAVE_LSTAT
+diff -burN lynx2-8-5.orig/makefile.in lynx2-8-5/makefile.in
+--- lynx2-8-5.orig/makefile.in	2004-02-14 22:10:58.401419576 +0100
++++ lynx2-8-5/makefile.in	2004-02-14 22:15:36.124199296 +0100
+@@ -394,7 +394,7 @@
+ 	@echo
+ 	@echo '**********************************************'
+ 
+-cfg_defs.h : $(srcdir)/cfg_defs.sh $(srcdir)/cfg_edit.sh config.cache lynx_cfg.h
++cfg_defs.h : $(srcdir)/cfg_defs.sh $(srcdir)/cfg_edit.sh config.log lynx_cfg.h
+ 	@rm -f $@
+ 	$(SHELL) -c 'SHELL=$(SHELL) $(SHELL) $(srcdir)/cfg_defs.sh $(srcdir)'
+ 

@@ -96,7 +96,6 @@ formlar ve tablolar için desteði vardýr.
 	--without-included-gettext \
 	--with-zlib \
 	--with-ssl \
-	--with-gnutls \
 	--enable-justify-elts \
 	--enable-nested-tables \
 	--enable-read-eta \

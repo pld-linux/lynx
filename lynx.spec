@@ -5,7 +5,7 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.4dev.14
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
@@ -19,12 +19,13 @@ Patch4:		%{name}-po_DESTDIR.patch
 Patch5:		%{name}-config.hin.patch
 Patch6:		%{name}-autoconf.patch
 URL:		http://lynx.browser.org/
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
 BuildRequires:	gettext-devel
 # BuildRequires:	socks5-devel
 Provides:	webclient
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	lynx-ssl
 
 %description
 This a terminal based WWW browser. While it does not make any attempt
@@ -94,19 +95,25 @@ CFLAGS="-I/usr/include/openssl -DUSE_SSL %{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW \
-	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes
+	$RPM_BUILD_ROOT%{_datadir}/lynx/help
+#	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes
 
 %{__make} install install-help \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# fix help
+mv -f $RPM_BUILD_ROOT%{_libdir}/lynx_help/* $RPM_BUILD_ROOT%{_datadir}/lynx/help
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW
 
 gzip -9nf C[HO]* PROBLEMS README samples/* test/* docs/README*
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 

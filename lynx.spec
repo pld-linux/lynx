@@ -23,7 +23,6 @@ Patch4:		%{name}-autoconf.patch
 Patch5:		%{name}-config.patch
 Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
-Patch8:		%{name}-ac25x.patch
 URL:		http://lynx.browser.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
@@ -87,7 +86,6 @@ formlar ve tablolar için desteði vardýr.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
 
 %build
 %{__autoconf}

@@ -681,7 +681,7 @@ diff -ruN lynx2-8-3/makefile.in lynx2-8-3.ssl/makefile.in
 +# about the SSL patch for Lynx, please see http://www.moxienet.com/lynx/.  
 +# This page also contains links which enable you to test your copy of Lynx'
 +# ability to make SSL connections.
-+SSL_LIBS= -lssl -lsslcrypto			# in PLD there are in /usr/lib
++SSL_LIBS= -lssl -lcrypto			# in PLD there are in /usr/lib
 +SSL_DIR= /usr/include/openssl
 +SSL_DEFINES= -I$(SSL_DIR) -DUSE_SSL
 +

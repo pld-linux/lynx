@@ -15,9 +15,7 @@ Source1:	%{name}.wmconfig
 Patch0:		lynx-pld.patch
 Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
-Patch3:		lynx-not_for_root.patch
 Patch4:		lynx.cfg.patch
-Patch5:		lynx-TEMP_SPACE.patch
 Patch6:		lynx-dev.19.patch
 Requires:	zlib >= 1.1.3-5
 Requires:	ncurses >= 4.2-12
@@ -28,10 +26,6 @@ This a terminal based WWW browser. While it does not make any attempt
 at displaying graphics, it has good support for HTML text formatting,
 forms, and tables.
 
-%description -l pl
-Lynx jest przegl±dark± WWW dzia³aj±c± w trybie tekstowym. Dobrze 
-formatuje tekst w HTML ale nie pozwala na wy¶wietlanie grafiki.
-
 %description -l de
 Dies ist ein WWW-Browser auf Terminal-Basis. Während kein Versuch 
 unternommen wird, Grafiken darzustellen, so bietet er doch guten 
@@ -40,6 +34,10 @@ Support für HTML-Textformatierung, Formulare und Tabellen.
 %description -l fr
 Navigateur WWW en mode texte. Bien qu'il n'affiche aucun graphique, il
 sait bien gérer le formatage HTML du texte, les formulaires et les tableaux.
+
+%description -l pl
+Lynx jest przegl±dark± WWW dzia³aj±c± w trybie tekstowym. Dobrze
+formatuje tekst w HTML ale nie pozwala na wy¶wietlanie grafiki.
 
 %description -l tr
 Metin ekranda çalýþan bir WWW tarayýcýdýr. Þekil gösteremese de, formlar ve
@@ -50,9 +48,7 @@ tablolar için desteði vardýr.
 %patch0 -p1 
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 %patch4 -p1
-%patch5 -p0
 %patch6 -p1
 
 %build
@@ -127,10 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 * Tue Feb 16 1999 Artur Frysiak <wiget@usa.net>
   [2.8.2dev.16-1d]
 - moved help and test files to /usr/share/lynx
-- added not_for_root patch (this is bugi software, run from root account
-  is dangerus)
 - changed default color scheme
-- added TEMP_SPACE patch ( now lynx save temp file in ~/tmp )
 
 * Fri Feb 05 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
   [2.8.2dev15-2d]

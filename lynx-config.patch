@@ -19,16 +19,17 @@ diff -Nur lynx2-8-4.orig/configure.in lynx2-8-4/configure.in
  	AC_DEFINE_UNQUOTED(LYNX_LSS_FILE,"$LYNX_LSS_FILE")
  	AC_MSG_RESULT($LYNX_LSS_FILE)
  	INSTALL_LSS=install-lss
-diff -Nur lynx2-8-4.orig/lynx.cfg lynx2-8-4/lynx.cfg
---- lynx2-8-4.orig/lynx.cfg	Sun Jun 10 16:24:29 2001
-+++ lynx2-8-4/lynx.cfg	Sun Jun 10 16:16:44 2001
-@@ -1,12 +1,12 @@
+diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
+--- lynx2-8-5.orig/lynx.cfg	Sun Jun 10 16:24:29 2001
++++ lynx2-8-5/lynx.cfg	Sun Jun 10 16:16:44 2001
+@@ -1,5 +1,5 @@
  # lynx.cfg file.
 -# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
 +# The default placement for this file is /etc/lynx.cfg (Unix)
  #                                     or Lynx_Dir:lynx.cfg (VMS)
  #
- #
+ # $Format: "#PRCS LYNX_VERSION \"$ProjectVersion$\""$
+@@ -11,7 +11,7 @@
  # Definition pairs are of the form  VARIABLE:DEFINITION
  # NO spaces are allowed between the pair items.
  #
@@ -70,9 +71,9 @@ diff -Nur lynx2-8-4.orig/lynx.cfg lynx2-8-4/lynx.cfg
  
  .h2 DEFAULT_INDEX_FILE
  # DEFAULT_INDEX_FILE is the default file retrieved when the
-diff -Nur lynx2-8-4.orig/makefile.in lynx2-8-4/makefile.in
---- lynx2-8-4.orig/makefile.in	Mon Apr  2 02:51:46 2001
-+++ lynx2-8-4/makefile.in	Sun Jun 10 16:29:52 2001
+diff -Nur lynx2-8-5.orig/makefile.in lynx2-8-5/makefile.in
+--- lynx2-8-5.orig/makefile.in	Mon Apr  2 02:51:46 2001
++++ lynx2-8-5/makefile.in	Sun Jun 10 16:29:52 2001
 @@ -48,16 +48,16 @@
  MANDIR= $(DESTDIR)$(mandir)
  
@@ -93,12 +94,12 @@ diff -Nur lynx2-8-4.orig/makefile.in lynx2-8-4/makefile.in
  HELPDIR= $(DESTDIR)$(helpdir)
  helpdir1= $(shell echo "$(helpdir)"|sed -e 's!^/!!')
  
-@@ -360,7 +360,7 @@
+@@ -328,7 +328,7 @@
  	@-rm -f help_files.tmp
  
- install-help : help_files.sed $(HELPDIR)
--	(cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's!/lynx_help$$!!'` && test $$WD != $$HEAD && rm -rf *)
-+	(cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's!/lynx/help$$!!'` && test $$WD != $$HEAD && rm -rf *)
+ install-help : help_files.sed $(HELPDIR) $(HELPDIR)/keystrokes
+-	- (cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's!/lynx_help$$!!'` && test $$WD != $$HEAD && rm -f * keystrokes/*)
++	- (cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's!/lynx/help$$!!'` && test $$WD != $$HEAD && rm -f * keystrokes/*)
  @LYNXCFG_MAKE@	@echo 'Making htmlized lynx.cfg'
  @LYNXCFG_MAKE@	cd src && make LYReadCFG.i
  @LYNXCFG_MAKE@	@-rm -f alphatoc.html body.html cattoc.html

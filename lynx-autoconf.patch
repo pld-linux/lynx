@@ -66,3 +66,24 @@
  	CF_PDCURSES_X11
  else
  	CF_TERMIO_AND_CURSES(LYCurses.h)
+diff -uNr lynx2-8-5/configure.in lynx2-8-5.new/configure.in
+--- lynx2-8-5/configure.in	Wed Jul  3 10:22:26 2002
++++ lynx2-8-5.new/configure.in	Wed Jul  3 10:21:23 2002
+@@ -863,7 +863,7 @@
+ AC_MSG_RESULT($use_externs)
+ if test $use_externs != "no" ; then
+ 	AC_DEFINE(USE_EXTERNALS)
+-	LIBOBJS="$LIBOBJS LYExtern.o"
++	AC_LIBOBJ("LYExtern")
+ fi
+ 
+ AC_MSG_CHECKING(if you want to use setfont support)
+@@ -1037,7 +1037,7 @@
+ AC_MSG_RESULT($use_dired)
+ 
+ if test ".$use_dired" != ".no" ; then
+-	LIBOBJS="$LIBOBJS LYLocal.o"
++	AC_LIBOBJ("LYLocal")
+ 	AC_DEFINE(DIRED_SUPPORT)
+ 
+ 	AC_MSG_CHECKING(if you wish to allow extracting from archives via DirEd)

@@ -23,10 +23,9 @@ URL:		http://lynx.browser.org/
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel >= 5.0
 Provides:	webclient
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libdir		%{_datadir}/lynx
-%define		_applnkdir	/usr/X11R6/share/applnk
 
 %description
 This a terminal based WWW browser. While it does not make any attempt at

@@ -1,0 +1,18 @@
+diff -ur lynx2-8-2/src/LYMain.c lynx2-8-2.new/src/LYMain.c
+--- lynx2-8-2/src/LYMain.c	Mon Feb  8 11:32:59 1999
++++ lynx2-8-2.new/src/LYMain.c	Tue Feb 16 14:49:19 1999
+@@ -690,6 +690,14 @@
+     textdomain ("lynx");
+ #endif /* HAVE_LIBINTL_H */
+ 
++#ifdef _USE_PLD
++ if (getuid () == 0 || geteuid () == 0) { 
++    printf ("This toy isn't for root\n");
++    exit (1); 
++  }
++  nice (10);
++ #endif
++  
+     /*
+      *	Initialize our startup and global variables.
+      */

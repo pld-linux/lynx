@@ -86,7 +86,7 @@ formlar ve tablolar için desteði vardýr.
 %patch6 -p1
 
 %build
-autoconf
+%{__autoconf}
 %configure \
 	--with-screen=slang \
 	--without-included-gettext \

@@ -4,7 +4,7 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.2dev.20
+Version:	2.8.2pre.2
 Release:	1
 Copyright:	GPL
 Group:		Networking
@@ -15,11 +15,10 @@ Patch0:		lynx-pld.patch
 Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
 Patch4:		lynx.cfg.patch
-Patch6:		lynx-dev.19.patch
 URL:		http://lynx.browser.org/
+BuildPrereq:	zlib-devel
+BuildPrereq:	ncurses-devel
 Requires:	indexhtml
-Requires:	zlib >= 1.1.3-5
-Requires:	ncurses >= 4.2-12
 Buildroot:	/tmp/%{name}-%{version}-%{release}-root
 
 %description
@@ -46,17 +45,16 @@ tablolar için desteði vardýr.
 
 %prep
 %setup  -q -n %{name}2-8-2
-%patch0 -p1 
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch4 -p1
-%patch6 -p1
 
 %build
 CFLAGS="-w" LDFLAGS="-s" \
 ./configure %{_target} \
 	--prefix=/usr \
-	--libdir=/etc \
+	--libdir=/usr/share/lynx \
 	--with-screen=ncurses \
 	--enable-nls \
 	--without-included-gettext \
@@ -69,24 +67,35 @@ CFLAGS="-w" LDFLAGS="-s" \
 	--enable-gzip-help \
 	--enable-libjs \
 	--enable-addrlist-page \
-	--with-zlib 
+	--enable-prettysrc \
+	--enable-source-cache \
+	--enable-color-style \
+	--enable-cgi-links \
+	--enable-exec-links \
+	--enable-exec-scripts \
+	--with-zlib  \
+	--without-socks \
+	--without-socks5 \
+	--without-ssl 
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/etc/X11/wmconfig \
-	$RPM_BUILD_ROOT/usr/share/lynx/help/keystrokes
+	$RPM_BUILD_ROOT/usr/share/lynx/help/keystrokes 
 
 make	prefix=$RPM_BUILD_ROOT/usr \
-	libdir=$RPM_BUILD_ROOT/etc \
+	libdir=$RPM_BUILD_ROOT/usr/share/lynx \
+	mandir=$RPM_BUILD_ROOT/usr/share/man/man1 \
 	helpdir=$RPM_BUILD_ROOT/usr/share/lynx/help \
 	install \
 	install-help
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
+#install samples/lynx.lss $RPM_BUILD_ROOT/usr/share/lynx/lynx.lss
 
-gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/* \
+gzip -9fn $RPM_BUILD_ROOT/usr/share/man/man1/* \
 	C[HO]* PROBLEMS README samples/* test/* docs/README*
 
 %clean
@@ -96,13 +105,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 
-%config %verify(not size mtime md5) /etc/lynx.cfg
-%config(missingok) /etc/X11/wmconfig/lynx
+/etc/X11/wmconfig/lynx
 
 %attr(755,root,root) /usr/bin/*
 
-/usr/man/man1/*
-/usr/share/lynx
+/usr/share/man/man1/*
+%dir /usr/share/lynx
+/usr/share/lynx/help
+%config %verify(not mtime size md5) /usr/share/lynx/lynx.lss
+%config %verify(not size mtime md5) /usr/share/lynx/lynx.cfg
 
 %lang(de) /usr/share/locale/de/LC_MESSAGES/lynx.mo
 %lang(es) /usr/share/locale/es/LC_MESSAGES/lynx.mo

@@ -12,9 +12,11 @@ Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
+# Source0-md5: cc9513bfea6443c99a83d29ff6147244
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Source3:	%{name}-non-english-man-pages.tar.bz2
+# Source3-md5: b5e02f86a8ee7bce4d8b97e4b6491714
 Patch0:		%{name}-pld.patch
 Patch1:		%{name}.cfg.patch
 Patch2:		%{name}-po_DESTDIR.patch

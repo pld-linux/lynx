@@ -1,6 +1,3 @@
-$Id$
-$Log$
-
 diff -ruN lynx2-8-3/WWW/Library/Implementation/HTAAUtil.c lynx2-8-3.ssl/WWW/Library/Implementation/HTAAUtil.c
 --- lynx2-8-3/WWW/Library/Implementation/HTAAUtil.c	Wed Oct 13 16:24:23 1999
 +++ lynx2-8-3.ssl/WWW/Library/Implementation/HTAAUtil.c	Tue Dec  7 18:50:28 1999
@@ -106,7 +103,7 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTFormat.c lynx2-8-3.ssl/WWW/Libr
  	    if (status == 0) {
 diff -ruN lynx2-8-3/WWW/Library/Implementation/HTNews.c lynx2-8-3.ssl/WWW/Library/Implementation/HTNews.c
 --- lynx2-8-3/WWW/Library/Implementation/HTNews.c	Thu Nov  4 03:41:39 1999
-+++ lynx2-8-3.ssl/WWW/Library/Implementation/HTNews.c	Tue Dec  7 18:50:38 1999
++++ lynx2-8-3.ssl/WWW/Library/Implementation/HTNews.c	Tue Dec  7 18:58:29 1999
 @@ -36,9 +36,26 @@
  #define SERVER_FILE "/usr/local/lib/rn/server"
  #endif /* SERVER_FILE */
@@ -242,9 +239,9 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTNews.c lynx2-8-3.ssl/WWW/Librar
 +		    status = SSL_connect(Handle);
 +
 +		    if (status <= 0) {
-+			CTRACE(tfp,
++			CTRACE((tfp,
 +"HTNews: Unable to complete SSL handshake for remote host '%s' (SSLerror = %d)\n",
-+			       url, status);
++			       url, status));
 +			HTAlert(
 +			    "Unable to make secure connection to remote host.");
 +			NEWS_NETCLOSE(s);
@@ -304,9 +301,9 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTNews.c lynx2-8-3.ssl/WWW/Librar
 +
 +    if (status <= 0) {
 +        channel_s = -1;
-+	CTRACE(tfp,
++	CTRACE((tfp,
 +"HTTP: Unable to complete SSL handshake for remote host '%s' (SSLerror = %d)\n",
-+		   url, status);
++		   url, status));
 +	HTAlert("Unable to make secure connection to remote host.");
 +	NEWS_NETCLOSE(s);
 +	s = -1;
@@ -664,7 +661,7 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/
  
 diff -ruN lynx2-8-3/makefile.in lynx2-8-3.ssl/makefile.in
 --- lynx2-8-3/makefile.in	Thu Nov 18 05:08:08 1999
-+++ lynx2-8-3.ssl/makefile.in	Tue Dec  7 17:24:24 1999
++++ lynx2-8-3.ssl/makefile.in	Tue Dec  7 19:05:43 1999
 @@ -70,6 +70,25 @@
  COMPRESS_PROG=@COMPRESS_PROG@
  COMPRESS_EXT=@COMPRESS_EXT@
@@ -684,9 +681,9 @@ diff -ruN lynx2-8-3/makefile.in lynx2-8-3.ssl/makefile.in
 +# about the SSL patch for Lynx, please see http://www.moxienet.com/lynx/.  
 +# This page also contains links which enable you to test your copy of Lynx'
 +# ability to make SSL connections.
-+SSL_DIR= /usr/local/ssl
-+SSL_LIBS= -L$(SSL_DIR)/lib -lssl -lcrypto
-+SSL_DEFINES= -I$(SSL_DIR)/include -DUSE_SSL
++SSL_LIBS= -lssl -lsslcrypto			# in PLD there are in /usr/lib
++SSL_DIR= /usr/include/openssl
++SSL_DEFINES= -I$(SSL_DIR) -DUSE_SSL
 +
  # !!!!!!!!!!! SUN resolv LIBRARY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  # To include resolv in the LIBS="" list for SUN 3, 4 or Solaris OS,

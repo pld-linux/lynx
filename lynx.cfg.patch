@@ -15,8 +15,8 @@ diff -ru lynx2-8-2.old/lynx.cfg lynx2-8-2/lynx.cfg
  # http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
  #   This should be changed to the local path.
  #
--HELPFILE:http://www.trill-home.com/lynx/lynx_help/lynx_help_main.html
-+#HELPFILE:http://www.trill-home.com/lynx/lynx_help/lynx_help_main.html
+-HELPFILE:http://www.subir.com/lynx/lynx_help/lynx_help_main.html
++#HELPFILE:http://www.subir.com/lynx/lynx_help/lynx_help_main.html
  .ex
 -#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
 +HELPFILE:file://localhost/usr/share/lynx/help/lynx_help_main.html

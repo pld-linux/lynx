@@ -62,7 +62,7 @@ diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
 @@ -112,9 +113,8 @@
  #   This should be changed to the local path.
  #
- #HELPFILE:http://www.trill-home.com/lynx/lynx_help/lynx_help_main.html
+ #HELPFILE:http://www.subir.com/lynx/lynx_help/lynx_help_main.html
 -.ex
 -HELPFILE:file://localhost/usr/share/lynx/help/lynx_help_main.html
 -
@@ -74,7 +74,7 @@ diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
 diff -Nur lynx2-8-5.orig/makefile.in lynx2-8-5/makefile.in
 --- lynx2-8-5.orig/makefile.in	Mon Apr  2 02:51:46 2001
 +++ lynx2-8-5/makefile.in	Sun Jun 10 16:29:52 2001
-@@ -48,16 +48,16 @@
+@@ -48,15 +48,15 @@
  MANDIR= $(DESTDIR)$(mandir)
  
  ## Where you want the lynx.cfg file installed
@@ -86,23 +86,22 @@ diff -Nur lynx2-8-5.orig/makefile.in lynx2-8-5/makefile.in
 -docdir= @libdir@/lynx_doc
 +docdir= @datadir@/lynx_doc
  DOCDIR= $(DESTDIR)$(docdir)
- docdir1= $(shell echo "$(docdir)"|sed -e 's!^/!!')
  
  ## Where you want the help-files installed
 -helpdir= @libdir@/lynx_help
 +helpdir= @datadir@/lynx/help
  HELPDIR= $(DESTDIR)$(helpdir)
- helpdir1= $(shell echo "$(helpdir)"|sed -e 's!^/!!')
  
-@@ -328,7 +328,7 @@
+ ##set the relative location of the WWW library Implementation directory,
+@@ -326,7 +326,7 @@
  	@-rm -f help_files.tmp
  
- install-help : help_files.sed $(HELPDIR) $(HELPDIR)/keystrokes
--	- (cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's!/lynx_help$$!!'` && test $$WD != $$HEAD && rm -f * keystrokes/*)
-+	- (cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's!/lynx/help$$!!'` && test $$WD != $$HEAD && rm -f * keystrokes/*)
+ install-help : help_files.sed $(HELPDIR)
+-	- (cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's!/lynx_help$$!!'` && test $$WD != $$HEAD && rm -fr *)
++	- (cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's!/lynx/help$$!!'` && test $$WD != $$HEAD && rm -fr *)
+ 	test -d $(HELPDIR)/keystrokes || mkdir $(HELPDIR)/keystrokes
  @LYNXCFG_MAKE@	@echo 'Making htmlized lynx.cfg'
  @LYNXCFG_MAKE@	cd src && make LYReadCFG.i
- @LYNXCFG_MAKE@	@-rm -f alphatoc.html body.html cattoc.html
 @@ -438,12 +438,12 @@
  
  uninstall \
@@ -140,10 +139,10 @@ diff -Nur lynx2-8-4.orig/userdefs.h lynx2-8-4/userdefs.h
  #endif /* LYNX_CFG_FILE */
  #endif /* HAVE_CONFIG_H */
 @@ -478,7 +478,7 @@
-  * http://www.trill-home.com/lynx/lynx_help/lynx_help_main.html
+  * http://www.subir.com/lynx/lynx_help/lynx_help_main.html
   *   This should be changed here or in lynx.cfg to the local path.
   */
--#define HELPFILE "http://www.trill-home.com/lynx/lynx_help/lynx_help_main.html"
+-#define HELPFILE "http://www.subir.com/lynx/lynx_help/lynx_help_main.html"
 +#define HELPFILE "file://localhost/usr/share/lynx/help/lynx_help_main.html.gz"
  /* #define HELPFILE "file://localhost/PATH_TO/lynx_help/lynx_help_main.html" */
  

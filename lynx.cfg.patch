@@ -11,17 +11,18 @@ diff -ru lynx2-8-2.old/lynx.cfg lynx2-8-2/lynx.cfg
  #
  # As an alternative, you may want to use a local URL.  A good choice for this is
  # the user's home directory:
-@@ -63,8 +64,8 @@
+@@ -109,9 +109,9 @@
  # http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
  #   This should be changed to the local path.
  #
--HELPFILE:http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
+-HELPFILE:http://www.trill-home.com/lynx/lynx_help/lynx_help_main.html
++#HELPFILE:http://www.trill-home.com/lynx/lynx_help/lynx_help_main.html
+ .ex
 -#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
-+#HELPFILE:http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
 +HELPFILE:file://localhost/usr/share/lynx/help/lynx_help_main.html
  
+ .h2 DEFAULT_INDEX_FILE
  # DEFAULT_INDEX_FILE is the default file retrieved when the
- # user presses the 'I' key when viewing any document.
 @@ -326,7 +327,7 @@
  # Older browser versions will fail so keep NCR_IN_BOOKMARKS:FALSE if you
  # plan to use them.

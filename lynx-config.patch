@@ -11,7 +11,7 @@ diff -Nur lynx2-8-2/lynx.cfg lynx2-8-2.pld/lynx.cfg
  # Definition pairs are of the form  VARIABLE:DEFINITION
  # NO spaces are allowed between the pair items.
  #
--#  If you do not have write access to /usr/local/bin you may change
+-#  If you do not have write access to /usr/local/lib you may change
 +#  If you do not have write access to /usr/bin you may change
  #  the default location of this file in the userdefs.h file and recompile,
  #  or specify its location on the command line with the "-cfg"

@@ -4,10 +4,11 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.4pre.1
-Release:	2
+Version:	2.8.5dev.2
+Release:	1
 License:	GPL
 Group:		Applications/Networking
+Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
 Source1:	%{name}.desktop
@@ -17,15 +18,13 @@ Patch2:		%{name}-po_DESTDIR.patch
 Patch3:		%{name}-config.hin.patch
 Patch4:		%{name}-autoconf.patch
 Patch5:		%{name}-config.patch
-Patch6:		%{name}-SA_LEN.patch
 URL:		http://lynx.browser.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
 BuildRequires:	gettext-devel
-BuildRequires:	autoconf
+#BuildRequires:	autoconf
 BuildRequires:	openssl-devel >= 0.9.6b
-%requires_eq	openssl
 #BuildRequires:	socks5-devel
 Provides:	webclient
 Obsoletes:	lynx-ssl
@@ -54,18 +53,15 @@ Metin ekranda çalýþan bir WWW tarayýcýdýr. Þekil gösteremese de,
 formlar ve tablolar için desteði vardýr.
 
 %prep
-%setup  -q -n %{name}2-8-4
+%setup  -q -n %{name}2-8-5
 %patch0 -p1 
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 %build
-#rm -f configure
-#chmod 644 aclocal.m4
 #aclocal
 #autoconf
 %configure2_13 \

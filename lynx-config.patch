@@ -73,7 +73,7 @@ diff -Nur lynx2-8-4.orig/lynx.cfg lynx2-8-4/lynx.cfg
 diff -Nur lynx2-8-4.orig/makefile.in lynx2-8-4/makefile.in
 --- lynx2-8-4.orig/makefile.in	Mon Apr  2 02:51:46 2001
 +++ lynx2-8-4/makefile.in	Sun Jun 10 16:29:52 2001
-@@ -48,15 +48,15 @@
+@@ -48,16 +48,16 @@
  MANDIR= $(DESTDIR)$(mandir)
  
  ## Where you want the lynx.cfg file installed
@@ -85,13 +85,14 @@ diff -Nur lynx2-8-4.orig/makefile.in lynx2-8-4/makefile.in
 -docdir= @libdir@/lynx_doc
 +docdir= @datadir@/lynx_doc
  DOCDIR= $(DESTDIR)$(docdir)
+ docdir1= $(shell echo "$(docdir)"|sed -e 's!^/!!')
  
  ## Where you want the help-files installed
 -helpdir= @libdir@/lynx_help
 +helpdir= @datadir@/lynx/help
  HELPDIR= $(DESTDIR)$(helpdir)
+ helpdir1= $(shell echo "$(helpdir)"|sed -e 's!^/!!')
  
- ##set the relative location of the WWW library Implementation directory,
 @@ -360,7 +360,7 @@
  	@-rm -f help_files.tmp
  

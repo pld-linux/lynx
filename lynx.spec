@@ -4,22 +4,24 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.4dev.3
+Version:	2.8.4dev.7
 Release:	2
 License:	GPL
 URL:		http://lynx.browser.org
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
-Source1:	lynx.desktop
-Patch0:		lynx-pld.patch
-Patch1:		lynx-config.patch
-Patch2:		lynx.cfg.patch
-Patch3:		http://www.moxienet.com/lynx/lynx-283-ssl.patch.bz2
-Patch4:		lynx-overflow.patch
-Patch5:		lynx-po_DESTDIR.patch
+Source1:	%{name}.desktop
+Patch0:		%{name}-pld.patch
+Patch1:		%{name}-config.patch
+Patch2:		%{name}.cfg.patch
+Patch3:		http://www.moxienet.com/lynx/%{name}-283-ssl.patch.bz2
+Patch4:		%{name}-overflow.patch
+Patch5:		%{name}-po_DESTDIR.patch
+Patch6:		%{name}-config.hin.patch
 BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
+BuildRequires:	gettext-devel
 # BuildRequires:	socks5-devel
 Provides:	webclient
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,6 +57,7 @@ formlar ve tablolar için desteði vardýr.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 LDFLAGS="-s"; export LDFLAGS
@@ -72,6 +75,7 @@ LDFLAGS="-s"; export LDFLAGS
 	--enable-externs \
 	--enable-gzip-help \
 	--enable-internal-links \
+	--enable-ipv6 \
 	--enable-libjs \
 	--enable-nls \
 	--enable-nsl-fork \

@@ -1,13 +1,16 @@
+$Id$
+$Log$
+
 diff -ruN lynx2-8-3/WWW/Library/Implementation/HTAAUtil.c lynx2-8-3.ssl/WWW/Library/Implementation/HTAAUtil.c
 --- lynx2-8-3/WWW/Library/Implementation/HTAAUtil.c	Wed Oct 13 16:24:23 1999
-+++ lynx2-8-3.ssl/WWW/Library/Implementation/HTAAUtil.c	Tue Dec  7 17:24:24 1999
++++ lynx2-8-3.ssl/WWW/Library/Implementation/HTAAUtil.c	Tue Dec  7 18:50:28 1999
 @@ -49,6 +49,13 @@
  #include <HTAssoc.h>	/* Assoc list		*/
  #include <HTTCP.h>
  
 +#ifdef USE_SSL
 +#define free_func free__func
-+#include <ssl.h>
++#include <openssl/ssl.h>
 +#undef free_func
 +PRIVATE SSL * Handle = NULL;	/* The SSL Handle	*/
 +#endif /* USE_SSL */
@@ -32,14 +35,14 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTAAUtil.c lynx2-8-3.ssl/WWW/Libr
  		return line;
 diff -ruN lynx2-8-3/WWW/Library/Implementation/HTFormat.c lynx2-8-3.ssl/WWW/Library/Implementation/HTFormat.c
 --- lynx2-8-3/WWW/Library/Implementation/HTFormat.c	Wed Dec  1 04:33:02 1999
-+++ lynx2-8-3.ssl/WWW/Library/Implementation/HTFormat.c	Tue Dec  7 17:24:24 1999
++++ lynx2-8-3.ssl/WWW/Library/Implementation/HTFormat.c	Tue Dec  7 18:50:07 1999
 @@ -16,6 +16,12 @@
  */
  #include <HTFormat.h>
  
 +#ifdef USE_SSL
 +#define free_func free__func
-+#include <ssl.h>
++#include <openssl/ssl.h>
 +#undef free_func
 +#endif /* USE_SSL */
 +
@@ -65,11 +68,11 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTFormat.c lynx2-8-3.ssl/WWW/Libr
 +		if (status == 0)
 +		    return (char)EOF;
 +		if (status == HT_INTERRUPTED) {
-+		    CTRACE(tfp, "HTFormat: Interrupted in HTGetSSLCharacter\n");
++		    CTRACE((tfp, "HTFormat: Interrupted in HTGetSSLCharacter\n"));
 +		    interrupted_in_htgetcharacter = 1;
 +		    return (char)EOF;
 +		}
-+		CTRACE(tfp, "HTFormat: SSL_read error %d\n", status);
++		CTRACE((tfp, "HTFormat: SSL_read error %d\n", status));
 +		return (char)EOF; /* -1 is returned by UCX
 +				     at end of HTTP link */
 +	    }
@@ -103,14 +106,14 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTFormat.c lynx2-8-3.ssl/WWW/Libr
  	    if (status == 0) {
 diff -ruN lynx2-8-3/WWW/Library/Implementation/HTNews.c lynx2-8-3.ssl/WWW/Library/Implementation/HTNews.c
 --- lynx2-8-3/WWW/Library/Implementation/HTNews.c	Thu Nov  4 03:41:39 1999
-+++ lynx2-8-3.ssl/WWW/Library/Implementation/HTNews.c	Tue Dec  7 17:26:41 1999
++++ lynx2-8-3.ssl/WWW/Library/Implementation/HTNews.c	Tue Dec  7 18:50:38 1999
 @@ -36,9 +36,26 @@
  #define SERVER_FILE "/usr/local/lib/rn/server"
  #endif /* SERVER_FILE */
  
 +#ifdef USE_SSL
 +#define free_func free__func
-+#include <ssl.h>
++#include <openssl/ssl.h>
 +#undef free_func
 +extern SSL_CTX * ssl_ctx;
 +extern SSL * HTGetSSLHandle NOPARAMS;
@@ -320,7 +323,7 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTNews.c lynx2-8-3.ssl/WWW/Librar
  #define _HTNEWS_C_1_INIT { "news", HTLoadNews, NULL }
 diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/Implementation/HTTP.c
 --- lynx2-8-3/WWW/Library/Implementation/HTTP.c	Thu Nov 18 05:08:08 1999
-+++ lynx2-8-3.ssl/WWW/Library/Implementation/HTTP.c	Tue Dec  7 18:43:19 1999
++++ lynx2-8-3.ssl/WWW/Library/Implementation/HTTP.c	Tue Dec  7 18:47:14 1999
 @@ -13,6 +13,13 @@
  #include <HTTP.h>
  #include <LYUtils.h>
@@ -478,16 +481,16 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/
 +      if (status <= 0) {
 +#if SSLEAY_VERSION_NUMBER >= 0x0900
 +	  if (try_tls) {
-+              CTRACE(tfp, "HTTP: Retrying connection without TLS\n");
++              CTRACE((tfp, "HTTP: Retrying connection without TLS\n"));
 +	      _HTProgress("Retrying connection.");
 +	      try_tls = FALSE;
 +	      if (did_connect)
 +	          HTTP_NETCLOSE(s, handle);
 +      	      goto try_again;
 +	  } else {
-+              CTRACE(tfp,
++              CTRACE((tfp,
 +"HTTP: Unable to complete SSL handshake for remote host '%s' (SSLerror = %d)\n",
-+				url, status);
++				url, status));
 +      	      HTAlert("Unable to make secure connection to remote host.");
 +	      if (did_connect)
 +	          HTTP_NETCLOSE(s, handle);

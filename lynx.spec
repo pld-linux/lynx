@@ -7,14 +7,16 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(pt_BR):	Navegador web modo texto
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.5dev.12
-Release:	1
+Version:	2.8.5rel.1
+Release:	1.1
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
+# Source0-md5:	d1e5134e5d175f913c16cb6768bc30eb
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Source3:	%{name}-non-english-man-pages.tar.bz2
+Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
+# Source3-md5:	b5e02f86a8ee7bce4d8b97e4b6491714
 Patch0:		%{name}-pld.patch
 Patch1:		%{name}.cfg.patch
 Patch2:		%{name}-po_DESTDIR.patch
@@ -23,6 +25,7 @@ Patch4:		%{name}-autoconf.patch
 Patch5:		%{name}-config.patch
 Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
+Patch8:		%{name}-fixcrash.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	gettext-devel
@@ -86,6 +89,7 @@ formlar ve tablolar için desteði vardýr.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 %{__autoconf}

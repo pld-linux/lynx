@@ -5,7 +5,7 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.4dev.7
-Release:	2
+Release:	3
 License:	GPL
 URL:		http://lynx.browser.org
 Group:		Applications/Networking
@@ -86,8 +86,8 @@ LDFLAGS="-s"; export LDFLAGS
 #	--with-socks5=%{_prefix} \
 #	--enable-color-style \
 
-%{__make} SSL_LIBS= "-lssl -lsslcrypto " \
-	SSL_DEFINES= "-I%{_includedir}/ssl -DUSE_SSL"
+%{__make} SSL_LIBS="-lssl -lcrypto" \
+	SSL_DEFINES="-I%{_includedir}/openssl -DUSE_SSL"
 
 %install
 rm -rf $RPM_BUILD_ROOT

@@ -1,0 +1,22 @@
+--- lynx2-8-5/WWW/Library/Implementation/HTFile.c.orig	Sun Jun 30 23:38:06 2002
++++ lynx2-8-5/WWW/Library/Implementation/HTFile.c	Sun Jun 30 23:46:16 2002
+@@ -2495,9 +2495,18 @@
+ 	*/
+ 	if (HTStat(localname,&dir_info) == -1)	   /* get file information */
+ 	{
+-				/* if can't read file information */
++	
++	    char *tmp_localname = (char *)malloc(strlen(localname) + 4);
+ 	    CTRACE((tfp, "HTLoadFile: can't stat %s\n", localname));
+ 
++	    if (tmp_localname) {
++		stpcpy( stpcpy( tmp_localname, localname), ".gz" );
++		FREE(localname);
++		localname = tmp_localname;
++	    }
++	    /* if can't read file information */
++	    
++
+ 	}  else {		/* Stat was OK */
+ 
+ 	    if (S_ISDIR(dir_info.st_mode)) {

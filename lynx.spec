@@ -5,8 +5,8 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.3dev.16
-Release:	2
-Copyright:	GPL
+Release:	3
+License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://sol.slcc.edu/lynx/current/%{name}%{version}.tar.bz2
@@ -21,27 +21,29 @@ Patch6:		lynx-283d16-ssl.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel >= 5.0
+Provides:	webclient
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define		_libdir		%{_datadir}/lynx
+%define		_applnkdir	/usr/X11R6/share/applnk
 
 %description
-This a terminal based WWW browser. While it does not make any attempt
-at displaying graphics, it has good support for HTML text formatting,
-forms, and tables.
+This a terminal based WWW browser. While it does not make any attempt at
+displaying graphics, it has good support for HTML text formatting, forms,
+and tables.
 
 %description -l de
-Dies ist ein WWW-Browser auf Terminal-Basis. Während kein Versuch 
-unternommen wird, Grafiken darzustellen, so bietet er doch guten 
-Support für HTML-Textformatierung, Formulare und Tabellen. 
+Dies ist ein WWW-Browser auf Terminal-Basis. Während kein Versuch
+unternommen wird, Grafiken darzustellen, so bietet er doch guten  Support
+für HTML-Textformatierung, Formulare und Tabellen.
 
 %description -l fr
-Navigateur WWW en mode texte. Bien qu'il n'affiche aucun graphique, il
-sait bien gérer le formatage HTML du texte, les formulaires et les tableaux.
+Navigateur WWW en mode texte. Bien qu'il n'affiche aucun graphique, il sait
+bien gérer le formatage HTML du texte, les formulaires et les tableaux.
 
 %description -l pl
-Lynx jest przegl±dark± WWW dzia³aj±c± w trybie tekstowym. Dobrze
-formatuje tekst w HTML, ale nie pozwala na wy¶wietlanie grafiki.
+Lynx jest przegl±dark± WWW dzia³aj±c± w trybie tekstowym. Dobrze formatuje
+tekst w HTML, ale nie pozwala na wy¶wietlanie grafiki.
 
 %description -l tr
 Metin ekranda çalýþan bir WWW tarayýcýdýr. Þekil gösteremese de, formlar ve
@@ -97,16 +99,15 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Networking/WWW
-#	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes 
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Networking/WWW
 
-make install install-help\
+make install install-help \
 	DESTDIR=$RPM_BUILD_ROOT \
 	helpdir=%{_libdir}/help
 
-install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Networking/WWW/lynx.desktop
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Networking/WWW/lynx.desktop
 
-gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	C[HO]* PROBLEMS README samples/* test/* docs/README*
 
 %find_lang %{name}
@@ -118,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 
-/usr/X11R6/share/applnk/Networking/WWW/lynx.desktop
+%{_applnkdir}/Networking/WWW/lynx.desktop
 
 %attr(755,root,root) %{_bindir}/*
 

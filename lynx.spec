@@ -73,6 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Sun Aug 30 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [2.8-5]
+- added Group(pl),
 - added -q %setup parameter,
 - changed Buildroot to /tmp/%%{name}-%%{version}-root,
 - URL in HELPFILE in /etc/lynx.cfh changed to localhost,

@@ -15,7 +15,6 @@ Patch0:		lynx-pld.patch
 Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
 Patch4:		lynx.cfg.patch
-Patch5:		lynx-noroot.patch
 URL:		http://lynx.browser.org/
 BuildPrereq:	zlib-devel
 BuildPrereq:	ncurses-devel
@@ -50,7 +49,6 @@ tablolar için desteði vardýr.
 %patch1 -p1
 %patch2 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 CFLAGS="-w" LDFLAGS="-s" \

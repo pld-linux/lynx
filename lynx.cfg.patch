@@ -1,0 +1,65 @@
+diff -ur lynx2-8-2/lynx.cfg lynx2-8-2.new/lynx.cfg
+--- lynx2-8-2/lynx.cfg	Tue Feb 16 17:58:05 1999
++++ lynx2-8-2.new/lynx.cfg	Tue Feb 16 17:45:27 1999
+@@ -41,7 +41,8 @@
+ #  replace PATH_TO with the complete path to FILENAME
+ #  use Unix SHELL syntax and include the device on VMS systems)
+ #
+-STARTFILE:http://lynx.browser.org/
++#STARTFILE:http://lynx.browser.org/
++STARTFILE:file:/usr/doc/HTML/index.html
+ 
+ # HELPFILE must be defined as a URL and must have a
+ # complete path if local:
+@@ -53,8 +54,8 @@
+ # http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
+ #   This should be changed to the local path.
+ #
+-HELPFILE:http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
+-#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
++#HELPFILE:http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
++HELPFILE:file://localhost/usr/share/lynx/lynx_help/lynx_help_main.html
+ 
+ # DEFAULT_INDEX_FILE is the default file retrieved when the
+ # user presses the 'I' key when viewing any document.
+@@ -315,7 +316,7 @@
+ # Older browser versions will fail so keep NCR_IN_BOOKMARKS:FALSE if you
+ # plan to use them.
+ #
+-#NCR_IN_BOOKMARKS:FALSE
++NCR_IN_BOOKMARKS:TRUE
+ 
+ # FORCE_8BIT_TOUPPER overrides locale settings and uses internal 8-bit
+ # case-conversion mechanism for case-insensitive searches in non-ASCII display
+@@ -1476,6 +1477,8 @@
+ #VIEWER:image/x-tiff:xli %s&:XWINDOWS
+ #VIEWER:image/jpeg:xli %s&:XWINDOWS
+ #VIEWER:video/mpeg:mpeg_play %s &:XWINDOWS
++VIEWER:image/gif:zgv %s:NON_XWINDOWS
++VIEWER:image/jpeg:zgv %s:NON_XWINDOWS
+ 
+ # The global and personal MAILCAP files allow you to specify external
+ # viewers to be spawned when Lynx encounters different MIME types, which
+@@ -1831,14 +1834,14 @@
+ #
+ # Uncomment and change any of the compilation defaults.
+ #
+-#COLOR:0:black:white
+-#COLOR:1:blue:white
+-#COLOR:2:yellow:blue
+-#COLOR:3:green:white
+-#COLOR:4:magenta:white
+-#COLOR:5:blue:white
+-#COLOR:6:red:white
+-#COLOR:7:magenta:cyan
++COLOR:0:black:lightgray
++COLOR:1:blue:lightgray
++COLOR:2:yellow:blue
++COLOR:3:black:lightgray
++COLOR:4:black:lightgray
++COLOR:5:blue:lightgray
++COLOR:6:white:blue
++COLOR:7:lightgray:black
+ 
+ # External application support.  This feature allows Lynx to pass a given
+ # URL to an external program.  It was written for three reasons.

@@ -1,0 +1,11 @@
+--- userdefs.h.temp	Tue Feb 16 17:32:46 1999
++++ userdefs.h	Tue Feb 16 18:43:49 1999
+@@ -326,7 +326,7 @@
+  * The definition here can be overridden at run time by setting a
+  * "LYNX_TEMP_SPACE" environment symbol.
+  */
+-#define TEMP_SPACE "/tmp/"
++#define TEMP_SPACE "~/tmp/"
+ 
+ /********************************
+  * Comment this line out to let the user enter his/her email address

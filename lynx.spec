@@ -5,7 +5,7 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.3dev.16
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe

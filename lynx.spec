@@ -136,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc CHANGES COPYHEADERS PROBLEMS README samples test docs/README*
+%doc CHANGES COPYHEADER PROBLEMS README samples test docs/README*
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lynx.cfg
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/lynx

@@ -23,14 +23,14 @@
  	-e 's/^.[^=]*_cv_//' \
  	-e 's/=\${.*=/=/'  \
  	-e 's/}$//'          \
--	config.cache | $TOP/cfg_edit.sh >>$OUT
-+	config.log | $TOP/cfg_edit.sh >>$OUT
+-	config.cache | /bin/sh $TOP/cfg_edit.sh >>$OUT
++	config.log | /bin/sh $TOP/cfg_edit.sh >>$OUT
  
  cat >>$OUT <<EOF
  };
---- lynx2-8-5/config.hin.orig	Mon Oct  1 22:45:02 2001
-+++ lynx2-8-5/config.hin	Mon Oct  1 23:02:02 2001
-@@ -2,274 +2,274 @@
+--- lynx2-8-5/config.hin.orig	2004-01-18 21:21:27.860909328 +0100
++++ lynx2-8-5/config.hin	2004-01-18 21:30:37.920287592 +0100
+@@ -2,278 +2,278 @@
  #ifndef LYNX_CFG_H
  #define LYNX_CFG_H 1
  
@@ -82,13 +82,10 @@
 -#undef EXP_ALT_BINDINGS		/* CF_ARG_ENABLE(alt-bindings) */
 -#undef EXP_CHARSET_CHOICE	/* CF_ARG_ENABLE(charset-choice) */
 -#undef EXP_CHARTRANS_AUTOSWITCH	/* CF_ARG_ENABLE(font-switch) */
--#undef EXP_FILE_UPLOAD		/* CF_ARG_ENABLE(file-upload) */
 -#undef EXP_JUSTIFY_ELTS		/* CF_ARG_ENABLE(justify-elts) */
 -#undef EXP_KEYBOARD_LAYOUT	/* CF_ARG_ENABLE(kbd-layout) */
 -#undef EXP_LIBJS		/* CF_ARG_ENABLE(libjs) */
 -#undef EXP_NESTED_TABLES	/* CF_ARG_ENABLE(nested-tables) */
--#undef EXP_PERSISTENT_COOKIES	/* CF_ARG_ENABLE(persistent-cookies) */
--#undef EXP_READPROGRESS		/* CF_ARG_ENABLE(read-eta) */
 -#undef FANCY_CURSES		/* CF_FANCY_CURSES */
 -#undef GCC_NORETURN		/* CF_GCC_ATTRIBUTES */
 -#undef GCC_PRINTF		/* CF_GCC_ATTRIBUTES */
@@ -115,13 +112,10 @@
 +#undef EXP_ALT_BINDINGS
 +#undef EXP_CHARSET_CHOICE
 +#undef EXP_CHARTRANS_AUTOSWITCH
-+#undef EXP_FILE_UPLOAD
 +#undef EXP_JUSTIFY_ELTS
 +#undef EXP_KEYBOARD_LAYOUT
 +#undef EXP_LIBJS
 +#undef EXP_NESTED_TABLES
-+#undef EXP_PERSISTENT_COOKIES
-+#undef EXP_READPROGRESS
 +#undef FANCY_CURSES
 +#undef GCC_NORETURN
 +#undef GCC_PRINTF
@@ -154,7 +148,7 @@
 -#undef HAVE_GAI_STRERROR	/* CF_CHECK_IPV6 */
 -#undef HAVE_GETADDRINFO		/* CF_CHECK_IPV6 */
 +#undef HAVE_GAI_STRERROR
-+#undef HAVE_GETADDRINFO	
++#undef HAVE_GETADDRINFO
  #undef HAVE_GETATTRS
  #undef HAVE_GETBEGX
  #undef HAVE_GETBEGY
@@ -199,15 +193,15 @@
 +#undef HAVE_MUNMAP
  #undef HAVE_NAPMS
 -#undef HAVE_NCURSESW_NCURSES_H	/* defined if we include <ncursesw/ncurses.h> */
+-#undef HAVE_NCURSESW_TERM_H	/* have <ncursesw/term.h> */
 -#undef HAVE_NCURSES_H		/* defined if we include <ncurses.h> */
 -#undef HAVE_NCURSES_NCURSES_H	/* defined if we include <ncurses/ncurses.h> */
 -#undef HAVE_NCURSES_TERM_H	/* have <ncurses/term.h> */
--#undef HAVE_NCURSESW_TERM_H	/* have <ncursesw/term.h> */
 +#undef HAVE_NCURSESW_NCURSES_H
++#undef HAVE_NCURSESW_TERM_H
 +#undef HAVE_NCURSES_H
 +#undef HAVE_NCURSES_NCURSES_H
 +#undef HAVE_NCURSES_TERM_H
-+#undef HAVE_NCURSESW_TERM_H
  #undef HAVE_NEWPAD
  #undef HAVE_NEWTERM
 -#undef HAVE_NL_TYPES_H		/* AM_GNU_GETTEXT */
@@ -292,6 +286,7 @@
 -#undef HAVE_VFORK_H		/* have <vfork.h> */
 +#undef HAVE_VFORK_H
  #undef HAVE_WAITPID
+ #undef HAVE_WATTR_GET
  #undef HAVE_WBORDER
  #undef HAVE_WREDRAWLN
  #undef HAVE_WRESIZE
@@ -368,14 +363,12 @@
 -#undef RLOGIN_PATH		/* CF_PATH_PROG(rlogin) */
 -#undef RM_PATH			/* CF_PATH_PROG(rm) */
 -#undef SOCKS			/* CF_SOCKS, CF_SOCKS5 */
--#undef SOURCE_CACHE		/* CF_ARG_ENABLE(source-cache) */
 +#undef OK_OVERRIDE
 +#undef OK_PERMIT
 +#undef REAL_UNIX_SYSTEM
 +#undef RLOGIN_PATH
 +#undef RM_PATH
 +#undef SOCKS
-+#undef SOURCE_CACHE
  #undef STDC_HEADERS
 -#undef SYSTEM_MAIL		/* CF_DEFINE_PROG */
 -#undef SYSTEM_MAIL_FLAGS	/* CF_SYSTEM_MAIL_FLAGS */
@@ -403,21 +396,28 @@
 +#undef UNDERLINE_LINKS
  #undef UNIX
 -#undef UNZIP_PATH		/* CF_PATH_PROG(unzip) */
+-#undef USE_BZLIB		/* AC_ARG_WITH(bzlib) */
 -#undef USE_COLOR_STYLE		/* CF_ARG_ENABLE(color-style) */
 -#undef USE_DEFAULT_COLORS	/* CF_ARG_ENABLE(default-colors) */
 -#undef USE_EXECVP		/* CF_ARG_DISABLE(full-paths) */
 -#undef USE_EXTERNALS		/* CF_ARG_ENABLE(externs) */
 -#undef USE_FCNTL		/* CF_FIONBIO */
+-#undef USE_FILE_UPLOAD		/* CF_ARG_ENABLE(file-upload) */
 -#undef USE_GNUTLS_INCL		/* CF_GNUTLS */
 -#undef USE_OPENSSL_INCL		/* CF_SSL */
+-#undef USE_PERSISTENT_COOKIES	/* CF_ARG_ENABLE(persistent-cookies) */
 -#undef USE_PRETTYSRC		/* CF_ARG_ENABLE(prettysrc) */
+-#undef USE_READPROGRESS		/* CF_ARG_ENABLE(read-eta) */
 -#undef USE_SCROLLBAR		/* CF_ARG_ENABLE(scrollbar) */
 -#undef USE_SLANG		/* AC_ARG_WITH(screen=slang) */
 -#undef USE_SOCKS4_PREFIX	/* CF_SOCKS5 */
 -#undef USE_SOCKS5		/* CF_SOCKS5 */
+-#undef USE_SOURCE_CACHE		/* CF_ARG_ENABLE(source-cache) */
 -#undef USE_SSL			/* CF_SSL */
 -#undef USE_SYSV_UTMP		/* CF_UTMP */
+-#undef USE_X509_SUPPORT		/* CF_GNUTLS, CF_SSL */
 -#undef USE_ZLIB			/* AC_ARG_WITH(zlib) */
+-#undef UTF8			/* CF_SLANG_CPPFLAGS */
 -#undef UTMPX_FOR_UTMP		/* use <utmpx.h> since <utmp.h> not found */
 -#undef UUDECODE_PATH		/* CF_PATH_PROG(uudecode) */
 -#undef WAITPID_USES_UNION	/* CF_FUNC_WAIT */
@@ -438,21 +438,28 @@
 -#undef ut_xstatus		/* CF_UTMP_UT_XSTATUS */
 -#undef ut_xtime			/* CF_UTMP_UT_XTIME */
 +#undef UNZIP_PATH
++#undef USE_BZLIB
 +#undef USE_COLOR_STYLE
 +#undef USE_DEFAULT_COLORS
 +#undef USE_EXECVP
 +#undef USE_EXTERNALS
 +#undef USE_FCNTL
++#undef USE_FILE_UPLOAD
 +#undef USE_GNUTLS_INCL
 +#undef USE_OPENSSL_INCL
++#undef USE_PERSISTENT_COOKIES
 +#undef USE_PRETTYSRC
++#undef USE_READPROGRESS
 +#undef USE_SCROLLBAR
 +#undef USE_SLANG
 +#undef USE_SOCKS4_PREFIX
 +#undef USE_SOCKS5
++#undef USE_SOURCE_CACHE
 +#undef USE_SSL
 +#undef USE_SYSV_UTMP
++#undef USE_X509_SUPPORT
 +#undef USE_ZLIB
++#undef UTF8
 +#undef UTMPX_FOR_UTMP
 +#undef UUDECODE_PATH
 +#undef WAITPID_USES_UNION
@@ -502,7 +509,7 @@
  #endif
  
  /* 'const' may be defined externally by the compiler-wrapper, as in 'unproto'
-@@ -304,7 +304,7 @@
+@@ -310,7 +310,7 @@
  #endif
  
  #ifdef HAVE_SYSLOG_H

@@ -84,3 +84,16 @@
  	CF_PDCURSES_X11
  else
  	CF_TERMIO_AND_CURSES(LYCurses.h)
+--- lynx2-8-5/aclocal.m4.orig	2004-01-08 03:03:09.000000000 +0100
++++ lynx2-8-5/aclocal.m4	2004-01-18 21:41:08.791380608 +0100
+@@ -2215,9 +2215,7 @@
+ dnl CF_HELP_MESSAGE version: 3 updated: 1998/01/14 10:56:23
+ dnl ---------------
+ dnl Insert text into the help-message, for readability, from AC_ARG_WITH.
+-AC_DEFUN([CF_HELP_MESSAGE],
+-[AC_DIVERT_HELP([$1])dnl
+-])dnl
++AC_DEFUN([CF_HELP_MESSAGE],[])
+ dnl ---------------------------------------------------------------------------
+ dnl CF_INET_ADDR version: 4 updated: 1999/03/30 12:24:31
+ dnl ------------

@@ -52,7 +52,7 @@ diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
 @@ -88,7 +88,8 @@
  # Normally we expect you will connect to a remote site, e.g., the Lynx starting
  # site:
- #STARTFILE:http://lynx.browser.org/
+ #STARTFILE:http://lynx.isc.org/
 -STARTFILE:file://localhost/usr/share/doc/HTML/index.html
 +#STARTFILE:file://localhost/usr/share/doc/HTML/index.html
 +STARTFILE:file://localhost/~/

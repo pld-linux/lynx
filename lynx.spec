@@ -12,15 +12,15 @@ Group:		Networking
 Group(pl):	Sieciowe
 Source0:	http://sol.slcc.edu/lynx/current/%{name}%{version}.tar.bz2
 Source1:	%{name}.wmconfig
-Patch0:		%{name}-pld.patch
-Patch1:		%{name}-overflow.patch
-Patch2:		%{name}-config.patch
-Patch3:		%{name}-not_for_root.patch
-Patch4:		%{name}.cfg.patch
-Patch5:		%{name}-TEMP_SPACE.patch
-Patch6:		%{name}-dev.19.patch
-Requires:	zlib
-Requires:	ncurses
+Patch0:		lynx-pld.patch
+Patch1:		lynx-overflow.patch
+Patch2:		lynx-config.patch
+Patch3:		lynx-not_for_root.patch
+Patch4:		lynx.cfg.patch
+Patch5:		lynx-TEMP_SPACE.patch
+Patch6:		lynx-dev.19.patch
+Requires:	zlib >= 1.1.3-5
+Requires:	ncurses >= 4.2-12
 Buildroot:	/tmp/%{name}-%{version}-%{release}-root
 
 %description
@@ -57,7 +57,7 @@ tablolar için desteði vardýr.
 
 %build
 CFLAGS="-w -D_USE_PLD" LDFLAGS="-s" \
-    ./configure \
+./configure \
 	--prefix=/usr \
 	--libdir=/etc \
 	--with-screen=ncurses \
@@ -109,8 +109,12 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/lynx
 
 %changelog
-* Thu Mar  4 1999 Artur Frysiak <wiget@usa.net> 
+* Thu Mar  4 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [2.8.2dev.19-1]
+- added requiring ncurses >= 4.2-12 and zlib >= 1.1.3-5
+  for installing lynx in proper enviroment.
+
+* Thu Mar  4 1999 Artur Frysiak <wiget@usa.net> 
 - added new configure option: --enable-nls --without-included-gettext 
   --enable-addrlist-page  --enable-libjs
 - added lynx-dev.19.patch (correct typo, included in next release)  

@@ -19,6 +19,7 @@ Patch3:		http://www.moxienet.com/lynx/%{name}-283-ssl.patch.bz2
 Patch4:		%{name}-overflow.patch
 Patch5:		%{name}-po_DESTDIR.patch
 Patch6:		%{name}-config.hin.patch
+Patch7:		%{name}-autoconf.patch
 BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
 BuildRequires:	gettext-devel
@@ -58,9 +59,12 @@ formlar ve tablolar için desteði vardýr.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
-LDFLAGS="-s"; export LDFLAGS
+autoconf
+LDFLAGS="-lcrypto -lssl"; export LDFLAGS
+CFLAGS="-I/usr/include/openssl -DUSE_SSL $RPM_OPT_FLAGS"; export CFLAGS
 %configure \
 	--with-screen=slang \
 	--without-included-gettext \

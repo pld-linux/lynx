@@ -1,20 +1,20 @@
-Summary:     Text based browser for the world wide web
-Name:        lynx
-Version:     2.8.2dev.14
-Release:     1d
-Copyright:   GPL
-URL:         http://lynx.browser.org
-Group:       Applications/Networking
-Group(pl):   Aplikacje/Sieæ
-Source:      ftp://www.slcc.edu/pub/lynx/current/%{name}%{version}.tar.bz2
-Source1:     %{name}.wmconfig
-Patch:       %{name}-pld.patch
-Patch1:      %{name}-overflow.patch
-Buildroot:   /tmp/%{name}-%{version}-root
-Summary(de): Text-Browser für das WWW 
-Summary(fr): Navigateur en mode texte pour le world wide web
-Summary(pl): Przegl±darka WWW pracuj±ca w trybie tekstowym
-Summary(tr): Metin ekranda WWW tarayýcý
+Summary:	Text based browser for the world wide web
+Name:		lynx
+Version:	2.8.2dev.15
+Release:	1d
+Copyright:	GPL
+URL:		http://lynx.browser.org
+Group:		Applications/Networking
+Group(pl):	Aplikacje/Sieæ
+Source:		ftp://www.slcc.edu/pub/lynx/current/%{name}%{version}.tar.bz2
+Source1:	%{name}.wmconfig
+Patch:		%{name}-pld.patch
+Patch1:		%{name}-overflow.patch
+Buildroot:	/tmp/%{name}-%{version}-root
+Summary(de):	Text-Browser für das WWW 
+Summary(fr):	Navigateur en mode texte pour le world wide web
+Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
+Summary(tr):	Metin ekranda WWW tarayýcý
 
 %description
 This a terminal based WWW browser. While it does not make any attempt
@@ -39,7 +39,7 @@ Metin ekranda çalýþan bir WWW tarayýcýdýr. Þekil gösteremese de, formlar ve
 tablolar için desteði vardýr.
 
 %prep
-%setup -q -n %{name}2-8-2
+%setup  -q -n %{name}2-8-2
 %patch  -p1 
 %patch1 -p1
 

@@ -56,8 +56,7 @@ formlar ve tablolar için desteði vardýr.
 %patch5 -p1
 
 %build
-export CFLAGS="-w -D_USE_PLD"
-export LDFLAGS="-s"
+LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--with-screen=slang \
 	--without-included-gettext \

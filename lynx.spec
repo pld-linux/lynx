@@ -54,7 +54,7 @@ tablolar için desteði vardýr.
 CFLAGS="-w" LDFLAGS="-s" \
 ./configure %{_target} \
 	--prefix=/usr \
-	--libdir=/usr/share/lynx \
+	--libdir=%{_datadir}/lynx \
 	--with-screen=ncurses \
 	--enable-nls \
 	--without-included-gettext \
@@ -83,17 +83,17 @@ make
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/etc/X11/wmconfig \
-	$RPM_BUILD_ROOT/usr/share/lynx/help/keystrokes 
+	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes 
 
 make	prefix=$RPM_BUILD_ROOT/usr \
-	libdir=$RPM_BUILD_ROOT/usr/share/lynx \
+	libdir=$RPM_BUILD_ROOT%{_datadir}/lynx \
 	mandir=$RPM_BUILD_ROOT%{_mandir}/man1 \
-	helpdir=$RPM_BUILD_ROOT/usr/share/lynx/help \
+	helpdir=$RPM_BUILD_ROOT%{_datadir}/lynx/help \
 	install \
 	install-help
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
-#install samples/lynx.lss $RPM_BUILD_ROOT/usr/share/lynx/lynx.lss
+#install samples/lynx.lss $RPM_BUILD_ROOT%{_datadir}/lynx/lynx.lss
 
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	C[HO]* PROBLEMS README samples/* test/* docs/README*
@@ -110,27 +110,27 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/*
 
 %{_mandir}/man1/*
-%dir /usr/share/lynx
-/usr/share/lynx/help
-%config %verify(not mtime size md5) /usr/share/lynx/lynx.lss
-%config %verify(not size mtime md5) /usr/share/lynx/lynx.cfg
+%dir %{_datadir}/lynx
+%{_datadir}/lynx/help
+%config %verify(not mtime size md5) %{_datadir}/lynx/lynx.lss
+%config %verify(not size mtime md5) %{_datadir}/lynx/lynx.cfg
 
-%lang(de) /usr/share/locale/de/LC_MESSAGES/lynx.mo
-%lang(es) /usr/share/locale/es/LC_MESSAGES/lynx.mo
-%lang(fr) /usr/share/locale/fr/LC_MESSAGES/lynx.mo
-%lang(it) /usr/share/locale/it/LC_MESSAGES/lynx.mo
-%lang(ko) /usr/share/locale/ko/LC_MESSAGES/lynx.mo
-%lang(nl) /usr/share/locale/nl/LC_MESSAGES/lynx.mo
-%lang(no) /usr/share/locale/no/LC_MESSAGES/lynx.mo
-%lang(pl) /usr/share/locale/pl/LC_MESSAGES/lynx.mo
-%lang(pt) /usr/share/locale/pt/LC_MESSAGES/lynx.mo
-%lang(sl) /usr/share/locale/sl/LC_MESSAGES/lynx.mo
-%lang(sv) /usr/share/locale/sv/LC_MESSAGES/lynx.mo
+%lang(de) %{_datadir}/locale/de/LC_MESSAGES/lynx.mo
+%lang(es) %{_datadir}/locale/es/LC_MESSAGES/lynx.mo
+%lang(fr) %{_datadir}/locale/fr/LC_MESSAGES/lynx.mo
+%lang(it) %{_datadir}/locale/it/LC_MESSAGES/lynx.mo
+%lang(ko) %{_datadir}/locale/ko/LC_MESSAGES/lynx.mo
+%lang(nl) %{_datadir}/locale/nl/LC_MESSAGES/lynx.mo
+%lang(no) %{_datadir}/locale/no/LC_MESSAGES/lynx.mo
+%lang(pl) %{_datadir}/locale/pl/LC_MESSAGES/lynx.mo
+%lang(pt) %{_datadir}/locale/pt/LC_MESSAGES/lynx.mo
+%lang(sl) %{_datadir}/locale/sl/LC_MESSAGES/lynx.mo
+%lang(sv) %{_datadir}/locale/sv/LC_MESSAGES/lynx.mo
 
 %changelog
 * Thu Mar  4 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [2.8.2dev.19-1]
-- added /usr/share/locale/*/LC_MESSAGES/lynx.mo files fo %files,
+- added %{_datadir}/locale/*/LC_MESSAGES/lynx.mo files fo %files,
 - added requiring ncurses >= 4.2-12 and zlib >= 1.1.3-5
   for installing lynx in proper enviroment.
 
@@ -146,7 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 
 * Tue Feb 16 1999 Artur Frysiak <wiget@usa.net>
   [2.8.2dev.16-1d]
-- moved help and test files to /usr/share/lynx
+- moved help and test files to %{_datadir}/lynx
 - changed default color scheme
 
 * Fri Feb 05 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>

@@ -5,13 +5,13 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.4dev.3
-Release:	1
+Release:	2
 License:	GPL
 URL:		http://lynx.browser.org
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
-Source1:	lynx.wmconfig
+Source1:	lynx.desktop
 Patch0:		lynx-pld.patch
 Patch1:		lynx-config.patch
 Patch2:		lynx.cfg.patch
@@ -21,6 +21,7 @@ Patch5:		lynx-po_DESTDIR.patch
 BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
 # BuildRequires:	socks5-devel
+Provides:	webclient
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -62,6 +63,7 @@ LDFLAGS="-s"; export LDFLAGS
 	--without-included-gettext \
 	--with-zlib \
 	--with-ssl \
+	--enable-kbd-layout \
 	--enable-addrlist-page \
 	--enable-cgi-links \
 	--enable-default-colors \
@@ -80,18 +82,18 @@ LDFLAGS="-s"; export LDFLAGS
 #	--with-socks5=%{_prefix} \
 #	--enable-color-style \
 
-%{__make} 	SSL_LIBS= "-lssl -lsslcrypto " \
+%{__make} SSL_LIBS= "-lssl -lsslcrypto " \
 	SSL_DEFINES= "-I%{_includedir}/ssl -DUSE_SSL"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/X11/wmconfig \
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW \
 	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes
 
 %{__make} install install-help \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/X11/wmconfig/lynx
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	C[HO]* PROBLEMS README samples/* test/* docs/README*
@@ -104,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 
 %config %verify(not size mtime md5) %{_libdir}/lynx.cfg
-%config(missingok) %{_sysconfdir}/X11/wmconfig/lynx
+%{_applnkdir}/Network/WWW/lynx.desktop
 
 %attr(755,root,root) %{_bindir}/*
 

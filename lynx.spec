@@ -5,7 +5,7 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.5dev.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
@@ -18,12 +18,13 @@ Patch2:		%{name}-po_DESTDIR.patch
 Patch3:		%{name}-config.hin.patch
 Patch4:		%{name}-autoconf.patch
 Patch5:		%{name}-config.patch
+Patch6:		%{name}-acfix.patch
 URL:		http://lynx.browser.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
 BuildRequires:	gettext-devel
-#BuildRequires:	autoconf
+BuildRequires:	autoconf
 BuildRequires:	openssl-devel >= 0.9.6b
 #BuildRequires:	socks5-devel
 Provides:	webclient
@@ -60,11 +61,11 @@ formlar ve tablolar için desteði vardýr.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
-#aclocal
-#autoconf
-%configure2_13 \
+autoconf
+%configure \
 	--with-screen=slang \
 	--without-included-gettext \
 	--with-zlib \

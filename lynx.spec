@@ -4,7 +4,7 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.2pre.2
+Version:	2.8.2pre.6
 Release:	1
 Copyright:	GPL
 Group:		Networking
@@ -53,7 +53,7 @@ tablolar için desteði vardýr.
 %build
 CFLAGS="-w" LDFLAGS="-s" \
 ./configure %{_target} \
-	--prefix=/usr \
+	--prefix=%{_prefix} \
 	--libdir=%{_datadir}/lynx \
 	--with-screen=ncurses \
 	--enable-nls \
@@ -128,69 +128,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(sv) %{_datadir}/locale/sv/LC_MESSAGES/lynx.mo
 
 %changelog
-* Thu Mar  4 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [2.8.2dev.19-1]
-- added %{_datadir}/locale/*/LC_MESSAGES/lynx.mo files fo %files,
-- added requiring ncurses >= 4.2-12 and zlib >= 1.1.3-5
-  for installing lynx in proper enviroment.
-
-* Thu Mar  4 1999 Artur Frysiak <wiget@usa.net> 
-- added new configure option: --enable-nls --without-included-gettext 
-  --enable-addrlist-page  --enable-libjs
-- added lynx-dev.19.patch (correct typo, included in next release)  
-  
-* Wed Feb 17 1999 Artur Frysiak <wiget@usa.net>
-  [2.8.2dev.17-1d]
-- gziped help files
-- change install metod
-
-* Tue Feb 16 1999 Artur Frysiak <wiget@usa.net>
-  [2.8.2dev.16-1d]
-- moved help and test files to %{_datadir}/lynx
-- changed default color scheme
-
-* Fri Feb 05 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [2.8.2dev15-2d]
-- changed group,
-- compressed documentation.
-
-* Sun Jan 10 1999 Artur Frysiak <wiget@usa.net>
-  [2.8.2dev.12-1d]
-- added URL and Group(pl) tags
-
-* Mon Sep 01 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-  [2.8-5d]
-- build against glibc-2.1,
-- changed Buildroot to /var/tmp/%%{name}-%%{version}-%%{release}-root,
-- changed permission of lynx to 711,
-- translation modified for pl.
-
-* Sun Aug 30 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [2.8-5]
-- added -q %setup parameter,
-- changed Buildroot to /tmp/%%{name}-%%{version}-root,
-- URL in HELPFILE in /etc/lynx.cfh changed to localhost,
-- removed INSTALLATION from %doc,
-- added %attr and %defattr macros in %files (allow build package from
-  non-root account).
-
-* Fri May 08 1998 Prospector System <bugs@redhat.com>
-- translations modified for de, fr, tr
-
-* Mon May 04 1998 Cristian Gafton <gafton@redhat.com>
-- upgraded to 2.8rel3
-- fixed mailto: buffer overflow (used Alan's patch)
-
-* Fri Mar 20 1998 Cristian Gafton <gafton@redhat.com>
-- updated to 2.8
-- added buildroot
-
-* Tue Jan 13 1998 Erik Troan <ewt@redhat.com>
-- updated to 2.7.2
-- enabled lynxcgi
-
-* Thu Oct 23 1997 Donnie Barnes <djb@redhat.com>
-- updated from 2.6 to 2.7.1
-- moved /usr/lib/lynx.cfg to /etc/lynx.cfg
-- build with slang instead of ncurses
-- made default startup file be file:/usr/doc/HTML/index.html
+* Tue May 18 1999 Artur Frysiak <wiget@pld.org.pl>
+  [2.8.2pre.4-1]
+- based on Red Hat lynx 2.8-4 (but many changes)
+- pl translation by Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+- de, fr and tr translations by Prospector System <bugs@redhat.com>

@@ -1,7 +1,7 @@
-diff -Naur lynx2-8-4.ori/aclocal.m4 lynx2-8-4/aclocal.m4
---- lynx2-8-4.ori/aclocal.m4	Thu Aug  3 19:19:52 2000
-+++ lynx2-8-4/aclocal.m4	Sat Aug  5 08:15:10 2000
-@@ -1677,9 +1677,6 @@
+diff -Nur lynx2-8-4.orig/aclocal.m4 lynx2-8-4/aclocal.m4
+--- lynx2-8-4.orig/aclocal.m4	Sun Jun  3 21:58:00 2001
++++ lynx2-8-4/aclocal.m4	Sun Jun 10 16:11:56 2001
+@@ -1751,9 +1751,6 @@
  ])dnl
  dnl ---------------------------------------------------------------------------
  dnl Insert text into the help-message, for readability, from AC_ARG_WITH.
@@ -11,9 +11,9 @@ diff -Naur lynx2-8-4.ori/aclocal.m4 lynx2-8-4/aclocal.m4
  dnl ---------------------------------------------------------------------------
  dnl For Lynx, check if the libraries we have found give us inet_aton, or
  dnl inet_addr.  If not, try to find the latter function with -lbind or
-diff -Naur lynx2-8-4.ori/configure.in lynx2-8-4/configure.in
---- lynx2-8-4.ori/configure.in	Thu Aug  3 19:19:52 2000
-+++ lynx2-8-4/configure.in	Sat Aug  5 08:15:43 2000
+diff -Nur lynx2-8-4.orig/configure.in lynx2-8-4/configure.in
+--- lynx2-8-4.orig/configure.in	Sun Jun  3 21:58:00 2001
++++ lynx2-8-4/configure.in	Sun Jun 10 16:13:21 2001
 @@ -3,7 +3,6 @@
  dnl by T.E.Dickey <dickey@clark.net>
  dnl and Jim Spath <jspath@mail.bcpl.lib.md.us>
@@ -32,7 +32,7 @@ diff -Naur lynx2-8-4.ori/configure.in lynx2-8-4/configure.in
  CF_DISABLE_ECHO
  
  # special case for WWW/*
-@@ -258,9 +254,6 @@
+@@ -265,9 +261,6 @@
  dnl --------------------------------------------------------------------------
  dnl --------------------------------------------------------------------------
  
@@ -42,17 +42,17 @@ diff -Naur lynx2-8-4.ori/configure.in lynx2-8-4/configure.in
  dnl internationalization macros
  CF_BUNDLED_INTL(makefile)
  
-@@ -587,9 +580,6 @@
+@@ -622,9 +615,6 @@
  dnl Experimental options that don't need to test system features
  dnl --------------------------------------------------------------------------
  
 -CF_HELP_MESSAGE(
 -Experimental Options:)
 -
- AC_MSG_CHECKING(if configuration info should be browsable)
- CF_ARG_DISABLE(config-info,
- [  --disable-config-info   disable browsable configuration-info],
-@@ -789,9 +779,6 @@
+ AC_MSG_CHECKING(if bibp: URLs should be supported)
+ CF_ARG_DISABLE(bibp-urls,
+ [  --disable-bibp-urls     disable support for bibp: URLs],
+@@ -838,9 +828,6 @@
  dnl Miscellaneous options that don't need to test system features
  dnl --------------------------------------------------------------------------
  
@@ -62,7 +62,7 @@ diff -Naur lynx2-8-4.ori/configure.in lynx2-8-4/configure.in
  AC_MSG_CHECKING(if alternative line-edit bindings should be used)
  CF_ARG_ENABLE(alt-bindings,
  [  --disable-alt-bindings  disable alternative line-edit bindings],
-@@ -985,9 +972,6 @@
+@@ -1037,9 +1024,6 @@
  dnl DirEd (directory-editor) options
  dnl --------------------------------------------------------------------------
  
@@ -72,7 +72,7 @@ diff -Naur lynx2-8-4.ori/configure.in lynx2-8-4/configure.in
  # All DirEd functions that were enabled on compilation can be disabled
  # or modified at run time via DIRED_MENU symbols in lynx.cfg.
  AC_MSG_CHECKING(if directory-editor code should be used)
-@@ -1058,7 +1042,6 @@
+@@ -1111,7 +1095,6 @@
  dnl Test features that rely on configure-definitions
  dnl --------------------------------------------------------------------------
  if test $cf_cv_screen = pdcurses ; then

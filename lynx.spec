@@ -4,8 +4,8 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.4dev.14
-Release:	5
+Version:	2.8.4pre.1
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
@@ -13,12 +13,11 @@ Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
 Source1:	%{name}.desktop
 Patch0:		%{name}-pld.patch
 Patch1:		%{name}.cfg.patch
-Patch2:		http://www.moxienet.com/lynx/%{name}-283-ssl.patch.bz2
-Patch3:		%{name}-po_DESTDIR.patch
-Patch4:		%{name}-config.hin.patch
-Patch5:		%{name}-autoconf.patch
-Patch6:		%{name}-config.patch
-Patch7:		%{name}-SA_LEN.patch
+Patch2:		%{name}-po_DESTDIR.patch
+Patch3:		%{name}-config.hin.patch
+Patch4:		%{name}-autoconf.patch
+Patch5:		%{name}-config.patch
+Patch6:		%{name}-SA_LEN.patch
 URL:		http://lynx.browser.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
@@ -62,12 +61,10 @@ formlar ve tablolar için desteði vardýr.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 
 %build
+rm -f configure
 autoconf
-LDFLAGS="-lcrypto -lssl %{rpmldflags}"
-CFLAGS="-I/usr/include/openssl -DUSE_SSL %{rpmcflags}"
 %configure \
 	--with-screen=slang \
 	--without-included-gettext \
@@ -93,8 +90,7 @@ CFLAGS="-I/usr/include/openssl -DUSE_SSL %{rpmcflags}"
 #	--with-socks5=%{_prefix} \
 #	--enable-color-style \
 
-%{__make} SSL_LIBS="-lssl -lcrypto" \
-	SSL_DEFINES="-I%{_includedir}/openssl -DUSE_SSL"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT

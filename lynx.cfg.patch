@@ -41,7 +41,7 @@ diff -ru lynx2-8-2.old/lynx.cfg lynx2-8-2/lynx.cfg
  
  # The global and personal MAILCAP files allow you to specify external
  # viewers to be spawned when Lynx encounters different MIME types, which
-@@ -1903,14 +1906,14 @@
+@@ -1903,15 +1906,14 @@
  #
  # Uncomment and change any of the compilation defaults.
  #
@@ -52,6 +52,7 @@ diff -ru lynx2-8-2.old/lynx.cfg lynx2-8-2/lynx.cfg
 -#COLOR:4:magenta:white
 -#COLOR:5:blue:white
 -#COLOR:6:red:white
+-COLOR:6:brightred:black
 -#COLOR:7:magenta:cyan
 +COLOR:0:black:lightgray
 +COLOR:1:blue:lightgray

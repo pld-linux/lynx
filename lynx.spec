@@ -4,7 +4,7 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.2pre.6
+Version:	2.8.2rel.1
 Release:	1
 Copyright:	GPL
 Group:		Networking
@@ -15,10 +15,12 @@ Patch0:		lynx-pld.patch
 Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
 Patch4:		lynx.cfg.patch
+Patch5:		lynx-noroot.patch
+Patch6:		lynx-fhs.patch
 URL:		http://lynx.browser.org/
 BuildPrereq:	zlib-devel
 BuildPrereq:	ncurses-devel
-Requires:	indexhtml
+#Requires:	indexhtml
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -49,10 +51,12 @@ tablolar için desteði vardýr.
 %patch1 -p1
 %patch2 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 CFLAGS="-w" LDFLAGS="-s" \
-./configure %{_target_platform} \
+    ./configure \
 	--prefix=%{_prefix} \
 	--libdir=%{_datadir}/lynx \
 	--with-screen=ncurses \
@@ -73,10 +77,11 @@ CFLAGS="-w" LDFLAGS="-s" \
 	--enable-cgi-links \
 	--enable-exec-links \
 	--enable-exec-scripts \
-	--with-zlib  \
+	--with-zlib \
 	--without-socks \
 	--without-socks5 \
-	--without-ssl 
+	--without-ssl \
+	%{_target_platform}
 make
 
 %install
@@ -89,19 +94,19 @@ make	prefix=$RPM_BUILD_ROOT/usr \
 	libdir=$RPM_BUILD_ROOT%{_datadir}/lynx \
 	mandir=$RPM_BUILD_ROOT%{_mandir}/man1 \
 	helpdir=$RPM_BUILD_ROOT%{_datadir}/lynx/help \
-	install \
-	install-help
+	install install-help
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
-#install samples/lynx.lss $RPM_BUILD_ROOT%{_datadir}/lynx/lynx.lss
 
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	C[HO]* PROBLEMS README samples/* test/* docs/README*
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 
@@ -110,24 +115,21 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 
 %{_mandir}/man1/*
+
 %dir %{_datadir}/lynx
 %{_datadir}/lynx/help
-%config %verify(not mtime size md5) %{_datadir}/lynx/lynx.lss
-%config %verify(not size mtime md5) %{_datadir}/lynx/lynx.cfg
 
-%lang(de) %{_datadir}/locale/de/LC_MESSAGES/lynx.mo
-%lang(es) %{_datadir}/locale/es/LC_MESSAGES/lynx.mo
-%lang(fr) %{_datadir}/locale/fr/LC_MESSAGES/lynx.mo
-%lang(it) %{_datadir}/locale/it/LC_MESSAGES/lynx.mo
-%lang(ko) %{_datadir}/locale/ko/LC_MESSAGES/lynx.mo
-%lang(nl) %{_datadir}/locale/nl/LC_MESSAGES/lynx.mo
-%lang(no) %{_datadir}/locale/no/LC_MESSAGES/lynx.mo
-%lang(pl) %{_datadir}/locale/pl/LC_MESSAGES/lynx.mo
-%lang(pt) %{_datadir}/locale/pt/LC_MESSAGES/lynx.mo
-%lang(sl) %{_datadir}/locale/sl/LC_MESSAGES/lynx.mo
-%lang(sv) %{_datadir}/locale/sv/LC_MESSAGES/lynx.mo
+%{_datadir}/lynx/lynx.lss
+%{_datadir}/lynx/lynx.cfg
 
 %changelog
+* Fri May 28 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+  [2.8.2pre.8-1]
+- update to 2.8.2pre.8,
+- some fixes for correct build,
+- antiroot patch,
+- removed %config from %{_datadir}/lynx/lynx.*,
+
 * Tue May 18 1999 Artur Frysiak <wiget@pld.org.pl>
   [2.8.2pre.4-1]
 - based on Red Hat lynx 2.8-4 (but many changes)

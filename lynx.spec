@@ -16,8 +16,8 @@ Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
 Patch3:		lynx.cfg.patch
 URL:		http://lynx.browser.org/
-BuildPrereq:	zlib-devel
-BuildPrereq:	ncurses-devel
+BuildRequires:	zlib-devel
+BuildRequires:	ncurses-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description

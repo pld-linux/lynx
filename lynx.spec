@@ -52,7 +52,7 @@ tablolar için desteði vardýr.
 
 %build
 CFLAGS="-w" LDFLAGS="-s" \
-./configure %{_target} \
+./configure %{_target_platform} \
 	--prefix=%{_prefix} \
 	--libdir=%{_datadir}/lynx \
 	--with-screen=ncurses \

@@ -5,7 +5,7 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.3dev.18
-Release:	4
+Release:	5
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
@@ -100,13 +100,13 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Networking/WWW
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW
 
 make install install-help \
 	DESTDIR=$RPM_BUILD_ROOT \
 	helpdir=%{_libdir}/help
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Networking/WWW/lynx.desktop
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW/lynx.desktop
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	C[HO]* PROBLEMS README samples/* test/* docs/README*
@@ -120,7 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 
-%{_applnkdir}/Networking/WWW/lynx.desktop
+%{_applnkdir}/Network/WWW/lynx.desktop
 
 %attr(755,root,root) %{_bindir}/*
 

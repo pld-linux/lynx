@@ -1,0 +1,3 @@
+- lynx-overflow.patch back, but it fixes only
+  2 sprintfs -- rest dumped into .rej file
+- release++

@@ -2,8 +2,9 @@
 Name=Lynx
 Comment=Lynx - text based WWW browser
 Comment[es]=Lector WWW modo texto
-Comment[pl]=Lynx - tekstowa przegl±darka WWW
+Comment[pl]=Lynx - tekstowa przeglÄ…darka WWW
 Comment[pt]=Lector WWW modo texto
 Exec=lynx
 Terminal=1
 Type=Application
+# vi: encoding=utf-8

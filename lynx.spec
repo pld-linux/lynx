@@ -18,6 +18,7 @@ Patch3:		lynx.cfg.patch
 Patch4:		lynx-helpdir.patch
 Patch5:		lynx-DESTDIR.patch
 Patch6:		lynx-283d16-ssl.patch
+Patch7:		lynx2-8-3-ipv6-20-02-00.patch.gz   
 URL:		http://lynx.browser.org/
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel >= 5.0
@@ -58,9 +59,10 @@ tablolar için desteði vardýr.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
-CFLAGS="-w"; export CFLAGS
+CFLAGS="-w -I/usr/include/ncurses"; export CFLAGS
 LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--with-screen=ncurses \

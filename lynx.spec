@@ -7,8 +7,8 @@ Name:		lynx
 Version:	2.8.3dev.10
 Release:	1
 Copyright:	GPL
-Group:		Networking
-Group(pl):	Sieciowe
+Group:		Applications/Networking
+Group(pl):	Aplikacje/Sieciowe
 Source0:	http://sol.slcc.edu/lynx/current/%{name}%{version}.tar.bz2
 Source1:	lynx.desktop
 Patch0:		lynx-pld.patch
@@ -39,7 +39,7 @@ sait bien gérer le formatage HTML du texte, les formulaires et les tableaux.
 
 %description -l pl
 Lynx jest przegl±dark± WWW dzia³aj±c± w trybie tekstowym. Dobrze
-formatuje tekst w HTML ale nie pozwala na wy¶wietlanie grafiki.
+formatuje tekst w HTML, ale nie pozwala na wy¶wietlanie grafiki.
 
 %description -l tr
 Metin ekranda çalýþan bir WWW tarayýcýdýr. Þekil gösteremese de, formlar ve

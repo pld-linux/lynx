@@ -23,7 +23,7 @@ Patch4:		%{name}-autoconf.patch
 Patch5:		%{name}-config.patch
 Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
-Patch8:		%{name}-home_etc.patch
+Patch8:		%{name}-etc_dir.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	gettext-devel
@@ -87,7 +87,7 @@ formlar ve tablolar için desteði vardýr.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-#%patch8 -p1
+%patch8 -p1
 
 %build
 %{__autoconf}

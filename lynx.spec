@@ -104,9 +104,22 @@ rm -rf $RPM_BUILD_ROOT
 /usr/man/man1/*
 /usr/share/lynx
 
+%lang(de) /usr/share/locale/de/LC_MESSAGES/lynx.mo
+%lang(es) /usr/share/locale/es/LC_MESSAGES/lynx.mo
+%lang(fr) /usr/share/locale/fr/LC_MESSAGES/lynx.mo
+%lang(it) /usr/share/locale/it/LC_MESSAGES/lynx.mo
+%lang(ko) /usr/share/locale/ko/LC_MESSAGES/lynx.mo
+%lang(nl) /usr/share/locale/nl/LC_MESSAGES/lynx.mo
+%lang(no) /usr/share/locale/no/LC_MESSAGES/lynx.mo
+%lang(pl) /usr/share/locale/pl/LC_MESSAGES/lynx.mo
+%lang(pt) /usr/share/locale/pt/LC_MESSAGES/lynx.mo
+%lang(sl) /usr/share/locale/sl/LC_MESSAGES/lynx.mo
+%lang(sv) /usr/share/locale/sv/LC_MESSAGES/lynx.mo
+
 %changelog
 * Thu Mar  4 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [2.8.2dev.19-1]
+- added /usr/share/locale/*/LC_MESSAGES/lynx.mo files fo %files,
 - added requiring ncurses >= 4.2-12 and zlib >= 1.1.3-5
   for installing lynx in proper enviroment.
 

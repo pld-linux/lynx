@@ -1,9 +1,10 @@
---- lynx2-8-2/lynx.cfg	Sun Feb 14 19:19:26 1999
-+++ lynx2-8-2.pld/lynx.cfg	Sun Feb 14 19:18:42 1999
+diff -Nur lynx2-8-2/lynx.cfg lynx2-8-2.pld/lynx.cfg
+--- lynx2-8-2/lynx.cfg	Fri Jun  4 14:31:38 1999
++++ lynx2-8-2.pld/lynx.cfg	Fri Jun  4 14:31:10 1999
 @@ -1,12 +1,12 @@
  # lynx.cfg file.
 -# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
-+# The default placement for this file is /etc/lynx.cfg (Unix)
++# The default placement for this file is /usr/share/lynx/lynx.cfg (Unix)
  #                                     or Lynx_Dir:lynx.cfg (VMS)
  #
  #
@@ -15,12 +16,12 @@
  #  the default location of this file in the userdefs.h file and recompile,
  #  or specify its location on the command line with the "-cfg"
  #  command line option.
-@@ -29,7 +29,7 @@
+@@ -32,7 +32,7 @@
  #
  # Then in ~/lynx.cfg:
  #
--#INCLUDE:/usr/local/lib/lynx.cfg
-+#INCLUDE:/etc/lynx.cfg
- #       ^^^^^^^^^^^^^^^^^^^^^^^ or whatever is appropriate on your system
- #and now your own tweaks.
- 
+-#   INCLUDE:/usr/local/lib/lynx.cfg
++#   INCLUDE:/usr/share/lynx/lynx.cfg
+ #           ^^^^^^^^^^^^^^^^^^^^^^^ or whatever is appropriate on your system
+ # and now your own tweaks.
+ #

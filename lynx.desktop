@@ -4,6 +4,7 @@ Comment=Lynx - text based WWW browser
 Comment[es]=Lector WWW modo texto
 Comment[pl]=Lynx - tekstowa przeglądarka WWW
 Comment[pt]=Lector WWW modo texto
+Comment[pt_BR]=Lector WWW modo texto
 Exec=lynx
 Terminal=1
 Type=Application

@@ -5,25 +5,26 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.4dev.14
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
 Source1:	%{name}.desktop
 Patch0:		%{name}-pld.patch
-Patch1:		%{name}-config.patch
-Patch2:		%{name}.cfg.patch
-Patch3:		http://www.moxienet.com/lynx/%{name}-283-ssl.patch.bz2
-Patch4:		%{name}-po_DESTDIR.patch
-Patch5:		%{name}-config.hin.patch
-Patch6:		%{name}-autoconf.patch
+Patch1:		%{name}.cfg.patch
+Patch2:		http://www.moxienet.com/lynx/%{name}-283-ssl.patch.bz2
+Patch3:		%{name}-po_DESTDIR.patch
+Patch4:		%{name}-config.hin.patch
+Patch5:		%{name}-autoconf.patch
+Patch6:		%{name}-config.patch
 URL:		http://lynx.browser.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
 BuildRequires:	gettext-devel
-# BuildRequires:	socks5-devel
+BuildRequires:	autoconf
+#BuildRequires:	socks5-devel
 Provides:	webclient
 Obsoletes:	lynx-ssl
 
@@ -96,13 +97,9 @@ CFLAGS="-I/usr/include/openssl -DUSE_SSL %{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAG
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW \
 	$RPM_BUILD_ROOT%{_datadir}/lynx/help
-#	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes
 
 %{__make} install install-help \
 	DESTDIR=$RPM_BUILD_ROOT
-
-# fix help
-mv -f $RPM_BUILD_ROOT%{_libdir}/lynx_help/* $RPM_BUILD_ROOT%{_datadir}/lynx/help
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW
 
@@ -117,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 
-%config %verify(not size mtime md5) %{_libdir}/lynx.cfg
+%config %verify(not size mtime md5) %{_sysconfdir}/lynx.cfg
 %{_applnkdir}/Network/WWW/lynx.desktop
 
 %attr(755,root,root) %{_bindir}/*

@@ -320,7 +320,7 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTNews.c lynx2-8-3.ssl/WWW/Librar
  #define _HTNEWS_C_1_INIT { "news", HTLoadNews, NULL }
 diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/Implementation/HTTP.c
 --- lynx2-8-3/WWW/Library/Implementation/HTTP.c	Thu Nov 18 05:08:08 1999
-+++ lynx2-8-3.ssl/WWW/Library/Implementation/HTTP.c	Tue Dec  7 17:26:41 1999
++++ lynx2-8-3.ssl/WWW/Library/Implementation/HTTP.c	Tue Dec  7 17:59:23 1999
 @@ -13,6 +13,13 @@
  #include <HTTP.h>
  #include <LYUtils.h>
@@ -419,8 +419,8 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/
 +	      sprintf(temp, ":%d", HTTPS_PORT);
 +	      StrAllocCat(connect_host, temp);
 +	  }
-+	  CTRACE(tfp, "HTTP: connect_url = '%s'\n", connect_url);
-+	  CTRACE(tfp, "HTTP: connect_host = '%s'\n", connect_host);
++	  CTRACE((tfp, "HTTP: connect_url = '%s'\n", connect_url));
++	  CTRACE((tfp, "HTTP: connect_host = '%s'\n", connect_host));
 +      } else if (connect_url = strstr((url+7), "snews://")) {
 +	  do_connect = TRUE;
 +	  connect_host = HTParse(connect_url, "snews", PARSE_HOST);
@@ -428,8 +428,8 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/
 +	      sprintf(temp, ":%d", SNEWS_PORT);
 +	      StrAllocCat(connect_host, temp);
 +	  }
-+	  CTRACE(tfp, "HTTP: connect_url = '%s'\n", connect_url);
-+	  CTRACE(tfp, "HTTP: connect_host = '%s'\n", connect_host);
++	  CTRACE((tfp, "HTTP: connect_url = '%s'\n", connect_url));
++	  CTRACE((tfp, "HTTP: connect_host = '%s'\n", connect_host));
 +      }
 +  }
 +#endif /* USE_SSL */
@@ -495,9 +495,9 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/
 +      	      goto done;
 +	  }
 +#else
-+              CTRACE(tfp,
++              CTRACE((tfp,
 +"HTTP: Unable to complete SSL handshake for remote host '%s' (SSLerror = %d)\n",
-+				url, status);
++				url, status));
 +      	  HTAlert("Unable to make secure connection to remote host.");
 +	  if (did_connect)
 +	      HTTP_NETCLOSE(s, handle);
@@ -582,9 +582,9 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/
        StrAllocCat(command, crlf);	/* Blank line means "end" of headers */
  
 +#ifdef USE_SSL
-+  CTRACE (tfp, "Writing:\n%s%s----------------------------------\n",
++  CTRACE ((tfp, "Writing:\n%s%s----------------------------------\n",
 +	       command,
-+	       (anAnchor->post_data && !do_connect ? crlf : ""));
++	       (anAnchor->post_data && !do_connect ? crlf : "")));
 +#else
    CTRACE((tfp, "Writing:\n%s%s----------------------------------\n",
  	       command,
@@ -599,15 +599,15 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/
  		 */
 +#ifdef USE_SSL
 +	        if (do_connect) {
-+		    CTRACE(tfp, "HTTP: Proxy tunnel to '%s' established.\n",
-+				connect_host);
++		    CTRACE((tfp, "HTTP: Proxy tunnel to '%s' established.\n",
++				connect_host));
 +		    do_connect = FALSE;
 +		    url = connect_url;
 +		    FREE(line_buffer);
 +		    FREE(line_kept_clean);
 +		    if (!strncmp(connect_url, "snews", 5)) {
-+			CTRACE(tfp,
-+			"      Will attempt handshake and snews connection.\n");
++			CTRACE((tfp,
++			"      Will attempt handshake and snews connection.\n"));
 +			status = HTNewsProxyConnect(s, url, anAnchor,
 +						    format_out, sink);
 +			goto done;
@@ -621,8 +621,8 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/
 +		    doing_redirect = FALSE;
 +	            permanent_redirection = FALSE;
 +		    target = NULL;
-+		    CTRACE(tfp,
-+			"      Will attempt handshake and resubmit headers.\n");
++		    CTRACE((tfp,
++			"      Will attempt handshake and resubmit headers.\n"));
 +		    goto use_tunnel;
 +		}
 +#endif /* USE_SSL */

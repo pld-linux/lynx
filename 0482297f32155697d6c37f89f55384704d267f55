@@ -1,0 +1,7 @@
+- v.2.8.4dev.3
+- url changed
+- _slang_ version due to incompatibilities between ncurses and glibc-2.1.3
+- adapterized
+- socks5 and ssl turned on - it's socks5+ssl spec, isn't it?
+- todo: cfg and help path corrections, how about _one_ spec for all
+  different configurations of lynx? (w|w/o socks|ssl)

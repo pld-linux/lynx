@@ -64,27 +64,4 @@
 +#define LYNXCGI_LINKS
  
  #if defined(EXEC_LINKS) || defined(EXEC_SCRIPTS)
- 
---- lynx2-8-1/lynx.cfg.redhat	Mon Sep  7 06:02:16 1998
-+++ lynx2-8-1/lynx.cfg	Thu Sep 10 13:27:41 1998
-@@ -41,7 +41,8 @@
- #  replace PATH_TO with the complete path to FILENAME
- #  use Unix SHELL syntax and include the device on VMS systems)
- #
--STARTFILE:http://lynx.browser.org/
-+#STARTFILE:http://lynx.browser.org/
-+STARTFILE:file:/usr/doc/HTML/index.html
- 
- # HELPFILE must be defined as a URL and must have a
- # complete path if local:
-@@ -53,8 +54,8 @@
- # http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
- #   This should be changed to the local path.
- #
--HELPFILE:http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
--#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
-+#HELPFILE:http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
-+HELPFILE:file://localhost/usr/doc/lynx-2.8.1/lynx_help/lynx_help_main.html
- 
- # DEFAULT_INDEX_FILE is the default file retrieved when the
- # user presses the 'I' key when viewing any document.
+

@@ -26,7 +26,7 @@ Patch7:		%{name}-gzip_fallback.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	gettext-devel
-BuildRequires:	openssl-devel >= 0.9.6b
+BuildRequires:	openssl-devel >= 0.9.6m
 BuildRequires:	slang-devel
 #BuildRequires:	socks5-devel
 BuildRequires:	zlib-devel

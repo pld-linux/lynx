@@ -4,8 +4,8 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.2dev.17
-Release:	1d
+Version:	2.8.2dev.19
+Release:	1
 Copyright:	GPL
 URL:		http://lynx.browser.org
 Group:		Networking
@@ -18,6 +18,7 @@ Patch2:		%{name}-config.patch
 Patch3:		%{name}-not_for_root.patch
 Patch4:		%{name}.cfg.patch
 Patch5:		%{name}-TEMP_SPACE.patch
+Patch6:		%{name}-dev.19.patch
 Requires:	zlib
 Requires:	ncurses
 Buildroot:	/tmp/%{name}-%{version}-%{release}-root
@@ -52,6 +53,7 @@ tablolar için desteði vardýr.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p0
+%patch6 -p1
 
 %build
 CFLAGS="-w -D_USE_PLD" LDFLAGS="-s" \
@@ -59,6 +61,8 @@ CFLAGS="-w -D_USE_PLD" LDFLAGS="-s" \
 	--prefix=/usr \
 	--libdir=/etc \
 	--with-screen=ncurses \
+	--enable-nls \
+	--without-included-gettext \
 	--enable-warnings \
 	--enable-default-colors \
 	--enable-externs \
@@ -66,6 +70,8 @@ CFLAGS="-w -D_USE_PLD" LDFLAGS="-s" \
 	--enable-nsl-fork \
 	--enable-persistent-cookies \
 	--enable-gzip-help \
+	--enable-libjs \
+	--enable-addrlist-page \
 	--with-zlib 
 make
 
@@ -98,11 +104,17 @@ rm -rf $RPM_BUILD_ROOT
 %config(missingok) /etc/X11/wmconfig/lynx
 
 %attr(755,root,root) /usr/bin/*
-%attr(644,root, man) /usr/man/man1/*
 
+/usr/man/man1/*
 /usr/share/lynx
 
 %changelog
+* Thu Mar  4 1999 Artur Frysiak <wiget@usa.net> 
+  [2.8.2dev.19-1]
+- added new configure option: --enable-nls --without-included-gettext 
+  --enable-addrlist-page  --enable-libjs
+- added lynx-dev.19.patch (correct typo, included in next release)  
+  
 * Wed Feb 17 1999 Artur Frysiak <wiget@usa.net>
   [2.8.2dev.17-1d]
 - gziped help files

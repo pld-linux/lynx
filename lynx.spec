@@ -5,9 +5,8 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.4dev.7
-Release:	3
+Release:	4
 License:	GPL
-URL:		http://lynx.browser.org
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
@@ -20,6 +19,7 @@ Patch4:		%{name}-overflow.patch
 Patch5:		%{name}-po_DESTDIR.patch
 Patch6:		%{name}-config.hin.patch
 Patch7:		%{name}-autoconf.patch
+URL:		http://lynx.browser.org/
 BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
 BuildRequires:	gettext-devel
@@ -63,8 +63,8 @@ formlar ve tablolar için desteði vardýr.
 
 %build
 autoconf
-LDFLAGS="-lcrypto -lssl"; export LDFLAGS
-CFLAGS="-I/usr/include/openssl -DUSE_SSL $RPM_OPT_FLAGS"; export CFLAGS
+LDFLAGS="-lcrypto -lssl %{!?debug:-s}"
+CFLAGS="-I/usr/include/openssl -DUSE_SSL %{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}"
 %configure \
 	--with-screen=slang \
 	--without-included-gettext \
@@ -103,8 +103,7 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW \
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	C[HO]* PROBLEMS README samples/* test/* docs/README*
+gzip -9nf C[HO]* PROBLEMS README samples/* test/* docs/README*
 
 %clean
 rm -rf $RPM_BUILD_ROOT

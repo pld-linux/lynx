@@ -4,15 +4,14 @@ Summary(fr): Navigateur en mode texte pour le world wide web
 Summary(pl): Przegl±darka WWW w trybie tekstowym
 Summary(tr): Metin ekranda WWW tarayýcý
 Name:        lynx
-Version:     2.8
-Release:     5
+Version:     2.8.1
+Release:     1
 Copyright:   GPL
 Group:       Applications/Networking
 Group(pl):   Aplikacje/Sieæ
-Source0:     ftp://www.slcc.edu/pub/lynx/fote/lynx2.8rel.3.tar.gz
+Source0:     ftp://www.slcc.edu/pub/lynx/release2-8-1/%{name}2-8-1.tar.bz2
 Source1:     lynx.wmconfig
-Patch0:      lynx-2.8-redhat.patch
-Patch1:      lynx2-8-overflow.patch
+Patch0:      lynx-config.patch
 Requires:    indexhtml
 Buildroot:   /tmp/%{name}-%{version}-root
 
@@ -39,9 +38,9 @@ Metin ekranda çalýþan bir WWW tarayýcýdýr. Þekil gösteremese de, formlar ve
 tablolar için desteði vardýr.
 
 %prep
-%setup -q -n lynx2-8
-%patch0 -p1 -b .redhat
-%patch1 -p1 -b .overflow
+%setup -q -n lynx2-8-1
+%patch0 -p1
+
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr --libdir=/etc \
@@ -71,6 +70,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755, root,  man) /usr/man/man1/*
 
 %changelog
+* Sun Nov  8 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [2.8.1-1]
+- now lynx is builded from tar.bz2.
+ 
 * Sun Aug 30 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [2.8-5]
 - added Group(pl),

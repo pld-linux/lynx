@@ -5,7 +5,7 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.4pre.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
@@ -24,7 +24,8 @@ BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
 BuildRequires:	gettext-devel
 BuildRequires:	autoconf
-BuildRequires:	openssl-devel >= 0.9.6a
+BuildRequires:	openssl-devel >= 0.9.6b
+%requires_eq	openssl
 #BuildRequires:	socks5-devel
 Provides:	webclient
 Obsoletes:	lynx-ssl

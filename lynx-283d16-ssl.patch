@@ -320,15 +320,15 @@ diff -ruN lynx2-8-3/WWW/Library/Implementation/HTNews.c lynx2-8-3.ssl/WWW/Librar
  #define _HTNEWS_C_1_INIT { "news", HTLoadNews, NULL }
 diff -ruN lynx2-8-3/WWW/Library/Implementation/HTTP.c lynx2-8-3.ssl/WWW/Library/Implementation/HTTP.c
 --- lynx2-8-3/WWW/Library/Implementation/HTTP.c	Thu Nov 18 05:08:08 1999
-+++ lynx2-8-3.ssl/WWW/Library/Implementation/HTTP.c	Tue Dec  7 17:59:23 1999
++++ lynx2-8-3.ssl/WWW/Library/Implementation/HTTP.c	Tue Dec  7 18:43:19 1999
 @@ -13,6 +13,13 @@
  #include <HTTP.h>
  #include <LYUtils.h>
  
 +#ifdef USE_SSL
 +#define free_func free__func
-+#include <ssl.h>
-+#include <crypto.h>
++#include <openssl/ssl.h>
++#include <openssl/crypto.h>
 +#undef free_func
 +#endif /* USE_SSL */
 +

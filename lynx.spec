@@ -5,7 +5,7 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.5dev.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
@@ -113,7 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 
-%config %verify(not size mtime md5) %{_sysconfdir}/lynx.cfg
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lynx.cfg
 %{_applnkdir}/Network/WWW/lynx.desktop
 
 %attr(755,root,root) %{_bindir}/*

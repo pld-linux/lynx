@@ -28,9 +28,9 @@
  
  cat >>$OUT <<EOF
  };
---- lynx2-8-5/config.hin.orig	2004-01-18 21:21:27.860909328 +0100
-+++ lynx2-8-5/config.hin	2004-01-18 21:30:37.920287592 +0100
-@@ -2,280 +2,280 @@
+--- lynx2-8-5/config.hin.orig	2004-01-29 23:54:28.865423112 +0100
++++ lynx2-8-5/config.hin	2004-01-30 00:00:05.886188168 +0100
+@@ -2,284 +2,284 @@
  #ifndef LYNX_CFG_H
  #define LYNX_CFG_H 1
  
@@ -58,7 +58,7 @@
 +#undef COLOR_CURSES
 +#undef COMPRESS_PATH
 +#undef COPY_PATH
-+#undef CURS_PERFORMANCE
++#undef CURS_PERFORMANCE	
 +#undef DEBUG
  #undef DECL_ERRNO
  #undef DECL_GETGRGID
@@ -377,7 +377,11 @@
 -#undef SYSTEM_MAIL		/* CF_DEFINE_PROG */
 -#undef SYSTEM_MAIL_FLAGS	/* CF_SYSTEM_MAIL_FLAGS */
 -#undef SYSTEM_NAME		/* CF_CHECK_CACHE */
+-#undef TAR_DOWN_OPTIONS		/* CF_TAR_OPTIONS */
+-#undef TAR_FILE_OPTIONS		/* CF_TAR_OPTIONS */
 -#undef TAR_PATH			/* CF_PATH_PROG(tar) */
+-#undef TAR_PIPE_OPTIONS		/* CF_TAR_OPTIONS */
+-#undef TAR_UP_OPTIONS		/* CF_TAR_OPTIONS */
 -#undef TELNET_PATH		/* CF_PATH_PROG(telnet) */
 -#undef TERMIO_AND_CURSES	/* CF_TERMIO_AND_CURSES workaround */
 -#undef TERMIO_AND_TERMIOS	/* CF_TERMIO_AND_TERMIOS workaround */
@@ -389,7 +393,11 @@
 +#undef SYSTEM_MAIL
 +#undef SYSTEM_MAIL_FLAGS
 +#undef SYSTEM_NAME
++#undef TAR_DOWN_OPTIONS
++#undef TAR_FILE_OPTIONS
 +#undef TAR_PATH
++#undef TAR_PIPE_OPTIONS
++#undef TAR_UP_OPTIONS
 +#undef TELNET_PATH
 +#undef TERMIO_AND_CURSES
 +#undef TERMIO_AND_TERMIOS
@@ -513,7 +521,7 @@
  #endif
  
  /* 'const' may be defined externally by the compiler-wrapper, as in 'unproto'
-@@ -312,7 +312,7 @@
+@@ -316,7 +316,7 @@
  #endif
  
  #ifdef HAVE_SYSLOG_H

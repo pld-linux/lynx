@@ -10,15 +10,18 @@ Copyright:	GPL
 Group:		Networking
 Group(pl):	Sieciowe
 Source0:	http://sol.slcc.edu/lynx/current/%{name}%{version}.tar.bz2
-Source1:	lynx.wmconfig
+Source1:	lynx.desktop
 Patch0:		lynx-pld.patch
 Patch1:		lynx-overflow.patch
 Patch2:		lynx-config.patch
 Patch3:		lynx.cfg.patch
+Patch4:		lynx-helpdir.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	zlib-devel
 BuildRequires:	ncurses-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
+
+%define		_libdir		%{_datadir}/lynx
 
 %description
 This a terminal based WWW browser. While it does not make any attempt
@@ -45,16 +48,15 @@ tablolar için desteði vardýr.
 %prep
 %setup  -q -n %{name}2-8-3
 %patch0 -p1
-%patch1 -p1 -b .wiget
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
-CFLAGS="-w" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=%{_prefix} \
-	--libdir=%{_datadir}/lynx \
-	--mandir=%{_mandir} \
+CFLAGS="-w"; export CFLAGS
+LDFLAGS="-s"; export LDFLAGS
+%configure \
 	--with-screen=ncurses \
 	--enable-nls \
 	--without-included-gettext \
@@ -85,18 +87,19 @@ CFLAGS="-w" LDFLAGS="-s" \
 	--without-socks \
 	--without-socks5 \
 	--without-ssl
-			  make
+
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/X11/wmconfig \
-	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes 
+install -d $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Networking/WWW
+#	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes 
 
 make install install-help\
 	DESTDIR=$RPM_BUILD_ROOT \
-	helpdir=%{_datadir}/%{name}/lynx_help
+	helpdir=%{_libdir}/help
 
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
+install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Networking/WWW/lynx.desktop
 
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	C[HO]* PROBLEMS README samples/* test/* docs/README*
@@ -110,7 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 
-/etc/X11/wmconfig/lynx
+/usr/X11R6/share/applnk/Networking/WWW/lynx.desktop
 
 %attr(755,root,root) %{_bindir}/*
 

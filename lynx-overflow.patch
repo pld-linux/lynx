@@ -1,6 +1,6 @@
---- lynx2-8-2/src/LYMail.c.over	Thu May  6 02:33:59 1999
-+++ lynx2-8-2/src/LYMail.c	Tue May 11 14:53:14 1999
-@@ -311,7 +311,7 @@
+--- lynx2-8-3/src/LYMail.c.wiget	Thu Aug 26 13:31:19 1999
++++ lynx2-8-3/src/LYMail.c	Wed Sep  8 22:36:05 1999
+@@ -398,7 +398,7 @@
       *	entry, if permitted. - FM
       */
      if (!LYNoCc) {
@@ -9,16 +9,16 @@
  				personal_mail_address : ""));
  	self[79] = '\0';
  	_statusline("Cc: ");
-@@ -382,7 +382,7 @@
+@@ -487,7 +487,7 @@
  #endif
  
- #else
+ #else	/* !(defined(VMS) || defined(DOSPATH) || defined(SH_EX)) */
 -    sprintf(cmd, "%s %s", system_mail, system_mail_flags);
 +    snprintf(cmd, sizeof(cmd), "%s %s", system_mail, system_mail_flags);
      if ((fd = popen(cmd, "w")) == NULL) {
  	HTAlert(FORM_MAILTO_FAILED);
  	FREE(address);
-@@ -461,7 +461,7 @@
+@@ -566,7 +566,7 @@
  	/*
  	 *  Now set up the command. - FM
  	 */
@@ -27,7 +27,7 @@
  		"%s %s %s,%s ",
  		system_mail,
  		system_mail_flags,
-@@ -476,7 +476,7 @@
+@@ -581,7 +581,7 @@
  	 *
  	 *  Possibly still a problem if user supplies long subject. - BL
  	 */
@@ -36,7 +36,7 @@
  		"%s %s%s/subject=\"%s\" %s ",
  		system_mail,
  		system_mail_flags,
-@@ -511,7 +511,7 @@
+@@ -616,7 +616,7 @@
  	    if (!first) {
  		StrAllocCat(command, ",");
  	    }
@@ -45,7 +45,7 @@
  	    StrAllocCat(command, cmd);
  	    first = FALSE;
  	}
-@@ -542,7 +542,7 @@
+@@ -647,7 +647,7 @@
  	    if (strlen(address_ptr1) > 3 &&
  		strlen(address_ptr1) + strlen(mail_adrs) < sizeof(cmd)) {
  		StrAllocCat(command, ",");
@@ -54,7 +54,7 @@
  		if (isPMDF) {
  		    strcat(cmd, "/CC");
  		}
-@@ -1097,7 +1097,7 @@
+@@ -1286,7 +1286,7 @@
  				i += 78;
  				len = strlen((char *)&cp0[i]);
  			    }
@@ -63,7 +63,7 @@
  			    StrAllocCat(body, cmd);
  			    cp0 = (cp + 1);
  			}
-@@ -1112,7 +1112,7 @@
+@@ -1301,7 +1301,7 @@
  			    len = strlen((char *)&cp0[i]);
  			}
  			if (len) {
@@ -72,7 +72,7 @@
  			    StrAllocCat(body, cmd);
  			}
  			FREE(temp);
-@@ -1244,7 +1244,7 @@
+@@ -1433,7 +1433,7 @@
  	if (!LYHaveCJKCharacterSet &&
  	    strncasecomp(LYCharSet_UC[current_char_set].MIMEname, "x-", 2)
  	    != 0) {
@@ -81,7 +81,7 @@
  		    LYCharSet_UC[current_char_set].MIMEname);
  	    StrAllocCat(header, buf);
  	}
-@@ -1262,7 +1262,7 @@
+@@ -1451,7 +1451,7 @@
  	StrAllocCat(header, address);
      }
      StrAllocCat(header, "\n");
@@ -90,7 +90,7 @@
      StrAllocCat(header, buf);
  
      if (refid && *refid) {
-@@ -1389,7 +1389,7 @@
+@@ -1578,7 +1578,7 @@
      addstr("From: ");
  #endif /* VMS */
      /* Add the personal mail address if there is one. */
@@ -99,7 +99,7 @@
  			       personal_mail_address : ""));
      if (LYgetstr(user_input, VISIBLE, sizeof(user_input), NORECALL) < 0 ||
  	term_letter) {
-@@ -1428,7 +1428,7 @@
+@@ -1617,7 +1617,7 @@
      addstr(CTRL_U_TO_ERASE);
      addstr(SUBJECT_PROMPT);
      /* Add the default subject. */
@@ -108,16 +108,16 @@
  			(subject[0] != '\0') ?
  				     subject :
  		    ((filename && *filename) ?
-@@ -1448,7 +1448,7 @@
+@@ -1637,7 +1637,7 @@
      addstr("\n");
      remove_tildes(user_input);
  #ifdef VMS
 -    sprintf(subject, "%.70s", user_input);
 +    snprintf(subject, sizeof(subject), "%.70s", user_input);
  #else
-     StrAllocCat(header, "Subject: ");
-     StrAllocCat(header, user_input);
-@@ -1468,7 +1468,7 @@
+ #ifdef SH_EX
+     if (mail_is_blat)
+@@ -1663,7 +1663,7 @@
  	/*
  	 *  Add the mail address if there is one.
  	 */
@@ -126,7 +126,7 @@
  				   personal_mail_address : ""));
  	if (LYgetstr(user_input, VISIBLE, sizeof(user_input), NORECALL) < 0 ||
  	    term_letter) {
-@@ -1526,7 +1526,7 @@
+@@ -1721,7 +1721,7 @@
      /*
       *	Terminate the header.
       */
@@ -135,7 +135,7 @@
      StrAllocCat(header, buf);
      CTRACE(tfp,"**header==\n%s",header);
  #endif /* !VMS */
-@@ -1574,7 +1574,7 @@
+@@ -1769,7 +1769,7 @@
  	if (strstr(editor, "pico")) {
  	    editor_arg = " -t"; /* No prompt for filename to use */
  	}
@@ -143,8 +143,8 @@
 +	snprintf(user_input, sizeof(user_input), "%s%s %s", editor, editor_arg, my_tmpfile);
  	_statusline(SPAWNING_EDITOR_FOR_MAIL);
  	stop_curses();
- 	if (LYSystem(user_input)) {
-@@ -1721,7 +1721,7 @@
+ 	if (LYSystem(user_input)) {	/* Spawn Editor */
+@@ -1916,7 +1916,7 @@
  	/*
  	 *  Now set up the command. - FM
  	 */
@@ -153,7 +153,7 @@
  		"%s %s %s,%s ",
  		system_mail,
  		system_mail_flags,
-@@ -1736,7 +1736,7 @@
+@@ -1931,7 +1931,7 @@
  	 *
  	 *  Possibly still a problem if user supplies long subject. - BL
  	 */
@@ -162,7 +162,7 @@
  		"%s %s%s/subject=\"%s\" %s ",
  		system_mail,
  		system_mail_flags,
-@@ -1771,7 +1771,7 @@
+@@ -1966,7 +1966,7 @@
  	    if (!first) {
  		StrAllocCat(command, ",");
  	    }
@@ -171,7 +171,7 @@
  	    StrAllocCat(command, cmd);
  	    first = FALSE;
  	}
-@@ -1802,7 +1802,7 @@
+@@ -1997,7 +1997,7 @@
  	    if (strlen(address_ptr1) > 3 &&
  		strlen(address_ptr1) + strlen(mail_adrs) < sizeof(cmd)) {
  		StrAllocCat(command, ",");
@@ -180,12 +180,12 @@
  		if (isPMDF) {
  		    strcat(cmd, "/CC");
  		}
-@@ -1824,7 +1824,7 @@
+@@ -2019,7 +2019,7 @@
       *	Send the tmpfile into sendmail.
       */
      _statusline(SENDING_YOUR_MSG);
 -    sprintf(cmd, "%s %s", system_mail, system_mail_flags);
 +    snprintf(cmd, sizeof(cmd), "%s %s", system_mail, system_mail_flags);
- #ifdef DOSPATH
+ #if defined(DOSPATH) || defined(WIN_EX)
      if ((fp = LYOpenTemp(tmpfile2, ".txt", "w")) == NULL) {
  	HTAlert(MAILTO_URL_TEMPOPEN_FAILED);

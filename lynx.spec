@@ -80,7 +80,7 @@ LDFLAGS="-s"; export LDFLAGS
 #	--with-socks5=%{_prefix} \
 #	--enable-color-style \
 
-make 	SSL_LIBS= "-lssl -lsslcrypto " \
+%{__make} 	SSL_LIBS= "-lssl -lsslcrypto " \
 	SSL_DEFINES= "-I%{_includedir}/ssl -DUSE_SSL"
 
 %install
@@ -88,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/X11/wmconfig \
 	$RPM_BUILD_ROOT%{_datadir}/lynx/help/keystrokes
 
-make install install-help \
+%{__make} install install-help \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/X11/wmconfig/lynx

@@ -18,7 +18,7 @@ diff -ur lynx2-8-2/lynx.cfg lynx2-8-2.new/lynx.cfg
 -HELPFILE:http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
 -#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
 +#HELPFILE:http://www.crl.com/~subir/lynx/lynx_help/lynx_help_main.html
-+HELPFILE:file://localhost/usr/share/lynx/lynx_help/lynx_help_main.html
++HELPFILE:file://localhost/usr/share/lynx/help/lynx_help_main.html
  
  # DEFAULT_INDEX_FILE is the default file retrieved when the
  # user presses the 'I' key when viewing any document.

@@ -39,7 +39,7 @@ Provides:	webclient
 Obsoletes:	lynx-ssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		specflags_ia32	"-fomit-frame-pointer"
+%define		specflags_ia32	 -fomit-frame-pointer 
 
 %description
 This a terminal based WWW browser. While it does not make any attempt

@@ -64,9 +64,11 @@ formlar ve tablolar için desteði vardýr.
 %patch6 -p1
 
 %build
-rm -f configure
-autoconf
-%configure \
+#rm -f configure
+#chmod 644 aclocal.m4
+#aclocal
+#autoconf
+%configure2_13 \
 	--with-screen=slang \
 	--without-included-gettext \
 	--with-zlib \

@@ -1,0 +1,82 @@
+diff -Naur lynx2-8-4.ori/aclocal.m4 lynx2-8-4/aclocal.m4
+--- lynx2-8-4.ori/aclocal.m4	Thu Aug  3 19:19:52 2000
++++ lynx2-8-4/aclocal.m4	Sat Aug  5 08:15:10 2000
+@@ -1677,9 +1677,6 @@
+ ])dnl
+ dnl ---------------------------------------------------------------------------
+ dnl Insert text into the help-message, for readability, from AC_ARG_WITH.
+-AC_DEFUN([CF_HELP_MESSAGE],
+-[AC_DIVERT_HELP([$1])dnl
+-])dnl
+ dnl ---------------------------------------------------------------------------
+ dnl For Lynx, check if the libraries we have found give us inet_aton, or
+ dnl inet_addr.  If not, try to find the latter function with -lbind or
+diff -Naur lynx2-8-4.ori/configure.in lynx2-8-4/configure.in
+--- lynx2-8-4.ori/configure.in	Thu Aug  3 19:19:52 2000
++++ lynx2-8-4/configure.in	Sat Aug  5 08:15:43 2000
+@@ -3,7 +3,6 @@
+ dnl by T.E.Dickey <dickey@clark.net>
+ dnl and Jim Spath <jspath@mail.bcpl.lib.md.us>
+ 
+-AC_PREREQ(2.12.971222)
+ rm -f config.cache
+ 
+ AC_INIT(userdefs.h)
+@@ -53,9 +52,6 @@
+ dnl Debug/development/test
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Development Options:)
+-
+ CF_DISABLE_ECHO
+ 
+ # special case for WWW/*
+@@ -258,9 +254,6 @@
+ dnl --------------------------------------------------------------------------
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Basic Configuration Options:)
+-
+ dnl internationalization macros
+ CF_BUNDLED_INTL(makefile)
+ 
+@@ -587,9 +580,6 @@
+ dnl Experimental options that don't need to test system features
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Experimental Options:)
+-
+ AC_MSG_CHECKING(if configuration info should be browsable)
+ CF_ARG_DISABLE(config-info,
+ [  --disable-config-info   disable browsable configuration-info],
+@@ -789,9 +779,6 @@
+ dnl Miscellaneous options that don't need to test system features
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Miscellaneous Options:)
+-
+ AC_MSG_CHECKING(if alternative line-edit bindings should be used)
+ CF_ARG_ENABLE(alt-bindings,
+ [  --disable-alt-bindings  disable alternative line-edit bindings],
+@@ -985,9 +972,6 @@
+ dnl DirEd (directory-editor) options
+ dnl --------------------------------------------------------------------------
+ 
+-CF_HELP_MESSAGE(
+-Directory Editor Options:)
+-
+ # All DirEd functions that were enabled on compilation can be disabled
+ # or modified at run time via DIRED_MENU symbols in lynx.cfg.
+ AC_MSG_CHECKING(if directory-editor code should be used)
+@@ -1058,7 +1042,6 @@
+ dnl Test features that rely on configure-definitions
+ dnl --------------------------------------------------------------------------
+ if test $cf_cv_screen = pdcurses ; then
+-	CF_HELP_MESSAGE(Special Libraries for PDCurses X11:)
+ 	CF_PDCURSES_X11
+ else
+ 	CF_TERMIO_AND_CURSES(LYCurses.h)

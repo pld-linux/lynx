@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Lynx
+Commnet=Lynx - text based WWW browser
+Commnet[pl]=Lynx - tekstowa przegl±darka WWW
+Exec=/usr/X11R6/bin/xterm -e lynx &
+Terminal=0
+Type=Application

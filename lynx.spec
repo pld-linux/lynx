@@ -127,13 +127,13 @@ formlar ve tablolar için desteði vardýr.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Network/WWW,%{_pixmapsdir}} \
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
 	$RPM_BUILD_ROOT%{_datadir}/lynx/help
 
 %{__make} install install-help \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/WWW
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 bzip2 -dc %{SOURCE3} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
@@ -149,7 +149,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lynx.cfg
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/lynx
-%{_applnkdir}/Network/WWW/lynx.desktop
+%{_desktopdir}/lynx.desktop
 %{_pixmapsdir}/*
 %{_mandir}/man1/*
 %lang(cs) %{_mandir}/cs/man1/*

@@ -107,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 
 /etc/X11/wmconfig/lynx
 
-%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) %{_bindir}/*
 
 %{_mandir}/man1/*
 %dir %{_datadir}/lynx

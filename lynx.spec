@@ -1,20 +1,20 @@
 Summary:	Text based browser for the world wide web
+Summary(de):	Text-Browser für das WWW 
+Summary(fr):	Navigateur en mode texte pour le world wide web
+Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
+Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.2dev.15
 Release:	1d
 Copyright:	GPL
 URL:		http://lynx.browser.org
-Group:		Applications/Networking
-Group(pl):	Aplikacje/Sieæ
-Source:		ftp://www.slcc.edu/pub/lynx/current/%{name}%{version}.tar.bz2
+Group:		Networking
+Group(pl):	Sieciowe
+Source0:	ftp://www.slcc.edu/pub/lynx/current/%{name}%{version}.tar.bz2
 Source1:	%{name}.wmconfig
-Patch:		%{name}-pld.patch
+Patch0:		%{name}-pld.patch
 Patch1:		%{name}-overflow.patch
 Buildroot:	/tmp/%{name}-%{version}-root
-Summary(de):	Text-Browser für das WWW 
-Summary(fr):	Navigateur en mode texte pour le world wide web
-Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
-Summary(tr):	Metin ekranda WWW tarayýcý
 
 %description
 This a terminal based WWW browser. While it does not make any attempt
@@ -40,15 +40,22 @@ tablolar için desteði vardýr.
 
 %prep
 %setup  -q -n %{name}2-8-2
-%patch  -p1 
+%patch0 -p1 
 %patch1 -p1
 
 %build
-CFLAGS="-w" LDFLAGS=-s ./configure --prefix=/usr --libdir=/etc \
-	--with-screen=slang --enable-warnings \
-	--enable-default-colors --enable-externs \
-	--enable-internal-links --enable-nsl-fork \
-	--enable-persistent-cookies --with-zlib 
+CFLAGS="-w" LDFLAGS=-s \
+    ./configure \
+	--prefix=/usr \
+	--libdir=/etc \
+	--with-screen=slang \
+	--enable-warnings \
+	--enable-default-colors \
+	--enable-externs \
+	--enable-internal-links \
+	--enable-nsl-fork \
+	--enable-persistent-cookies \
+	--with-zlib 
 make
 
 %install
@@ -62,36 +69,42 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
 
 strip $RPM_BUILD_ROOT/usr/bin/lynx
 
-bzip2 -9 $RPM_BUILD_ROOT/usr/man/man1/*
+gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/*
+bzip2 -9 docs/* README lynx.hlp 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs README samples
+%doc docs/* README.bz2 
 %doc test lynx.hlp lynx_help
 
 %config %verify(not size mtime md5) /etc/lynx.cfg
 %config(missingok) /etc/X11/wmconfig/lynx
 
-%attr(711,root,root) /usr/bin/*
+%attr(755,root,root) /usr/bin/*
 %attr(644,root, man) /usr/man/man1/*
 
 %changelog
+* Fri Feb 05 1999 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+  [2.8.2dev15-2d]
+- changed group,
+- compressed documentation.
+
 * Sun Jan 10 1999 Artur Frysiak <wiget@usa.net>
-[2.8.2dev.12-1d]
+  [2.8.2dev.12-1d]
 - added URL and Group(pl) tags
 
 * Mon Sep 01 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
-[2.8-5d]
+  [2.8-5d]
 - build against glibc-2.1,
 - changed Buildroot to /var/tmp/%%{name}-%%{version}-%%{release}-root,
 - changed permission of lynx to 711,
 - translation modified for pl.
 
 * Sun Aug 30 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-[2.8-5]
+  [2.8-5]
 - added -q %setup parameter,
 - changed Buildroot to /tmp/%%{name}-%%{version}-root,
 - URL in HELPFILE in /etc/lynx.cfh changed to localhost,

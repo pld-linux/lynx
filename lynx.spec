@@ -18,7 +18,9 @@ Patch2:		%{name}-config.patch
 Patch3:		%{name}-not_for_root.patch
 Patch4:		%{name}.cfg.patch
 Patch5:		%{name}-TEMP_SPACE.patch
-Buildroot:	/tmp/%{name}-%{version}-root
+Requires:	zlib
+Requires:	ncurses
+Buildroot:	/tmp/%{name}-%{version}-%{release}-root
 
 %description
 This a terminal based WWW browser. While it does not make any attempt
@@ -52,7 +54,7 @@ tablolar için desteði vardýr.
 %patch5 -p0
 
 %build
-CFLAGS="-w -D_USE_PLD" LDFLAGS=-s \
+CFLAGS="-w -D_USE_PLD" LDFLAGS="-s" \
     ./configure \
 	--prefix=/usr \
 	--libdir=/etc \
@@ -63,6 +65,7 @@ CFLAGS="-w -D_USE_PLD" LDFLAGS=-s \
 	--enable-internal-links \
 	--enable-nsl-fork \
 	--enable-persistent-cookies \
+	--enable-gzip-help \
 	--with-zlib 
 make
 
@@ -70,28 +73,26 @@ make
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/etc/X11/wmconfig
-install -d $RPM_BUILD_ROOT/usr/share/lynx/{lynx_help/keystrokes,test}
+install -d $RPM_BUILD_ROOT/usr/share/lynx/help/keystrokes
 
-make install prefix=$RPM_BUILD_ROOT/usr libdir=$RPM_BUILD_ROOT/etc
-
-for i in `find lynx_help test -type f `; do
-	install $i $RPM_BUILD_ROOT/usr/share/lynx/$i
-done
+make	prefix=$RPM_BUILD_ROOT/usr \
+	libdir=$RPM_BUILD_ROOT/etc \
+	helpdir=$RPM_BUILD_ROOT/usr/share/lynx/help \
+	install \
+	install-help
+	
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
 
-strip $RPM_BUILD_ROOT/usr/bin/lynx
-
 gzip -9fn $RPM_BUILD_ROOT/usr/man/man1/*
-gzip -9fn docs/* README lynx.hlp 
+gzip -9fn C[HO]* PROBLEMS README samples/* test/* docs/README*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/* README.gz
-%doc lynx.hlp.gz
+%doc C[HO]* PROBLEMS.gz README.gz samples test docs/README*
 
 %config %verify(not size mtime md5) /etc/lynx.cfg
 %config(missingok) /etc/X11/wmconfig/lynx
@@ -102,6 +103,11 @@ rm -rf $RPM_BUILD_ROOT
 /usr/share/lynx
 
 %changelog
+* Wed Feb 17 1999 Artur Frysiak <wiget@usa.net>
+  [2.8.2dev.17-1d]
+- gziped help files
+- change install metod
+
 * Tue Feb 16 1999 Artur Frysiak <wiget@usa.net>
   [2.8.2dev.16-1d]
 - moved help and test files to /usr/share/lynx

@@ -8,7 +8,7 @@ Summary(pt_BR):	Navegador web modo texto
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.5dev.16
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Networking
 # Source0-md5:	d5c50ea7334ee3256a82722be2f0d9a3

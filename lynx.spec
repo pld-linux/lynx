@@ -4,7 +4,7 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.2rel.1
+Version:	2.8.3dev.8
 Release:	1
 Copyright:	GPL
 Group:		Networking
@@ -43,9 +43,9 @@ Metin ekranda çalýþan bir WWW tarayýcýdýr. Þekil gösteremese de, formlar ve
 tablolar için desteði vardýr.
 
 %prep
-%setup  -q -n %{name}2-8-2
+%setup  -q -n %{name}2-8-3
 %patch0 -p1
-%patch1 -p1
+%patch1 -p1 -b .wiget
 %patch2 -p1
 %patch3 -p1
 
@@ -58,6 +58,14 @@ CFLAGS="-w" LDFLAGS="-s" \
 	--with-screen=ncurses \
 	--enable-nls \
 	--without-included-gettext \
+	--enable-charset-choice \
+	--enable-cjk        \
+	--enable-default-colors \
+	--enable-file-upload \
+	--enable-justify-elts \
+	--enable-kbd-layout \
+	--enable-read-eta \
+	--enable-scrollbar \
 	--enable-warnings \
 	--enable-default-colors \
 	--enable-externs \
@@ -77,7 +85,7 @@ CFLAGS="-w" LDFLAGS="-s" \
 	--without-socks \
 	--without-socks5 \
 	--without-ssl
-make
+			  make
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -86,7 +94,7 @@ install -d $RPM_BUILD_ROOT/etc/X11/wmconfig \
 
 make install install-help\
 	DESTDIR=$RPM_BUILD_ROOT \
-	helpdir=%{_datadir}/%{name}/help
+	helpdir=%{_datadir}/%{name}/lynx_help
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lynx
 

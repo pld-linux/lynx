@@ -1,28 +1,14 @@
-diff -Nur lynx2-8-4.orig/aclocal.m4 lynx2-8-4/aclocal.m4
---- lynx2-8-4.orig/aclocal.m4	Sun Jun  3 21:58:00 2001
-+++ lynx2-8-4/aclocal.m4	Sun Jun 10 16:11:56 2001
-@@ -1751,9 +1751,6 @@
- ])dnl
- dnl ---------------------------------------------------------------------------
- dnl Insert text into the help-message, for readability, from AC_ARG_WITH.
--AC_DEFUN([CF_HELP_MESSAGE],
--[AC_DIVERT_HELP([$1])dnl
--])dnl
- dnl ---------------------------------------------------------------------------
- dnl For Lynx, check if the libraries we have found give us inet_aton, or
- dnl inet_addr.  If not, try to find the latter function with -lbind or
-diff -Nur lynx2-8-4.orig/configure.in lynx2-8-4/configure.in
---- lynx2-8-4.orig/configure.in	Sun Jun  3 21:58:00 2001
-+++ lynx2-8-4/configure.in	Sun Jun 10 16:13:21 2001
-@@ -3,7 +3,6 @@
- dnl by T.E.Dickey <dickey@clark.net>
- dnl and Jim Spath <jspath@mail.bcpl.lib.md.us>
- 
--AC_PREREQ(2.12.971222)
+--- lynx2-8-5/configure.in.orig	Mon Dec  2 03:07:38 2002
++++ lynx2-8-5/configure.in	Mon Jan 13 16:39:12 2003
+@@ -16,7 +16,6 @@
+ # run to the next, as well as with tests that are order-dependent.
  rm -f config.cache
  
+-AC_PREREQ(2.13.20020210)
  AC_INIT(userdefs.h)
-@@ -53,9 +52,6 @@
+ 
+ # autoconf 2.5x defaults to no cache file; we need the cache file's information
+@@ -71,9 +70,6 @@
  dnl Debug/development/test
  dnl --------------------------------------------------------------------------
  
@@ -32,7 +18,7 @@ diff -Nur lynx2-8-4.orig/configure.in lynx2-8-4/configure.in
  CF_DISABLE_ECHO
  
  # special case for WWW/*
-@@ -265,9 +261,6 @@
+@@ -311,9 +307,6 @@
  dnl --------------------------------------------------------------------------
  dnl --------------------------------------------------------------------------
  
@@ -40,9 +26,9 @@ diff -Nur lynx2-8-4.orig/configure.in lynx2-8-4/configure.in
 -Basic Configuration Options:)
 -
  dnl internationalization macros
- CF_BUNDLED_INTL(makefile)
+ CF_BUNDLED_INTL(makefile,disable)
  
-@@ -622,9 +615,6 @@
+@@ -599,9 +592,6 @@
  dnl Experimental options that don't need to test system features
  dnl --------------------------------------------------------------------------
  
@@ -52,7 +38,7 @@ diff -Nur lynx2-8-4.orig/configure.in lynx2-8-4/configure.in
  AC_MSG_CHECKING(if bibp: URLs should be supported)
  CF_ARG_DISABLE(bibp-urls,
  [  --disable-bibp-urls     disable support for bibp: URLs],
-@@ -838,9 +828,6 @@
+@@ -801,9 +791,6 @@
  dnl Miscellaneous options that don't need to test system features
  dnl --------------------------------------------------------------------------
  
@@ -62,7 +48,16 @@ diff -Nur lynx2-8-4.orig/configure.in lynx2-8-4/configure.in
  AC_MSG_CHECKING(if alternative line-edit bindings should be used)
  CF_ARG_ENABLE(alt-bindings,
  [  --disable-alt-bindings  disable alternative line-edit bindings],
-@@ -1037,9 +1024,6 @@
+@@ -836,7 +823,7 @@
+ AC_MSG_RESULT($use_externs)
+ if test $use_externs != "no" ; then
+ 	AC_DEFINE(USE_EXTERNALS)
+-	LIBOBJS="$LIBOBJS LYExtern.o"
++	AC_LIBOBJ([LYExtern])
+ fi
+ 
+ AC_MSG_CHECKING(if you want to use setfont support)
+@@ -991,9 +978,6 @@
  dnl DirEd (directory-editor) options
  dnl --------------------------------------------------------------------------
  
@@ -72,9 +67,18 @@ diff -Nur lynx2-8-4.orig/configure.in lynx2-8-4/configure.in
  # All DirEd functions that were enabled on compilation can be disabled
  # or modified at run time via DIRED_MENU symbols in lynx.cfg.
  AC_MSG_CHECKING(if directory-editor code should be used)
-@@ -1111,7 +1095,6 @@
- dnl Test features that rely on configure-definitions
- dnl --------------------------------------------------------------------------
+@@ -1004,7 +988,7 @@
+ AC_MSG_RESULT($use_dired)
+ 
+ if test ".$use_dired" != ".no" ; then
+-	LIBOBJS="$LIBOBJS LYLocal.o"
++	AC_LIBOBJ([LYLocal])
+ 	AC_DEFINE(DIRED_SUPPORT)
+ 
+ 	AC_MSG_CHECKING(if you wish to allow extracting from archives via DirEd)
+@@ -1113,7 +1097,6 @@
+ AC_SUBST(COMPRESS_EXT)
+ 
  if test $cf_cv_screen = pdcurses ; then
 -	CF_HELP_MESSAGE(Special Libraries for PDCurses X11:)
  	CF_PDCURSES_X11

@@ -4,8 +4,8 @@ Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.4dev.7
-Release:	4
+Version:	2.8.4dev.14
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Group(pl):	Aplikacje/Sieciowe
@@ -15,10 +15,9 @@ Patch0:		%{name}-pld.patch
 Patch1:		%{name}-config.patch
 Patch2:		%{name}.cfg.patch
 Patch3:		http://www.moxienet.com/lynx/%{name}-283-ssl.patch.bz2
-Patch4:		%{name}-overflow.patch
-Patch5:		%{name}-po_DESTDIR.patch
-Patch6:		%{name}-config.hin.patch
-Patch7:		%{name}-autoconf.patch
+Patch4:		%{name}-po_DESTDIR.patch
+Patch5:		%{name}-config.hin.patch
+Patch6:		%{name}-autoconf.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	zlib-devel
 BuildRequires:	slang-devel
@@ -59,7 +58,6 @@ formlar ve tablolar için desteði vardýr.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
 
 %build
 autoconf

@@ -52,7 +52,7 @@ tablolar için desteði vardýr.
 %patch6 -p1
 
 %build
-CFLAGS="-w -D_USE_PLD" LDFLAGS="-s" \
+CFLAGS="-w $RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure \
 	--prefix=/usr \
 	--libdir=/etc \

@@ -7,12 +7,12 @@ Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
 Summary(pt_BR):	Navegador web modo texto
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
-Version:	2.8.5pre.1
+Version:	2.8.5pre.3
 Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
-# Source0-md5:	5310bcd92f5d811514322d4f5b5fbef7
+# Source0-md5:	1a6d1cd22a6ee22a297892eb2bbf3b18
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
@@ -29,6 +29,7 @@ Patch8:		%{name}-etc_dir.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	bzip2-devel
 BuildRequires:	gettext-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel >= 0.9.7c
@@ -100,6 +101,7 @@ cp /usr/share/automake/config.sub .
 %configure \
 	--with-screen=ncurses \
 	--without-included-gettext \
+	--with-bzlib \
 	--with-zlib \
 	--with-ssl \
 	--enable-justify-elts \
@@ -109,13 +111,13 @@ cp /usr/share/automake/config.sub .
 	--enable-addrlist-page \
 	--enable-cgi-links \
 	--enable-default-colors \
+	--enable-file-upload \
 	--enable-exec-links \
 	--enable-exec-scripts \
 	--enable-externs \
 	--enable-gzip-help \
 	--enable-internal-links \
 	--enable-ipv6 \
-	--enable-libjs \
 	--enable-nls \
 	--enable-nsl-fork \
 	--enable-persistent-cookies \

@@ -32,7 +32,7 @@ BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	gettext-devel
 BuildRequires:	ncurses-devel
-BuildRequires:	openssl-devel >= 0.9.7c
+BuildRequires:	openssl-devel >= 0.9.7d
 #BuildRequires:	socks5-devel
 BuildRequires:	zlib-devel
 Provides:	webclient

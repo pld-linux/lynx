@@ -1,8 +1,4 @@
 Summary:     Text based browser for the world wide web
-Summary(de): Text-Browser für das WWW 
-Summary(fr): Navigateur en mode texte pour le world wide web
-Summary(pl): Przegl±darka WWW w trybie tekstowym
-Summary(tr): Metin ekranda WWW tarayýcý
 Name:        lynx
 Version:     2.8.1
 Release:     1
@@ -14,6 +10,10 @@ Source1:     lynx.wmconfig
 Patch0:      lynx-config.patch
 Requires:    indexhtml
 Buildroot:   /tmp/%{name}-%{version}-root
+Summary(de): Text-Browser für das WWW 
+Summary(fr): Navigateur en mode texte pour le world wide web
+Summary(pl): Przegl±darka WWW w trybie tekstowym
+Summary(tr): Metin ekranda WWW tarayýcý
 
 %description
 This a terminal based WWW browser. While it does not make any attempt

@@ -1,5 +1,5 @@
 Summary:	Text based browser for the world wide web
-Summary(de):	Text-Browser für das WWW 
+Summary(de):	Text-Browser für das WWW
 Summary(es):	Navegador web modo texto
 Summary(fr):	Navigateur en mode texte pour le world wide web
 Summary(ja):	¥Æ¥­¥¹¥È¥Ù¡¼¥¹¤Î¥¦¥§¥Ö¥Ö¥é¥¦¥¶
@@ -77,7 +77,7 @@ formlar ve tablolar için desteði vardýr.
 
 %prep
 %setup  -q -n %{name}2-8-5
-%patch0 -p1 
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -108,7 +108,7 @@ autoconf
 	--enable-persistent-cookies \
 	--enable-prettysrc \
 	--enable-source-cache \
-	--enable-warnings 
+	--enable-warnings
 #	--with-socks5=%{_prefix} \
 #	--enable-color-style \
 

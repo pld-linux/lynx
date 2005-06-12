@@ -1,6 +1,14 @@
 diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
 --- lynx2-8-5.orig/aclocal.m4	2004-02-14 22:10:58.336429456 +0100
 +++ lynx2-8-5/aclocal.m4	2004-02-14 22:14:16.154356560 +0100
+@@ -24,7 +24,6 @@
+    AC_REQUIRE([AC_HEADER_STDC])dnl
+    AC_REQUIRE([AC_C_CONST])dnl
+    AC_REQUIRE([AC_C_INLINE])dnl
+-   AC_REQUIRE([AC_TYPE_OFF_T])dnl
+    AC_REQUIRE([AC_TYPE_SIZE_T])dnl
+    AC_REQUIRE([AC_FUNC_ALLOCA])dnl
+    AC_REQUIRE([AC_FUNC_MMAP])dnl
 @@ -2226,9 +2226,7 @@
  dnl CF_HELP_MESSAGE version: 3 updated: 1998/01/14 10:56:23
  dnl ---------------

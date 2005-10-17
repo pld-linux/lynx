@@ -1,3 +1,5 @@
+# TODO
+# - http://security.gentoo.org/glsa/glsa-200510-15.xml
 Summary:	Text based browser for the world wide web
 Summary(de):	Text-Browser für das WWW
 Summary(es):	Navegador web modo texto

@@ -1,5 +1,3 @@
-# TODO
-# - http://security.gentoo.org/glsa/glsa-200510-15.xml
 Summary:	Text based browser for the world wide web
 Summary(de):	Text-Browser für das WWW
 Summary(es):	Navegador web modo texto
@@ -10,7 +8,7 @@ Summary(pt_BR):	Navegador web modo texto
 Summary(tr):	Metin ekranda WWW tarayýcý
 Name:		lynx
 Version:	2.8.5rel.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
@@ -29,6 +27,8 @@ Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
 Patch9:		%{name}-fixcrash.patch
+Patch10:	%{name}-CAN-2005-3120.patch
+Patch11:	%{name}-CVE-2005-2929.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -42,7 +42,7 @@ Provides:	webclient
 Obsoletes:	lynx-ssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		specflags_ia32	 -fomit-frame-pointer 
+%define		specflags_ia32	 -fomit-frame-pointer
 
 %description
 This a terminal based WWW browser. While it does not make any attempt
@@ -87,7 +87,7 @@ Metin ekranda çalýþan bir WWW tarayýcýdýr. Þekil gösteremese de,
 formlar ve tablolar için desteði vardýr.
 
 %prep
-%setup  -q -n %{name}2-8-5
+%setup -q -n %{name}2-8-5
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -98,6 +98,8 @@ formlar ve tablolar için desteði vardýr.
 %patch7 -p1
 %patch8 -p1
 %patch9	-p1
+%patch10 -p1
+%patch11 -p1
 
 %build
 cp /usr/share/automake/config.sub .
@@ -154,7 +156,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc CHANGES COPYHEADER PROBLEMS README samples test docs/README*
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/lynx.cfg
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lynx.cfg
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/lynx
 %{_desktopdir}/lynx.desktop

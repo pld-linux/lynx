@@ -1,11 +1,11 @@
 Summary:	Text based browser for the world wide web
-Summary(de):	Text-Browser für das WWW
-Summary(es):	Navegador web modo texto
-Summary(fr):	Navigateur en mode texte pour le world wide web
-Summary(ja):	¥Æ¥­¥¹¥È¥Ù¡¼¥¹¤Î¥¦¥§¥Ö¥Ö¥é¥¦¥¶
-Summary(pl):	Przegl±darka WWW pracuj±ca w trybie tekstowym
-Summary(pt_BR):	Navegador web modo texto
-Summary(tr):	Metin ekranda WWW tarayıcı
+Summary(de.UTF-8):   Text-Browser fÃ¼r das WWW
+Summary(es.UTF-8):   Navegador web modo texto
+Summary(fr.UTF-8):   Navigateur en mode texte pour le world wide web
+Summary(ja.UTF-8):   ãƒ†ã‚­ã‚¹ãƒˆãƒ™ãƒ¼ã‚¹ã®ã‚¦ã‚§ãƒ–ãƒ–ãƒ©ã‚¦ã‚¶
+Summary(pl.UTF-8):   PrzeglÄ…darka WWW pracujÄ…ca w trybie tekstowym
+Summary(pt_BR.UTF-8):   Navegador web modo texto
+Summary(tr.UTF-8):   Metin ekranda WWW tarayÄ±cÄ±
 Name:		lynx
 Version:	2.8.5rel.1
 Release:	6
@@ -49,42 +49,42 @@ This a terminal based WWW browser. While it does not make any attempt
 at displaying graphics, it has good support for HTML text formatting,
 forms, and tables.
 
-%description -l de
-Dies ist ein WWW-Browser auf Terminal-Basis. Während kein Versuch
+%description -l de.UTF-8
+Dies ist ein WWW-Browser auf Terminal-Basis. WÃ¤hrend kein Versuch
 unternommen wird, Grafiken darzustellen, so bietet er doch guten
-Support für HTML-Textformatierung, Formulare und Tabellen.
+Support fÃ¼r HTML-Textformatierung, Formulare und Tabellen.
 
-%description -l es
+%description -l es.UTF-8
 Este es un browser WWW para terminal en modo texto. Mientras no hace
-ningún intento de enseñar gráficos, posee un buen soporte para el
+ningÃºn intento de enseÃ±ar grÃ¡ficos, posee un buen soporte para el
 formato de texto HTML, formularios y tablas.
 
-%description -l fr
+%description -l fr.UTF-8
 Navigateur WWW en mode texte. Bien qu'il n'affiche aucun graphique, il
-sait bien gérer le formatage HTML du texte, les formulaires et les
+sait bien gÃ©rer le formatage HTML du texte, les formulaires et les
 tableaux.
 
-%description -l ja
-lynx ¤Ï¥Æ¥­¥¹¥È¥Ù¡¼¥¹¤Î¥¦¥§¥Ö¥Ö¥é¥¦¥¶¤Ç¤¢¤ë¡£lynx ¤Ï²¿¤Î¥¤¥á¡¼¥¸¤â
-É½¼¨¤·¤Ê¤¤¤¬¥Õ¥ì¡¼¥à¡¢¥Æ¡¼¥Ö¥ë¤½¤·¤ÆÂ¾¤Î HTML ¥¿¥°¤ò¥µ¥İ¡¼¥È¤¹¤ë¡£
-¥°¥é¥Õ¥£¥«¥ë¤Ê¥Ö¥é¥¦¥¶¤ËÂĞ¤¹¤ë lynx ¤Î¥¢¥É¥Ğ¥ó¥Æ¡¼¥¸¤Ï¥¹¥Ô¡¼¥É¤Ç¤¢¤ë¡£
-lynx ¤Ï¥¦¥§¥Ö¥Ú¡¼¥¸¤òÉ½¼¨¤¹¤ë¤Î¤Ë¤¹¤Ğ¤ä¤¯Â¨ºÂ¤Ë³«»Ï¤·¤¿¤ê½ªÎ»¤·¤¿¤ê¤¹¤ë¡£
+%description -l ja.UTF-8
+lynx ã¯ãƒ†ã‚­ã‚¹ãƒˆãƒ™ãƒ¼ã‚¹ã®ã‚¦ã‚§ãƒ–ãƒ–ãƒ©ã‚¦ã‚¶ã§ã‚ã‚‹ã€‚lynx ã¯ä½•ã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚‚
+è¡¨ç¤ºã—ãªã„ãŒãƒ•ãƒ¬ãƒ¼ãƒ ã€ãƒ†ãƒ¼ãƒ–ãƒ«ãã—ã¦ä»–ã® HTML ã‚¿ã‚°ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã€‚
+ã‚°ãƒ©ãƒ•ã‚£ã‚«ãƒ«ãªãƒ–ãƒ©ã‚¦ã‚¶ã«å¯¾ã™ã‚‹ lynx ã®ã‚¢ãƒ‰ãƒãƒ³ãƒ†ãƒ¼ã‚¸ã¯ã‚¹ãƒ”ãƒ¼ãƒ‰ã§ã‚ã‚‹ã€‚
+lynx ã¯ã‚¦ã‚§ãƒ–ãƒšãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹ã®ã«ã™ã°ã‚„ãå³åº§ã«é–‹å§‹ã—ãŸã‚Šçµ‚äº†ã—ãŸã‚Šã™ã‚‹ã€‚
 
-¤³¤ÎÂ®¤¤¡¢¥°¥é¥Õ¥£¥«¥ë¤Ç¤Ê¤¤¥Ö¥é¥¦¥¶¤ò»î¤·¤¿¤±¤ì¤Ğ¥¤¥ó¥¹¥È¡¼¥ë¤·¤Ê¤µ¤¤¡£
-(¤½¤ÎÄ¹½ê¤Î¤è¤µ¤¬¤ï¤«¤ë¤Ç¤¢¤í¤¦)
+ã“ã®é€Ÿã„ã€ã‚°ãƒ©ãƒ•ã‚£ã‚«ãƒ«ã§ãªã„ãƒ–ãƒ©ã‚¦ã‚¶ã‚’è©¦ã—ãŸã‘ã‚Œã°ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ãªã•ã„ã€‚
+(ãã®é•·æ‰€ã®ã‚ˆã•ãŒã‚ã‹ã‚‹ã§ã‚ã‚ã†)
 
-%description -l pl
-Lynx jest przegl±dark± WWW dzia³aj±c± w trybie tekstowym. Dobrze
-formatuje tekst w HTML, ale nie pozwala na wy¶wietlanie grafiki.
+%description -l pl.UTF-8
+Lynx jest przeglÄ…darkÄ… WWW dziaÅ‚ajÄ…cÄ… w trybie tekstowym. Dobrze
+formatuje tekst w HTML, ale nie pozwala na wyÅ›wietlanie grafiki.
 
-%description -l pt_BR
-Este é um browser WWW para terminal em modo texto. Enquanto ele não
-faz nenhuma tentativa para mostrar gráficos, possui um bom suporte
-para o formato de texto HTML, formulários e tabelas.
+%description -l pt_BR.UTF-8
+Este Ã© um browser WWW para terminal em modo texto. Enquanto ele nÃ£o
+faz nenhuma tentativa para mostrar grÃ¡ficos, possui um bom suporte
+para o formato de texto HTML, formulÃ¡rios e tabelas.
 
-%description -l tr
-Metin ekranda çalışan bir WWW tarayıcıdır. Şekil gösteremese de,
-formlar ve tablolar için desteği vardır.
+%description -l tr.UTF-8
+Metin ekranda Ã§alÄ±ÅŸan bir WWW tarayÄ±cÄ±dÄ±r. Åekil gÃ¶steremese de,
+formlar ve tablolar iÃ§in desteÄŸi vardÄ±r.
 
 %prep
 %setup -q -n %{name}2-8-5

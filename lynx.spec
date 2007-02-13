@@ -1,11 +1,11 @@
 Summary:	Text based browser for the world wide web
-Summary(de.UTF-8):   Text-Browser für das WWW
-Summary(es.UTF-8):   Navegador web modo texto
-Summary(fr.UTF-8):   Navigateur en mode texte pour le world wide web
-Summary(ja.UTF-8):   テキストベースのウェブブラウザ
-Summary(pl.UTF-8):   Przeglądarka WWW pracująca w trybie tekstowym
-Summary(pt_BR.UTF-8):   Navegador web modo texto
-Summary(tr.UTF-8):   Metin ekranda WWW tarayıcı
+Summary(de.UTF-8):	Text-Browser für das WWW
+Summary(es.UTF-8):	Navegador web modo texto
+Summary(fr.UTF-8):	Navigateur en mode texte pour le world wide web
+Summary(ja.UTF-8):	テキストベースのウェブブラウザ
+Summary(pl.UTF-8):	Przeglądarka WWW pracująca w trybie tekstowym
+Summary(pt_BR.UTF-8):	Navegador web modo texto
+Summary(tr.UTF-8):	Metin ekranda WWW tarayıcı
 Name:		lynx
 Version:	2.8.5rel.1
 Release:	6

@@ -1,24 +1,3 @@
-diff -Nur lynx2-8-4.orig/configure.in lynx2-8-4/configure.in
---- lynx2-8-4.orig/configure.in	Sun Jun 10 16:24:29 2001
-+++ lynx2-8-4/configure.in	Sun Jun 10 16:16:44 2001
-@@ -434,7 +434,7 @@
- cf_libdir=`echo $cf_libdir | sed -e s@'^NONE/'@$prefix/@ -e s@'^NONE/'@$ac_default_prefix/@`
- 
- AC_MSG_CHECKING(for location of config-file)
--LYNX_CFG_FILE=$cf_libdir/lynx.cfg
-+LYNX_CFG_FILE=$sysconfdir/lynx.cfg
- AC_DEFINE_UNQUOTED(LYNX_CFG_FILE,"$LYNX_CFG_FILE")
- AC_MSG_RESULT($LYNX_CFG_FILE)
- 
-@@ -696,7 +696,7 @@
- 	AC_MSG_RESULT(yes)
- 
- 	AC_MSG_CHECKING(for location of style-sheet file)
--	LYNX_LSS_FILE=$cf_libdir/lynx.lss
-+	LYNX_LSS_FILE=$datadir/lynx/lynx.lss
- 	AC_DEFINE_UNQUOTED(LYNX_LSS_FILE,"$LYNX_LSS_FILE")
- 	AC_MSG_RESULT($LYNX_LSS_FILE)
- 	INSTALL_LSS=install-lss
 diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
 --- lynx2-8-5.orig/lynx.cfg	Sun Jun 10 16:24:29 2001
 +++ lynx2-8-5/lynx.cfg	Sun Jun 10 16:16:44 2001
@@ -71,29 +50,18 @@ diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
  
  .h2 DEFAULT_INDEX_FILE
  # DEFAULT_INDEX_FILE is the default file retrieved when the
-diff -Nur lynx2-8-5.orig/makefile.in lynx2-8-5/makefile.in
---- lynx2-8-5.orig/makefile.in	Mon Apr  2 02:51:46 2001
-+++ lynx2-8-5/makefile.in	Sun Jun 10 16:29:52 2001
-@@ -48,15 +48,15 @@
- MANDIR= $(DESTDIR)$(mandir)
- 
- ## Where you want the lynx.cfg file installed
--libdir= @libdir@
-+libdir= @sysconfdir@
- LIBDIR= $(DESTDIR)$(libdir)
- 
- ## Where you want the doc-files installed
--docdir= @libdir@/lynx_doc
-+docdir= @datadir@/lynx_doc
+--- lynx2-8-6/makefile.in.orig	2006-09-04 01:25:39.000000000 +0200
++++ lynx2-8-6/makefile.in	2007-02-25 20:32:56.534815121 +0100
+@@ -64,7 +64,7 @@
  DOCDIR= $(DESTDIR)$(docdir)
  
  ## Where you want the help-files installed
--helpdir= @libdir@/lynx_help
+-helpdir= @datadir@/lynx_help
 +helpdir= @datadir@/lynx/help
  HELPDIR= $(DESTDIR)$(helpdir)
  
  ##set the relative location of the WWW library Implementation directory,
-@@ -326,7 +326,7 @@
+@@ -337,7 +337,7 @@
  	@-rm -f help_files.tmp
  
  install-help : help_files.sed $(HELPDIR)
@@ -102,7 +70,7 @@ diff -Nur lynx2-8-5.orig/makefile.in lynx2-8-5/makefile.in
  	test -d $(HELPDIR)/keystrokes || mkdir $(HELPDIR)/keystrokes
  @LYNXCFG_MAKE@	@echo 'Making htmlized lynx.cfg'
  @LYNXCFG_MAKE@	cd src && make LYReadCFG.i
-@@ -438,12 +438,12 @@
+@@ -413,12 +413,12 @@
  
  uninstall \
  uninstall-help ::
@@ -115,8 +83,8 @@ diff -Nur lynx2-8-5.orig/makefile.in lynx2-8-5/makefile.in
 -	-test -d $(HELPDIR) && WD=`cd $(HELPDIR) && pwd` && HEAD=`echo $$WD|sed -e 's!/lynx_help$$!!'` && test $$WD != $$HEAD && cd $(HELPDIR) && rm -f COPYING COPYHEADER
 +	-test -d $(HELPDIR) && WD=`cd $(HELPDIR) && pwd` && HEAD=`echo $$WD|sed -e 's!/lynx/help$$!!'` && test $$WD != $$HEAD && cd $(HELPDIR) && rm -f COPYING COPYHEADER
  
- $(BINDIR) $(MANDIR) $(LIBDIR) $(HELPDIR) $(DOCDIR) :
- 	$(srcdir)/mkdirs.sh $@
+ $(BINDIR) \
+ $(MANDIR) \
 diff -Nur lynx2-8-4.orig/userdefs.h lynx2-8-4/userdefs.h
 --- lynx2-8-4.orig/userdefs.h	Sun Jun 10 16:24:29 2001
 +++ lynx2-8-4/userdefs.h	Sun Jun 10 16:16:44 2001

@@ -20,10 +20,9 @@ diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
  dnl ---------------------------------------------------------------------------
  dnl CF_INET_ADDR version: 4 updated: 1999/03/30 12:24:31
  dnl ------------
-diff -burN lynx2-8-5.orig/configure.in lynx2-8-5/configure.in
---- lynx2-8-5.orig/configure.in	2004-02-14 22:10:58.364425200 +0100
-+++ lynx2-8-5/configure.in	2004-02-14 22:13:35.179585672 +0100
-@@ -16,7 +16,6 @@
+--- lynx2-8-6/configure.in.orig	2006-10-11 01:39:50.000000000 +0200
++++ lynx2-8-6/configure.in	2007-02-25 20:19:36.781239762 +0100
+@@ -36,7 +36,6 @@
  # run to the next, as well as with tests that are order-dependent.
  rm -f config.cache
  
@@ -31,7 +30,7 @@ diff -burN lynx2-8-5.orig/configure.in lynx2-8-5/configure.in
  AC_INIT(userdefs.h)
  
  # autoconf 2.5x defaults to no cache file; we need the cache file's information
-@@ -75,9 +74,6 @@
+@@ -101,9 +100,6 @@
  dnl Debug/development/test
  dnl --------------------------------------------------------------------------
  
@@ -41,17 +40,17 @@ diff -burN lynx2-8-5.orig/configure.in lynx2-8-5/configure.in
  CF_DISABLE_ECHO
  
  # special case for WWW/*
-@@ -308,9 +304,6 @@
+@@ -335,9 +331,6 @@
  dnl --------------------------------------------------------------------------
  dnl --------------------------------------------------------------------------
  
 -CF_HELP_MESSAGE(
 -Basic Configuration Options:)
 -
- dnl internationalization macros
- CF_BUNDLED_INTL(makefile,disable)
+ CF_LARGEFILE
  
-@@ -609,9 +602,6 @@
+ dnl internationalization macros
+@@ -658,9 +651,6 @@
  dnl Experimental options that don't need to test system features
  dnl --------------------------------------------------------------------------
  
@@ -61,7 +60,7 @@ diff -burN lynx2-8-5.orig/configure.in lynx2-8-5/configure.in
  AC_MSG_CHECKING(if bibp: URLs should be supported)
  CF_ARG_DISABLE(bibp-urls,
  [  --disable-bibp-urls     disable support for bibp: URLs],
-@@ -787,9 +777,6 @@
+@@ -849,9 +839,6 @@
  dnl Miscellaneous options that don't need to test system features
  dnl --------------------------------------------------------------------------
  
@@ -71,16 +70,7 @@ diff -burN lynx2-8-5.orig/configure.in lynx2-8-5/configure.in
  AC_MSG_CHECKING(if alternative line-edit bindings should be used)
  CF_ARG_ENABLE(alt-bindings,
  [  --disable-alt-bindings  disable alternative line-edit bindings],
-@@ -862,7 +849,7 @@
- AC_MSG_RESULT($use_externs)
- if test $use_externs != "no" ; then
- 	AC_DEFINE(USE_EXTERNALS)
--	LIBOBJS="$LIBOBJS LYExtern\$o"
-+	AC_LIBOBJ([LYExtern])
- fi
- 
- AC_MSG_CHECKING(if you want to use setfont support)
-@@ -1008,9 +995,6 @@
+@@ -1095,9 +1082,6 @@
  dnl DirEd (directory-editor) options
  dnl --------------------------------------------------------------------------
  
@@ -90,16 +80,7 @@ diff -burN lynx2-8-5.orig/configure.in lynx2-8-5/configure.in
  # All DirEd functions that were enabled on compilation can be disabled
  # or modified at run time via DIRED_MENU symbols in lynx.cfg.
  AC_MSG_CHECKING(if directory-editor code should be used)
-@@ -1021,7 +1005,7 @@
- AC_MSG_RESULT($use_dired)
- 
- if test ".$use_dired" != ".no" ; then
--	LIBOBJS="$LIBOBJS LYLocal\$o"
-+	AC_LIBOBJ([LYLocal])
- 	AC_DEFINE(DIRED_SUPPORT)
- 
- 	AC_MSG_CHECKING(if you wish to allow extracting from archives via DirEd)
-@@ -1131,7 +1115,6 @@
+@@ -1218,7 +1202,6 @@
  AC_SUBST(COMPRESS_EXT)
  
  if test $cf_cv_screen = pdcurses ; then

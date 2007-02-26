@@ -1,19 +1,18 @@
-diff -Nru lynx2-8-5/src/LYUtils.c lynx2-8-5.new/src/LYUtils.c
---- lynx2-8-5/src/LYUtils.c	Thu Dec 19 01:57:10 2002
-+++ lynx2-8-5.new/src/LYUtils.c	Mon Mar 10 14:32:58 2003
-@@ -5126,7 +5126,9 @@
- 	char *,		fname)
+--- lynx2-8-6/src/LYUtils.c.orig	2006-11-07 02:27:15.000000000 +0100
++++ lynx2-8-6/src/LYUtils.c	2007-02-25 21:41:54.554627431 +0100
+@@ -5330,7 +5330,9 @@
+ 		     const char *fname)
  {
      char *home = NULL;
-+		char *etc_dir = getenv("ETC_DIR");
-     char *file = fname;
-+		char *file2 = NULL;
++    char *etc_dir = getenv("ETC_DIR");
+     const char *file = fname;
++    char *file2 = NULL;
      int len;
  
      /*
-@@ -5149,13 +5151,39 @@
+@@ -5353,13 +5355,39 @@
      /*
-      *	Set up home string and length. - FM
+      * Set up home string and length.  - FM
       */
 -    StrAllocCopy(home, Home_Dir());
 -
@@ -52,9 +51,9 @@ diff -Nru lynx2-8-5/src/LYUtils.c lynx2-8-5.new/src/LYUtils.c
 +
      if (!non_empty(home))
  	/*
- 	 *  Home_Dir() has a bug if this ever happens. - FM
-@@ -5213,6 +5241,7 @@
- 		     (strncmp(file, "./", 2) ? file : (file + 2)));
+ 	 * Home_Dir() has a bug if this ever happens.  - FM
+@@ -5416,6 +5444,7 @@
+ 	    (strncmp(file, "./", 2) ? file : (file + 2)));
  #endif /* VMS */
      FREE(home);
 +	}

@@ -1,0 +1,3 @@
+- updated to 2.8.6rel.4 [fixes CVE-2006-7234]
+- updated autoconf,config,acfix,gzip_fallback,etc_dir patches
+- removed obsolete fixcrash,CAN-2005-3120,CVE-2005-2929 patches

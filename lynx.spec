@@ -27,6 +27,9 @@ Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
 URL:		http://lynx.browser.org/
+# Fix is in RH packages:
+# http://securitytracker.com/alerts/2008/Oct/1021106.html
+BuildRequires:	security(CVE-2008-4690)
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bzip2-devel

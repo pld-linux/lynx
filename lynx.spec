@@ -8,7 +8,7 @@ Summary(pt_BR.UTF-8):	Navegador web modo texto
 Summary(tr.UTF-8):	Metin ekranda WWW tarayıcı
 Name:		lynx
 Version:	2.8.6rel.5
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
@@ -26,10 +26,8 @@ Patch5:		%{name}-config.patch
 Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
+Patch9:		%{name}-CVE-2008-4690.patch
 URL:		http://lynx.browser.org/
-# Fix is in RH packages:
-# http://securitytracker.com/alerts/2008/Oct/1021106.html
-#BuildRequires:	security(CVE-2008-4690)
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
@@ -97,6 +95,7 @@ formlar ve tablolar için desteği vardır.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 cp /usr/share/automake/config.sub .
@@ -149,6 +148,10 @@ bzip2 -dc %{SOURCE3} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%triggerpostun -- %{name} < 2.8.6rel.5-4
+# for CVE-2008-4690
+%{__sed} -i -e '/^#TRUSTED_LYNXCGI:/s,^#,,' %{_sysconfdir}/lynx.cfg
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

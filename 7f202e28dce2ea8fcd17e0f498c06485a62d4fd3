@@ -1,0 +1,1 @@
+- Added autoconf execution in %build,and ssl now works (hopefully)

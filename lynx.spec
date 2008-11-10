@@ -36,6 +36,7 @@ BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 #BuildRequires:	socks5-devel
 BuildRequires:	zlib-devel
+Requires(triggerpostun):	sed >= 4.0
 Provides:	webclient
 Obsoletes:	lynx-ssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

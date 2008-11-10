@@ -1,0 +1,3 @@
+- 2.8.5dev.2, updated config patch
+- removed SA_LEN patch (already in sources)
+- removed %requires_eq for openssl

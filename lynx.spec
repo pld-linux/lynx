@@ -8,7 +8,7 @@ Summary(pt_BR.UTF-8):	Navegador web modo texto
 Summary(tr.UTF-8):	Metin ekranda WWW tarayıcı
 Name:		lynx
 Version:	2.8.6rel.5
-Release:	1
+Release:	3
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
@@ -29,7 +29,7 @@ Patch8:		%{name}-etc_dir.patch
 URL:		http://lynx.browser.org/
 # Fix is in RH packages:
 # http://securitytracker.com/alerts/2008/Oct/1021106.html
-BuildRequires:	security(CVE-2008-4690)
+#BuildRequires:	security(CVE-2008-4690)
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bzip2-devel

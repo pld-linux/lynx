@@ -1,0 +1,3 @@
+- SA_LEN patch to fix build problems
+- use %rpm{c,ld}flags macros
+- release 4

@@ -1,7 +1,8 @@
 [Desktop Entry]
 Name=Lynx
-GenericName=Text based WWW browser
-GenericName[pl]=Tekstowa przeglądarka WWW
+Name[pl]=Lynx
+GenericName=WWW browser
+GenericName[pl]=Przeglądarka WWW
 Comment=Lynx - text based WWW browser
 Comment[es]=Lector WWW modo texto
 Comment[pl]=Lynx - tekstowa przeglądarka WWW

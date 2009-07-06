@@ -10,11 +10,11 @@ Summary(pl.UTF-8):	Przeglądarka WWW pracująca w trybie tekstowym
 Summary(pt_BR.UTF-8):	Navegador web modo texto
 Summary(tr.UTF-8):	Metin ekranda WWW tarayıcı
 Name:		lynx
-Version:	2.8.7rel.1
+Version:	2.8.7
 Release:	1
 License:	GPL
 Group:		Applications/Networking
-Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
+Source0:	http://lynx.isc.org/lynx2.8.7/%{name}%{version}.tar.bz2
 # Source0-md5:	493af4c77ef6761e3f0157cd1be033a0
 Source1:	%{name}.desktop
 Source2:	%{name}.png

@@ -1,14 +1,14 @@
-diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
---- lynx2-8-5.orig/lynx.cfg	Sun Jun 10 16:24:29 2001
-+++ lynx2-8-5/lynx.cfg	Sun Jun 10 16:16:44 2001
-@@ -1,5 +1,5 @@
+--- lynx2-8-7/lynx.cfg~	2009-07-06 14:00:13.000000000 +0200
++++ lynx2-8-7/lynx.cfg	2009-07-06 14:04:57.000000000 +0200
+@@ -1,6 +1,6 @@
+ # $LynxId: lynx.cfg,v 1.180 2009/06/07 17:02:21 tom Exp $
  # lynx.cfg file.
 -# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
 +# The default placement for this file is /etc/lynx.cfg (Unix)
  #                                     or Lynx_Dir:lynx.cfg (VMS)
  #
  # $Format: "#PRCS LYNX_VERSION \"$ProjectVersion$\""$
-@@ -11,7 +11,7 @@
+@@ -12,7 +12,7 @@
  # Definition pairs are of the form  VARIABLE:DEFINITION
  # NO spaces are allowed between the pair items.
  #
@@ -17,7 +17,7 @@ diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
  #  the default location of this file in the userdefs.h file and recompile,
  #  or specify its location on the command line with the "-cfg"
  #  command line option.
-@@ -42,8 +42,8 @@
+@@ -48,8 +48,8 @@
  #
  # Then in ~/lynx.cfg:
  #
@@ -28,7 +28,7 @@ diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
  # and now your own tweaks.
  #
  # Starting with Lynx 2.8.2, the INCLUDE facility is yet more powerful.  You can
-@@ -88,7 +88,8 @@
+@@ -94,7 +94,8 @@
  # Normally we expect you will connect to a remote site, e.g., the Lynx starting
  # site:
  #STARTFILE:http://lynx.isc.org/
@@ -38,30 +38,29 @@ diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
  #
  # As an alternative, you may want to use a local URL.  A good choice for this is
  # the user's home directory:
-@@ -112,9 +113,8 @@
- #   This should be changed to the local path.
+@@ -120,8 +121,8 @@
+ # variable has been set.
  #
- #HELPFILE:http://www.subir.com/lynx/lynx_help/lynx_help_main.html
+ #HELPFILE:http://lynx.isc.org/release/lynx2-8-6/lynx_help/lynx_help_main.html
 -.ex
 -HELPFILE:file://localhost/usr/share/lynx/help/lynx_help_main.html
--
 +# default in PLD is:
 +#HELPFILE:file://localhost/usr/share/lynx/help/lynx_help_main.html.gz
  
  .h2 DEFAULT_INDEX_FILE
  # DEFAULT_INDEX_FILE is the default file retrieved when the
---- lynx2-8-6/makefile.in.orig	2006-09-04 01:25:39.000000000 +0200
-+++ lynx2-8-6/makefile.in	2007-02-25 20:32:56.534815121 +0100
-@@ -64,7 +64,7 @@
- DOCDIR= $(DESTDIR)$(docdir)
+--- lynx2-8-7/makefile.in~	2008-09-22 00:49:47.000000000 +0200
++++ lynx2-8-7/makefile.in	2009-07-06 14:09:13.000000000 +0200
+@@ -66,7 +66,7 @@
+ DOCDIR    = $(DESTDIR)$(docdir)
  
  ## Where you want the help-files installed
--helpdir= @datadir@/lynx_help
-+helpdir= @datadir@/lynx/help
- HELPDIR= $(DESTDIR)$(helpdir)
+-helpdir   = @datadir@/lynx_help
++helpdir   = @datadir@/lynx/help
+ HELPDIR   = $(DESTDIR)$(helpdir)
  
  ##set the relative location of the WWW library Implementation directory,
-@@ -337,7 +337,7 @@
+@@ -358,7 +358,7 @@
  	@-rm -f help_files.tmp
  
  install-help : help_files.sed $(HELPDIR)
@@ -69,8 +68,8 @@ diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
 +	- (cd $(HELPDIR) && WD=`pwd` && HEAD=`echo $$WD|sed -e 's!/lynx/help$$!!'` && test $$WD != $$HEAD && rm -fr *)
  	test -d $(HELPDIR)/keystrokes || mkdir $(HELPDIR)/keystrokes
  @LYNXCFG_MAKE@	@echo 'Making htmlized lynx.cfg'
- @LYNXCFG_MAKE@	cd src && make LYReadCFG.i
-@@ -413,12 +413,12 @@
+ @LYNXCFG_MAKE@	cd $(SRC_DIR) && $(MAKE_RECUR) LYReadCFG.i
+@@ -434,12 +434,12 @@
  
  uninstall \
  uninstall-help ::
@@ -83,12 +82,11 @@ diff -Nur lynx2-8-5.orig/lynx.cfg lynx2-8-5/lynx.cfg
 -	-test -d $(HELPDIR) && WD=`cd $(HELPDIR) && pwd` && HEAD=`echo $$WD|sed -e 's!/lynx_help$$!!'` && test $$WD != $$HEAD && cd $(HELPDIR) && rm -f COPYING COPYHEADER
 +	-test -d $(HELPDIR) && WD=`cd $(HELPDIR) && pwd` && HEAD=`echo $$WD|sed -e 's!/lynx/help$$!!'` && test $$WD != $$HEAD && cd $(HELPDIR) && rm -f COPYING COPYHEADER
  
- $(BINDIR) \
- $(MANDIR) \
-diff -Nur lynx2-8-4.orig/userdefs.h lynx2-8-4/userdefs.h
---- lynx2-8-4.orig/userdefs.h	Sun Jun 10 16:24:29 2001
-+++ lynx2-8-4/userdefs.h	Sun Jun 10 16:16:44 2001
-@@ -93,7 +93,7 @@
+ update-po:
+ 	rsync -Lrtvz  translationproject.org::tp/latest/lynx/  $(PO_SRCDIR)
+--- lynx2-8-7/userdefs.h~	2009-07-06 14:00:13.000000000 +0200
++++ lynx2-8-7/userdefs.h	2009-07-06 14:11:12.000000000 +0200
+@@ -105,7 +105,7 @@
   * mailcap files (see the examples in the samples directory).
   */
  #ifndef LYNX_CFG_FILE
@@ -97,20 +95,11 @@ diff -Nur lynx2-8-4.orig/userdefs.h lynx2-8-4/userdefs.h
  #endif /* LYNX_CFG_FILE */
  
  /**************************
-@@ -277,7 +277,7 @@
- #ifdef DOSPATH
- #define LYNX_CFG_FILE "./lynx.cfg"
- #else
--#define LYNX_CFG_FILE "/usr/share/lynx/lynx.cfg"
-+#define LYNX_CFG_FILE "/etc/lynx.cfg"
- #endif /* DOSPATH */
- #endif /* LYNX_CFG_FILE */
- #endif /* HAVE_CONFIG_H */
-@@ -478,7 +478,7 @@
-  * http://www.subir.com/lynx/lynx_help/lynx_help_main.html
-  *   This should be changed here or in lynx.cfg to the local path.
+@@ -491,7 +491,7 @@
+  * The definition here can be overridden at run time by defining a
+  * "LYNX_HELPFILE" environment variable.
   */
--#define HELPFILE "http://www.subir.com/lynx/lynx_help/lynx_help_main.html"
+-#define HELPFILE "http://lynx.isc.org/release/lynx2-8-6/lynx_help/lynx_help_main.html"
 +#define HELPFILE "file://localhost/usr/share/lynx/help/lynx_help_main.html.gz"
  /* #define HELPFILE "file://localhost/PATH_TO/lynx_help/lynx_help_main.html" */
  

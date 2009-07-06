@@ -1,7 +1,6 @@
-diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
---- lynx2-8-5.orig/aclocal.m4	2004-02-14 22:10:58.336429456 +0100
-+++ lynx2-8-5/aclocal.m4	2004-02-14 22:14:16.154356560 +0100
-@@ -24,7 +24,6 @@
+--- lynx2-8-7/aclocal.m4~	2009-02-02 02:41:02.000000000 +0100
++++ lynx2-8-7/aclocal.m4	2009-07-06 13:56:14.000000000 +0200
+@@ -50,7 +50,6 @@
     AC_REQUIRE([AC_HEADER_STDC])dnl
     AC_REQUIRE([AC_C_CONST])dnl
     AC_REQUIRE([AC_C_INLINE])dnl
@@ -9,7 +8,7 @@ diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
     AC_REQUIRE([AC_TYPE_SIZE_T])dnl
     AC_REQUIRE([AC_FUNC_ALLOCA])dnl
     AC_REQUIRE([AC_FUNC_MMAP])dnl
-@@ -2226,9 +2226,7 @@
+@@ -2884,9 +2883,7 @@
  dnl CF_HELP_MESSAGE version: 3 updated: 1998/01/14 10:56:23
  dnl ---------------
  dnl Insert text into the help-message, for readability, from AC_ARG_WITH.
@@ -20,9 +19,9 @@ diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
  dnl ---------------------------------------------------------------------------
  dnl CF_INET_ADDR version: 4 updated: 1999/03/30 12:24:31
  dnl ------------
---- lynx2-8-6/configure.in.orig	2006-10-11 01:39:50.000000000 +0200
-+++ lynx2-8-6/configure.in	2007-02-25 20:19:36.781239762 +0100
-@@ -36,7 +36,6 @@
+--- lynx2-8-7/configure.in~	2009-04-26 18:24:31.000000000 +0200
++++ lynx2-8-7/configure.in	2009-07-06 13:59:02.000000000 +0200
+@@ -40,7 +40,6 @@
  # run to the next, as well as with tests that are order-dependent.
  rm -f config.cache
  
@@ -30,7 +29,7 @@ diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
  AC_INIT(userdefs.h)
  
  # autoconf 2.5x defaults to no cache file; we need the cache file's information
-@@ -101,9 +100,6 @@
+@@ -118,9 +117,6 @@
  dnl Debug/development/test
  dnl --------------------------------------------------------------------------
  
@@ -40,7 +39,7 @@ diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
  CF_DISABLE_ECHO
  
  # special case for WWW/*
-@@ -335,9 +331,6 @@
+@@ -357,9 +353,6 @@
  dnl --------------------------------------------------------------------------
  dnl --------------------------------------------------------------------------
  
@@ -49,8 +48,8 @@ diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
 -
  CF_LARGEFILE
  
- dnl internationalization macros
-@@ -658,9 +651,6 @@
+ dnl --------------------------------------------------------------------------
+@@ -822,9 +815,6 @@
  dnl Experimental options that don't need to test system features
  dnl --------------------------------------------------------------------------
  
@@ -60,17 +59,27 @@ diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
  AC_MSG_CHECKING(if bibp: URLs should be supported)
  CF_ARG_DISABLE(bibp-urls,
  [  --disable-bibp-urls     disable support for bibp: URLs],
-@@ -849,9 +839,6 @@
+@@ -982,9 +972,6 @@
  dnl Miscellaneous options that don't need to test system features
  dnl --------------------------------------------------------------------------
  
 -CF_HELP_MESSAGE(
 -Miscellaneous Options:)
 -
+ dnl --------------------------------------------------------------------------
  AC_MSG_CHECKING(if alternative line-edit bindings should be used)
  CF_ARG_ENABLE(alt-bindings,
- [  --disable-alt-bindings  disable alternative line-edit bindings],
-@@ -1095,9 +1082,6 @@
+@@ -1223,9 +1210,6 @@
+ fi
+ 
+ dnl --------------------------------------------------------------------------
+-CF_HELP_MESSAGE(
+-Other Network Services:)
+-
+ dnl --------------------------------------------------------------------------
+ AC_MSG_CHECKING(if you want to exclude FINGER code)
+ CF_ARG_DISABLE(finger,
+@@ -1266,9 +1250,6 @@
  dnl DirEd (directory-editor) options
  dnl --------------------------------------------------------------------------
  
@@ -80,7 +89,7 @@ diff -burN lynx2-8-5.orig/aclocal.m4 lynx2-8-5/aclocal.m4
  # All DirEd functions that were enabled on compilation can be disabled
  # or modified at run time via DIRED_MENU symbols in lynx.cfg.
  AC_MSG_CHECKING(if directory-editor code should be used)
-@@ -1218,7 +1202,6 @@
+@@ -1392,7 +1373,6 @@
  AC_SUBST(COMPRESS_EXT)
  
  if test $cf_cv_screen = pdcurses ; then

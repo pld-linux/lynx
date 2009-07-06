@@ -1,11 +1,11 @@
---- lynx2-8-4.ori/po/makefile.inn	Fri Aug  4 10:48:49 2000
-+++ lynx2-8-4/po/makefile.inn	Fri Aug  4 10:48:25 2000
-@@ -20,7 +20,7 @@
+--- lynx2-8-7/po/makefile.inn~	2008-09-22 00:49:47.000000000 +0200
++++ lynx2-8-7/po/makefile.inn	2009-07-06 13:52:33.000000000 +0200
+@@ -23,7 +23,7 @@
+ prefix		= @prefix@
+ exec_prefix	= @exec_prefix@
  
- prefix = @prefix@
- exec_prefix = @exec_prefix@
--datadir = @NLS_DATADIR@
-+datadir = $(DESTDIR)@NLS_DATADIR@
- localedir = $(DESTDIR)$(datadir)/locale
- gnulocaledir = $(DESTDIR)$(prefix)/share/locale
- gettextsrcdir = $(DESTDIR)$(prefix)/share/gettext/po
+-datadir		= @NLS_DATADIR@
++datadir		= $(DESTDIR)@NLS_DATADIR@
+ localedir	= $(datadir)/locale
+ gnulocaledir	= $(prefix)/share/locale
+ gettextsrcdir	= $(prefix)/share/gettext/po

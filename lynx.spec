@@ -1,3 +1,6 @@
+#
+# TODO: merge patches (some change the same files in the same places)
+#
 Summary:	Text based browser for the world wide web
 Summary(de.UTF-8):	Text-Browser für das WWW
 Summary(es.UTF-8):	Navegador web modo texto
@@ -7,12 +10,12 @@ Summary(pl.UTF-8):	Przeglądarka WWW pracująca w trybie tekstowym
 Summary(pt_BR.UTF-8):	Navegador web modo texto
 Summary(tr.UTF-8):	Metin ekranda WWW tarayıcı
 Name:		lynx
-Version:	2.8.6rel.5
-Release:	7
+Version:	2.8.7rel.1
+Release:	1
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://lynx.isc.org/current/%{name}%{version}.tar.bz2
-# Source0-md5:	bd44c57d28fd3e4c9db1cd492d403600
+# Source0-md5:	493af4c77ef6761e3f0157cd1be033a0
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
@@ -26,7 +29,6 @@ Patch5:		%{name}-config.patch
 Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
-Patch9:		%{name}-CVE-2008-4690.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -86,7 +88,7 @@ Metin ekranda çalışan bir WWW tarayıcıdır. Şekil gösteremese de,
 formlar ve tablolar için desteği vardır.
 
 %prep
-%setup -q -n %{name}2-8-6
+%setup -q -n %{name}2-8-7
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -96,7 +98,6 @@ formlar ve tablolar için desteği vardır.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 
 %build
 cp /usr/share/automake/config.sub .

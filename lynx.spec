@@ -38,7 +38,6 @@ BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 #BuildRequires:	socks5-devel
 BuildRequires:	zlib-devel
-Requires(triggerpostun):	sed >= 4.0
 Provides:	webclient
 Obsoletes:	lynx-ssl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -150,10 +149,6 @@ bzip2 -dc %{SOURCE3} | tar xf - -C $RPM_BUILD_ROOT%{_mandir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%triggerpostun -- %{name} < 2.8.6rel.5-4
-# for CVE-2008-4690
-%{__sed} -i -e '/^#TRUSTED_LYNXCGI:/s,^#,,' %{_sysconfdir}/lynx.cfg
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)

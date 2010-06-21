@@ -36,6 +36,7 @@ BuildRequires:	bzip2-devel
 BuildRequires:	gettext-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel >= 0.9.7d
+BuildRequires:	sed >= 4.0
 #BuildRequires:	socks5-devel
 BuildRequires:	zlib-devel
 Provides:	webclient

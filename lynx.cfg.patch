@@ -1,29 +1,28 @@
---- lynx2-8-7/lynx.cfg~	2009-06-24 01:53:58.000000000 +0200
-+++ lynx2-8-7/lynx.cfg	2009-07-06 13:48:55.000000000 +0200
+--- lynx2-8-7/lynx.cfg~	2010-06-21 11:27:35.000000000 +0200
++++ lynx2-8-7/lynx.cfg	2010-06-21 13:35:12.625827117 +0200
 @@ -93,7 +93,8 @@
  #
  # Normally we expect you will connect to a remote site, e.g., the Lynx starting
  # site:
 -STARTFILE:http://lynx.isc.org/
 +#STARTFILE:http://lynx.isc.org/
-+STARTFILE:file://localhost/usr/share/doc/HTML/index.html
++STARTFILE:file://localhost/~/
  #
  # As an alternative, you may want to use a local URL.  A good choice for this is
  # the user's home directory:
-@@ -118,10 +119,9 @@
+@@ -118,9 +119,9 @@
  # This definition will be overridden if the "LYNX_HELPFILE" environment
  # variable has been set.
  #
--HELPFILE:http://lynx.isc.org/release/lynx2-8-6/lynx_help/lynx_help_main.html
-+#HELPFILE:http://lynx.isc.org/release/lynx2-8-6/lynx_help/lynx_help_main.html
+-HELPFILE:http://lynx.isc.org/release/lynx2-8-7/lynx_help/lynx_help_main.html
++#HELPFILE:http://lynx.isc.org/release/lynx2-8-7/lynx_help/lynx_help_main.html
  .ex
 -#HELPFILE:file://localhost/PATH_TO/lynx_help/lynx_help_main.html
--
-+HELPFILE:file://localhost/usr/share/lynx/help/lynx_help_main.html
++HELPFILE:file://localhost/usr/share/lynx/help/lynx_help_main.html.gz
+ 
  
  .h2 DEFAULT_INDEX_FILE
- # DEFAULT_INDEX_FILE is the default file retrieved when the
-@@ -553,7 +553,7 @@
+@@ -553,7 +554,7 @@
  # Older browser versions will fail so keep NCR_IN_BOOKMARKS:FALSE if you
  # plan to use them.
  #
@@ -32,7 +31,7 @@
  
  
  .h2 FORCE_8BIT_TOUPPER
-@@ -2387,7 +2387,8 @@
+@@ -2387,7 +2388,8 @@
  #VIEWER:image/tiff:xli %s&:XWINDOWS
  #VIEWER:image/jpeg:xli %s&:XWINDOWS
  #VIEWER:video/mpeg:mpeg_play %s &:XWINDOWS
@@ -42,7 +41,7 @@
  
  .h2 GLOBAL_MAILCAP
  .h2 PERSONAL_MAILCAP
-@@ -3018,16 +3019,14 @@
+@@ -3018,16 +3020,14 @@
  #
  # Uncomment and change any of the compilation defaults.
  #

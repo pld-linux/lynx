@@ -29,6 +29,7 @@ Patch5:		%{name}-config.patch
 Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
+Patch9:		format-security.patch
 URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -99,6 +100,7 @@ formlar ve tablolar için desteği vardır.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 cp /usr/share/automake/config.sub .

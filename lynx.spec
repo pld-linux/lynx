@@ -34,7 +34,7 @@ URL:		http://lynx.browser.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pkgconfig

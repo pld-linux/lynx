@@ -29,11 +29,13 @@
  #define PERSONAL_MAILCAP ".mailcap"
  
  /**************************
-@@ -289,7 +289,7 @@
- #ifdef DOSPATH
+@@ -300,8 +300,8 @@
+ #define LYNX_CFG_PATH "."
  #define LYNX_CFG_FILE "./lynx.cfg"
  #else
+-#define LYNX_CFG_PATH "/usr/local/lib"
 -#define LYNX_CFG_FILE "/usr/local/lib/lynx.cfg"
++#define LYNX_CFG_PATH "/usr/share/lynx"
 +#define LYNX_CFG_FILE "/usr/share/lynx/lynx.cfg"
  #endif /* DOSPATH */
  #endif /* LYNX_CFG_FILE */
@@ -60,15 +62,15 @@
  
  /**************************
   * XLOADIMAGE_COMMAND will be used as a default in src/HTInit.c for
-@@ -445,7 +445,7 @@
-  * -lss command line switch will override these definitions.
-  */
- #ifndef LYNX_LSS_FILE
+@@ -460,7 +460,7 @@
+ #ifdef DOSPATH
+ #define LYNX_LSS_FILE "lynx.lss"
+ #else
 -#define LYNX_LSS_FILE "/usr/local/lib/lynx.lss"
 +#define LYNX_LSS_FILE "/usr/share/lynx/lynx.lss"
+ #endif
  #endif /* LYNX_LSS_FILE */
  
- #endif /* VMS OR UNIX */
 @@ -1156,7 +1156,7 @@
   * OSU server distribution.
   */

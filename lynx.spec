@@ -10,12 +10,12 @@ Summary(pl.UTF-8):	Przeglądarka WWW pracująca w trybie tekstowym
 Summary(pt_BR.UTF-8):	Navegador web modo texto
 Summary(tr.UTF-8):	Metin ekranda WWW tarayıcı
 Name:		lynx
-Version:	2.8.7rel.2
-Release:	5
+Version:	2.8.9rel.1
+Release:	1
 License:	GPL
 Group:		Applications/Networking
-Source0:	http://lynx.isc.org/lynx2.8.7/%{name}%{version}.tar.bz2
-# Source0-md5:	cb936aef812e4e463ab86cbbe14d4db9
+Source0:	https://invisible-mirror.net/archives/lynx/tarballs/%{name}%{version}.tar.bz2
+# Source0-md5:	44316f1b8a857b59099927edc26bef79
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
@@ -24,14 +24,13 @@ Patch0:		%{name}-pld.patch
 Patch1:		%{name}.cfg.patch
 Patch2:		%{name}-po_DESTDIR.patch
 Patch3:		%{name}-config.hin.patch
-Patch4:		%{name}-autoconf.patch
+
 Patch5:		%{name}-config.patch
-Patch6:		%{name}-acfix.patch
+
 Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
-Patch9:		format-security.patch
 URL:		http://lynx.browser.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf-dickey
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	gettext-tools
@@ -90,21 +89,20 @@ Metin ekranda çalışan bir WWW tarayıcıdır. Şekil gösteremese de,
 formlar ve tablolar için desteği vardır.
 
 %prep
-%setup -q -n %{name}2-8-7
+%setup -q -n %{name}%{version}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
+
 %patch5 -p1
-%patch6 -p1
+
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 
 %build
 cp /usr/share/automake/config.sub .
-%{__autoconf}
+autoconf-dickey
 %configure \
 	--with-screen=ncursesw \
 	--without-included-gettext \

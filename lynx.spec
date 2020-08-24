@@ -12,7 +12,7 @@ Summary(tr.UTF-8):	Metin ekranda WWW tarayıcı
 Name:		lynx
 Version:	2.8.9rel.1
 Release:	2
-License:	GPL
+License:	GPL v2
 Group:		Applications/Networking
 Source0:	https://invisible-mirror.net/archives/lynx/tarballs/%{name}%{version}.tar.bz2
 # Source0-md5:	44316f1b8a857b59099927edc26bef79
@@ -30,10 +30,11 @@ Patch5:		%{name}-config.patch
 Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
 URL:		http://lynx.browser.org/
-BuildRequires:	autoconf-dickey
+BuildRequires:	autoconf-dickey >= 2.13
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	gettext-tools
+BuildRequires:	libidn-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pkgconfig
@@ -157,11 +158,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGES COPYHEADER PROBLEMS README samples test docs/README*
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lynx.cfg
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lynx.lss
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/lynx
 %{_datadir}/lynx
 %{_desktopdir}/lynx.desktop
-%{_pixmapsdir}/*
-%{_mandir}/man1/*
-%lang(cs) %{_mandir}/cs/man1/*
-%lang(fi) %{_mandir}/fi/man1/*
-%lang(pl) %{_mandir}/pl/man1/*
+%{_pixmapsdir}/lynx.png
+%{_mandir}/man1/lynx.1*
+%lang(cs) %{_mandir}/cs/man1/lynx.1*
+%lang(fi) %{_mandir}/fi/man1/lynx.1*
+%lang(pl) %{_mandir}/pl/man1/lynx.1*

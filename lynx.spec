@@ -11,7 +11,7 @@ Summary(pt_BR.UTF-8):	Navegador web modo texto
 Summary(tr.UTF-8):	Metin ekranda WWW tarayıcı
 Name:		lynx
 Version:	2.8.9rel.1
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/Networking
 Source0:	https://invisible-mirror.net/archives/lynx/tarballs/%{name}%{version}.tar.bz2

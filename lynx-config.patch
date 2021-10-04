@@ -1,7 +1,7 @@
 --- lynx2-8-7/lynx.cfg~	2010-06-21 13:58:02.215705722 +0200
 +++ lynx2-8-7/lynx.cfg	2010-06-21 14:00:28.895674991 +0200
 @@ -1,6 +1,6 @@
- # $LynxId: lynx.cfg,v 1.180 2009/06/07 17:02:21 tom Exp $
+ # $LynxId: lynx.cfg,v 1.302 2018/07/08 15:22:44 tom Exp $
  # lynx.cfg file.
 -# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
 +# The default placement for this file is /etc/lynx.cfg (Unix)
@@ -9,8 +9,8 @@
  #
  # $Format: "#PRCS LYNX_VERSION \"$ProjectVersion$\""$
 @@ -12,7 +12,7 @@
- # Definition pairs are of the form  VARIABLE:DEFINITION
- # NO spaces are allowed between the pair items.
+ #	VARIABLE:DEFINITION
+ # NO spaces are allowed around the colon ":" between the pair items.
  #
 -#  If you do not have write access to /usr/local/lib you may change
 +#  If you do not have write access to /etc you may change
@@ -24,7 +24,7 @@
 -#   INCLUDE:/usr/local/lib/lynx.cfg
 +#   INCLUDE:/etc/lynx.cfg
  #           ^^^^^^^^^^^^^^^^^^^^^^^ or whatever is appropriate on your system
- # and now your own tweaks.
+ # and now your own tweaks.  If you omit the directory name, e.g.,
  #
 --- lynx2-8-7/makefile.in~	2010-06-21 11:27:35.000000000 +0200
 +++ lynx2-8-7/makefile.in	2010-06-21 14:04:23.622318548 +0200
@@ -47,7 +47,7 @@
 +#define LYNX_CFG_FILE "/etc/lynx.cfg"
  #endif /* LYNX_CFG_FILE */
  
- /**************************
+ #ifndef LYNX_CFG_PATH
 @@ -510,8 +510,9 @@
   * The definition here can be overridden at run time by defining a
   * "LYNX_HELPFILE" environment variable.

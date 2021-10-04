@@ -53,7 +53,7 @@
  	/*
  	 * Home_Dir() has a bug if this ever happens.  - FM
 @@ -5416,6 +5444,7 @@
- 	    (strncmp(file, "./", 2) ? file : (file + 2)));
+ 	    (StrNCmp(file, "./", 2) ? file : (file + 2)));
  #endif /* VMS */
      FREE(home);
 +	}

@@ -10,15 +10,15 @@ Summary(pl.UTF-8):	Przeglądarka WWW pracująca w trybie tekstowym
 Summary(pt_BR.UTF-8):	Navegador web modo texto
 Summary(tr.UTF-8):	Metin ekranda WWW tarayıcı
 Name:		lynx
-Version:	2.8.9rel.1
-Release:	3
+Version:	2.9.2
+Release:	1
 License:	GPL v2
 Group:		Applications/Networking
 Source0:	https://invisible-mirror.net/archives/lynx/tarballs/%{name}%{version}.tar.bz2
-# Source0-md5:	44316f1b8a857b59099927edc26bef79
+# Source0-md5:	3ce01505e82626ca4d7291d7e649c4c9
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Source3:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/%{name}-non-english-man-pages.tar.bz2
+Source3:	%{name}-non-english-man-pages.tar.bz2
 # Source3-md5:	b5e02f86a8ee7bce4d8b97e4b6491714
 Patch0:		%{name}-pld.patch
 Patch1:		%{name}.cfg.patch
@@ -29,12 +29,13 @@ Patch5:		%{name}-config.patch
 
 Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
-URL:		http://lynx.browser.org/
-BuildRequires:	autoconf-dickey >= 2.13
+URL:		https://lynx.invisible-island.net/
+BuildRequires:	autoconf-dickey >= 2.52-0.20231210
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	gettext-tools
-BuildRequires:	libidn-devel
+BuildRequires:	libbrotli-devel
+BuildRequires:	libidn2-devel >= 2
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pkgconfig
@@ -42,7 +43,7 @@ BuildRequires:	sed >= 4.0
 #BuildRequires:	socks5-devel
 BuildRequires:	zlib-devel
 Provides:	webclient
-Obsoletes:	lynx-ssl
+Obsoletes:	lynx-ssl < 2.8.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		specflags_ia32	 -fomit-frame-pointer

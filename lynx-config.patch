@@ -1,14 +1,14 @@
---- lynx2-8-7/lynx.cfg~	2010-06-21 13:58:02.215705722 +0200
-+++ lynx2-8-7/lynx.cfg	2010-06-21 14:00:28.895674991 +0200
+--- lynx2.9.2/lynx.cfg.orig	2024-10-26 16:03:27.748973156 +0200
++++ lynx2.9.2/lynx.cfg	2024-10-26 16:06:56.331176502 +0200
 @@ -1,6 +1,6 @@
- # $LynxId: lynx.cfg,v 1.302 2018/07/08 15:22:44 tom Exp $
+ # $LynxId: lynx.cfg,v 1.358 2024/05/31 22:09:16 tom Exp $
  # lynx.cfg file.
 -# The default placement for this file is /usr/local/lib/lynx.cfg (Unix)
 +# The default placement for this file is /etc/lynx.cfg (Unix)
  #                                     or Lynx_Dir:lynx.cfg (VMS)
  #
- # $Format: "#PRCS LYNX_VERSION \"$ProjectVersion$\""$
-@@ -12,7 +12,7 @@
+ # LYNX_VERSION "2.9.2"
+@@ -10,7 +10,7 @@
  #	VARIABLE:DEFINITION
  # NO spaces are allowed around the colon ":" between the pair items.
  #
@@ -17,7 +17,7 @@
  #  the default location of this file in the userdefs.h file and recompile,
  #  or specify its location on the command line with the "-cfg"
  #  command line option.
-@@ -48,7 +48,7 @@
+@@ -55,7 +55,7 @@
  #
  # Then in ~/lynx.cfg:
  #

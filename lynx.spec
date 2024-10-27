@@ -31,7 +31,6 @@ Patch7:		%{name}-gzip_fallback.patch
 Patch8:		%{name}-etc_dir.patch
 URL:		https://lynx.invisible-island.net/
 BuildRequires:	autoconf-dickey >= 2.52-0.20231210
-BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	gettext-tools
 BuildRequires:	libbrotli-devel
@@ -103,7 +102,6 @@ formlar ve tablolar için desteği vardır.
 %patch8 -p1
 
 %build
-cp /usr/share/automake/config.sub .
 autoconf-dickey
 %configure \
 	--with-screen=ncursesw \
